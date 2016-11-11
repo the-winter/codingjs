@@ -1,0 +1,21 @@
+{
+  "name": "codingbat-js",
+  "version": "0.0.1",
+  "description": "CodingBatJS",
+  "main": "main.js",
+  "scripts": {
+    "start": "http-server -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "theWinter",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.6.0"
+  },
+  "dependencies": {
+  }
+}

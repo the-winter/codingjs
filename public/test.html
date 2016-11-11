@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.css" media="screen" title="no title">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+  </body>
+  <!-- Dependancies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
+  <!-- Main  -->
+  <script src="data/solutions.js"></script>
+  <script src="data/exercises.js"></script>
+  <script src="main.js" charset="utf-8"></script>
+
+  <!-- for testing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.1.2/mocha.min.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    mocha.setup('bdd')
+    expect = chai.expect
+    assert = chai.assert
+    </script>
+  <script src="test.js" charset="utf-8"></script>
+  <script type="text/javascript">mocha.run()</script>
+</html>
