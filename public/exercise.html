@@ -2,25 +2,45 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    <p id="title">
-    </p>
-    <p id="name">
-    </p>
-    <p id="problem"></p><br>
-    <div id = "solveArea">
-    <textarea id="answer"></textarea><br>
-    <button id="calc">Solve</button><br>
-    </div>
-    <table id = "testArea" class="test-table">
-      <tbody id="tests">
+    <div class="main">
+      <p class="heading"><b>Coding-JS</b></p>
+      <p class="subheading"><a class="links"href="http://codingbat.com/" target="_blank">CodingBat</a> <i>exercises converted for Javascript</i></p>
+      <a class="links" href="index.html">Index</a>&nbsp;||&nbsp;<a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a><br>
+      <p id="title"> </p> <b>--</b> <p id="name"> </p>
+      <div class="probField">
+        <p id="problem"></p>
+      </div>
 
-      </tbody>
-    </table>
-  </body>
+      <p>Examples</p>
+      <ul class = "examples">
+      </ul>
+      <div class="floatBox">
+        <div class = "solveArea">
+          <button class="btn" id="solve">Solve</button><br>
+          <textarea id="answer"></textarea><br>
+        </div>
+        <div class = "solveArea">
+          <button class="btn" id="show">Show Solution</button><br>
+          <textarea id="mySolution"></textarea>
+        </div>
+      </div>
+
+      <div id="displayResults">
+        <p class = "congrats"></p>
+        <table id = "testArea" class="test-table">
+          <tbody id="tests">
+
+          </tbody>
+        </table>
+      </div>
+
+  </div>
+</body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
   <script src="data/solutions.js"></script>

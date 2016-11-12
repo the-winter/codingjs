@@ -21,7 +21,7 @@ function formatResults(funcName, input, idealOutput, output) {
          <td>${funcName}${input} → ${idealOutput}</td>
          <td>${output}</td>
          <td>${ok ? '✔' : '✖'}</td>
-         <td class="status-box" style="background-color:${ok ? 'green' : 'red'}"></td>
+         <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>
      </tr>`;
 }
 
@@ -48,7 +48,15 @@ $(document).ready(() => {
   $('#name').text(exercise.name);
   $('#problem').text(exercise.question);
   $('#answer').text('function '+exercise.name+'('+defaultInput(exercise.inputs[0])+'){\n\n}');
-  $('#calc').on('click', () => {
+
+  for (var i = 0; i <= 2; i++) {
+    var input = inputParser(exercise.inputs[i]);
+    var result = solutions[exerciseName](...input);
+    // TODO make this a class instead of an element
+    $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
+  }
+
+  $('#solve').on('click', () => {
     $('tr').remove();
     const answer = $('#answer').val();
 
@@ -58,13 +66,32 @@ $(document).ready(() => {
     const inputs = exercise.inputs;
     console.log('inpute: ', inputs);
 
+    let results = []
     inputs.forEach((inputStr) => {
-      	const input = inputParser(inputStr);
+      const input = inputParser(inputStr);
       const result = ans(...input);
       console.log(input);
       const idealResult = solutions[exerciseName](...input);
       $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
       console.log('result: ', result);
+
+      var isCorrect = _.isEqual(result,idealResult)
+      results.push(isCorrect)
     });
+
+    if (Math.min(...results) == 1){
+      $('.congrats').text("100% Passing. Well Done!")
+    }
+
   });
+
+  $('#next').on('click', () => {
+    var indx = _.findIndex(exercises, {name: exerciseName})+1;
+    var x = exercises[indx];
+    window.location.search = `?name=${x.name}&title=${x.title}`
+  })
+
+  $('#show').on('click', () => {
+    $('#mySolution').text(solutions[exerciseName].toString())
+  })
 });
