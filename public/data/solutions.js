@@ -3,6 +3,7 @@
 
 const solutions = {};
 
+//Warmup-1
 solutions.sleepIn = function (weekday, vacation) {
   return !weekday || vacation;
 };
@@ -271,6 +272,466 @@ solutions.endUp = function (str) {
   return front + back.toUpperCase();
 };
 
+//Warmup 2
+solutions.doubleX = function(str){
+ str.toLowerCase();
+ x = str.indexOf('x');
+ if (x == -1){
+   return false;
+ }
+ if (x >= str.length){
+   return false;
+ }
+ return str.substring(x+1, x+2) == "x";
+}
+
+solutions.last2 = function(str){
+ count = 0;
+ if(str.length<2){
+   return 0;
+ }
+ end = str.substring(str.length-2);
+ for(x=0; x<str.length-2; x++){
+   sub = str.substring(x, x+2);
+   if(sub == end){
+     count++;
+   }
+ }
+ return count;
+}
+
+solutions.array123 = function(nums){
+ return !!(nums.join("").match(/123/g));
+}
+
+solutions.altPairs = function(str){
+ result="";
+ for(x=0; x<str.length; x+=4){
+   end = x + 2;
+   if(end > str.length){
+     end = str.length
+   }
+   result = result + str.substring(x, end);
+ }
+ return result;
+}
+
+solutions.noTriples = function(nums){
+ for(x=0; x<nums.length-2; x++){
+   first = nums[x];
+   if(first == nums[x+1]){
+     if(first == nums[x+2]){
+       return false;
+     }
+   }
+ } return true;
+}
+
+solutions.frontTimes = function(str, n){
+ frontLen = 3;
+ if(frontLen > str.length) {
+   frontLen = str.length;
+ }
+   front = str.substring(0, frontLen);
+ result = "";
+ for (x=0; x<n; x++){
+   result = result + front
+ }
+ return result;
+}
+
+solutions.stringBits = function(str){
+ result = "";
+ for(x=0; x<str.length; x+=2){
+   result = result + str.substring(x, x+1);
+ }
+ return result;
+}
+
+solutions.arrayCount9 = function(nums){
+ count = 0;
+ for (x=0; x<nums.length; x++){
+   if(nums[x] == 9){
+     count++
+   }
+ }
+ return count
+}
+
+solutions.stringMatch = function(a,b){
+ len = Math.min(a.length, b.length);
+ count = 0;
+ for(x=0; x<len-1; x++){
+   aSub = a.substring(x, x+2);
+   bSub = b.substring(x, x+2);
+   if ( aSub == bSub){
+     count++;
+   }
+ }
+ return count;
+}
+
+solutions.stringYak = function(str){
+ result = "";
+ for(x=0; x<str.length; x++){
+   if(x+2<str.length && str.charAt(x) == 'y' && str.charAt(x+2) == 'k'){
+     x = x + 2;
+   }
+   else {
+     result = result + str.charAt(x);
+   }
+ }
+ return result;
+}
+
+solutions.has271 = function(nums){
+ return !!(nums.join("").match(/271/g));
+}
+
+solutions.countXX = function(str){
+ count = 0;
+ for(x=0; x<str.length; x++){
+   if(str.charAt(x) == "x"){
+     if(str.charAt(x+1) == "x"){
+       count++
+     }
+   }
+ }
+ return count++;
+}
+
+solutions.stringSplosion = function(str){
+ result = "";
+   for(x=0; x<str.length-1; x++){
+     result = result + str.substring(0, x+1);
+   }
+   return result;
+}
+
+solutions.arrayFront9 = function(nums){
+ for(x=0; x<4; x++){
+   if(nums[x] == 9){
+     return true;
+   }
+ }
+ return false;
+}
+
+solutions.stringX = function(str){
+ result = "";
+ front = str.substring(0,1);
+ end = str.substring(str.length-1);
+ for(i=1; i<str.length-1; i++){
+   if(str.charAt(i) !== "x"){
+     result += str.charAt(i);
+   }
+ }
+ return front + result + end;
+}
+
+solutions.array667 = function(nums){
+ count = 0;
+ for(x=0; x<nums.length; x++){
+   if (nums[x] == 6){
+     if (nums[x+1] == 6 || nums[x+1] == 7) {
+       count++;
+     }
+   }
+ } return count;
+}
+
+//String-1
+
+solutions.helloName = function(name){
+	return "Hello " + name;
+}
+
+solutions.makeAbba = function(a, b){
+	return a + b + b + a;
+}
+
+solutions.makeOutWord = function(out, word){
+	front = out.substring(0,2);
+	back = out.substring(2,4);
+	return front + word + back
+}
+
+solutions.extraEnd = function(str){
+	if (str.length>1){
+		back = str.substring(str.length-2);
+		return back+back+back;
+	}
+}
+
+solutions.withoutEnd = function(str){
+	return str.substring(1, str.length-1);
+}
+
+solutions.comboString = function(a,b){
+	if (a.length < b.length){
+		return a+b+a;
+	}
+	else{
+		return b+a+b;
+	}
+}
+
+solutions.nonStart = function(a,b){
+	a = a.substring(1,a.length);
+	b = b.substring(1,b.length);
+	return a + b;
+}
+
+solutions.firstHalf = function(str){
+	if(str.length % 2 == 0){
+		return str.substring(0,str.length
+	}
+	return str
+}
+
+solutions.firstTwo = function(str){
+	if(str.length>2){
+		return str.substring(0,2);
+	}
+	return str;
+}
+
+solutions.left2 = function(str){
+	if(str.length>1){
+		front = str.substring(0,2);
+		back = str.substring(2,str.length);
+		return back + front;
+	}
+	return str;
+}
+
+solutions.right2 = function(str){
+	if(str.length>1){
+		back = str.substring(str.length-2,str.length);
+		front = str.substring(0,str.length-2);
+		return back + front;
+	}
+	return str;
+}
+
+solutions.theEnd = function(str, front){
+	if(front){
+		return str.substring(0,1);
+	}
+	return str.substring(str.length-1);
+}
+
+solutions.withoutEnd2 = function(str){
+	if(str.length<=1){
+		return "";
+	}
+	return str.substring(1,str.length-1);
+}
+
+solutions.middleTwo = function(str){
+	if(str.length % 2 == 0){
+		temp = str.substring(str.length
+		mid = temp.substring(0,2);
+		return mid;
+	}
+	return str;
+}
+
+solutions.endsLy = function(str){
+	if(str.substring(str.length-2, str.length) == "ly"){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+solutions.nTwice = function(str, n){
+	first = str.substring(0, n);
+	end = str.substring(str.length-n);
+	return first + end;
+}
+
+solutions.makeTags = function (tag, word) {
+  var otag = '<'+tag+'>';
+  var ctag = '</'+tag+'>';
+  return otag+word+ctag;
+}
+
+solutions.twoChar = function (str, index) {
+  if(index + 2 > str.length || index < 0)
+        return str.substring(0, 2);
+
+    return str.substring(index, index + 2);
+}
+
+solutions.middleThree = function (str) {
+  var i = Math.floor(str.length/2);
+
+  return str.substring(i-1, i+2)
+}
+
+solutions.hasBad = function (str) {
+    if(str.length == 3) {
+        return str.substring(0, 3) == "bad";
+    }
+
+    if(str.length >= 4){
+        return str.substring(0, 3) == "bad" ||
+            str.substring(1, 4) == "bad";
+    }
+
+    return false;
+}
+
+solutions.atFirst = function (str) {
+    if(str.length == 0) {
+        return "@@";
+    }
+
+    if(str.length == 1) {
+        return str + "@";
+    }
+
+    return str.substring(0, 2);
+}
+
+solutions.lastChars = function (a, b) {
+  var res = "";
+  if (a.length == 0){
+    res += "@"
+  } else {
+    res += a.charAt(0);
+  }
+
+  if (b.length == 0){
+    res += "@"
+  } else {
+    res += b.charAt(b.length-1);
+  }
+
+  return res;
+}
+
+solutions.conCat = function (a, b) {
+  if (a.charAt(a.length-1) == b.charAt(0)){
+    return a + b.substring(1);
+  } else {
+    return a+b;
+  }
+}
+
+solutions.lastTwo = function (str) {
+    if(str.length < 2) {
+        return str;
+    }
+
+    return str.substring(0, str.length - 2) + str.charAt(str.length - 1) +
+        str.charAt(str.length - 2);
+}
+
+solutions.seeColor = function (str) {
+    if(str.length >= 3 && str.substring(0, 3) == "red") {
+       return "red";
+    }
+
+    if(str.length >= 4 && str.substring(0, 4) == "blue") {
+        return "blue";
+    }
+
+    return "";
+}
+
+solutions.frontAgain = function (str) {
+    if(str.length < 2) {
+        return false;
+    }
+
+    return str.substring(0, 2) == str.substring(str.length - 2);
+}
+
+solutions.minCat = function (a, b) {
+    var min = Math.min(a.length, b.length);
+
+    return a.substring(a.length - min) + b.substring(b.length - min);
+}
+
+solutions.extraFront = function (str) {
+    if(str.length >= 2) {
+        str = str.substring(0, 2);
+    }
+
+    return str + str + str;
+}
+
+solutions.without2 = function (str) {
+    if(str.length >= 2 &&
+        str.substring(0, 2) == str.substring(str.length - 2)){
+         return str.substring(2);
+    }
+
+    return str;
+}
+
+solutions.deFront = function (str) {
+    if(str.length == 1 && str.charAt(0) != 'a'){
+        return "";
+    }
+
+    if(str.length >= 2) {
+        if(str.charAt(0) != 'a' && str.charAt(1) != 'b') {
+            return str.substring(2);
+        } else if(str.charAt(0) != 'a') {
+            return str.substring(1);
+        } else if(str.charAt(1) != 'b') {
+            return "a" + str.substring(2);
+        }
+    }
+
+    return str;
+}
+
+solutions.startWord = function (str, word) {
+    if(str.length >= word.length &&
+        str.substring(1, word.length) == (word.substring(1))) {
+         return str.substring(0, word.length);
+       }
+
+    return "";
+}
+
+solutions.withoutX = function (str) {
+    var start = 0;
+    var end = str.length;
+
+    if(str.length > 0 && str.charAt(0) == 'x')
+        start = 1;
+
+    if(str.length > 1 && str.charAt(str.length - 1) == 'x')
+        end--;
+
+    return str.substring(start, end);
+}
+
+solutions.withoutX2 = function (str) {
+    if(str.length == 1 && str.charAt(0) == 'x'){
+        return "";
+    }
+
+    if(str.length >= 2) {
+        if(str.charAt(0) == 'x' && str.charAt(1) == 'x') {
+            return str.substring(2);
+        } else if(str.charAt(0) == 'x') {
+            return str.substring(1);
+        } else if(str.charAt(1) == 'x') {
+            return str.charAt(0) + str.substring(2);
+        }
+    }
+
+    return str;
+}
+
+//String-1 end
 
 solutions.scoresIncreasing = function scoresIncreasing(scores) {
   for (let i = 1; i < scores.length; i++) {
@@ -281,22 +742,4 @@ solutions.scoresIncreasing = function scoresIncreasing(scores) {
   return true;
 };
 
-solutions.scores100 = function scoresIncreasing(scores) {
-  for (let i = 1; i < scores.length; i++) {
-    if (scores[i] != scores[i - 1] && scores[i] < scores[i - 1]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-// Java > Warm-up1 > diff21
-// Given an int n, return the absolute difference between n and 21,
-// except return double the absolute difference if n is over 21.
-solutions.diff21 = function (n) {
-  if (n <= 21) {
-    return 21 - n;
-  } else {
-    return (n - 21) * 2;
-  }
-};
+solutions.scores100 = '' //TODO
