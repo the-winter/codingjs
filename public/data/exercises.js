@@ -727,7 +727,7 @@ The value of n will be a valid index of a char in the original string (i.e. n wi
       "('yak')",
       "('yakxxxyak')",
       "('xxcaazz', 'hiyakHi')",
-      "(xxxyakyyyakzzz')",
+      "('xxxyakyyyakzzz')",
     ],
     question: `Suppose the string "yak" is unlucky. Given a string, return a version
           where all the "yak" are removed, but the "a" can be any char. The "yak" strings
@@ -1311,7 +1311,7 @@ The value of n will be a valid index of a char in the original string (i.e. n wi
   },
   {
     title: 'String-1',
-    name: 'withoutX ',
+    name: 'withoutX',
     question: `Given a string, if the first or last chars are 'x', return the string
     without those 'x' chars, and otherwise return the string unchanged.`,
     inputs: [

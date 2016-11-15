@@ -15,10 +15,10 @@ function deParam(urlStr) {
 }
 
 /** Return row for html table **/
-function formatResults(funcName, input, idealOutput, output) {
+function formatResults(funcName, inputStr, idealOutput, output) {
   const ok = _.isEqual(output, idealOutput);
   return `<tr>
-         <td>${funcName}${input} → ${idealOutput}</td>
+         <td>${funcName}${inputStr} → ${idealOutput}</td>
          <td>${output}</td>
          <td>${ok ? '✔' : '✖'}</td>
          <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>
@@ -26,7 +26,10 @@ function formatResults(funcName, input, idealOutput, output) {
 }
 
 
- /** it converts nodingbat input (as stored) to js **/
+ /**
+  * it converts nodingbat input (as stored) to js
+  *     e.g. inputParser('(1,2)')=>[1,2]
+  **/
 function inputParser(inputStr) {
   // return eval(`[${inputStr.slice(1, -1)}]`) // another way of doing it
   const x = inputStr.slice(1, -1);

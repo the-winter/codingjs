@@ -1,3 +1,5 @@
+
+
 describe('main', () => {
   describe('inputParser', () => {
     it('should give the right output', () => {
@@ -9,10 +11,10 @@ describe('main', () => {
 
   describe('formatResults', function () {
     it('should run for given inputs', function () {
-      const result = formatResults("scoresIncreasing", [1, 3, 4], true, true);
+      const result = formatResults("scoresIncreasing", '([1, 3, 4])', true, true);
       const idealResult = `
        <tr>
-         <td>scoresIncreasing(1,3,4) → true</td>
+         <td>scoresIncreasing([1, 3, 4]) → true</td>
          <td>true</td>
          <td>✔</td>
          <td class="status-box" style="background-color:green"></td>
@@ -30,3 +32,19 @@ describe('main', () => {
   })
 
 });
+
+describe('solutions', function () {
+  exercises.forEach(function(exercise){
+    var solution = solutions[exercise.name];
+
+      describe(exercise.name, function(){
+        exercise.inputs.forEach(function(inputStr){
+          it(`should run for ${exercise.name}${inputStr}`, function () {
+            var js_inputs = inputParser(inputStr)
+            var idealResult = solution.apply(undefined, js_inputs)
+            expect(idealResult).to.exist // check the result isn't undefined
+          });
+        })
+      })
+  })
+})
