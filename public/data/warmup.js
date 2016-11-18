@@ -1,0 +1,1231 @@
+exercises.push(
+  {
+    title: 'Warmup-1',
+    name: 'sleepIn',
+    question: `The parameter weekday is true if it is a weekday, and the parameter
+       vacation is true if we are on vacation. We sleep in if it is not a weekday or
+       we're on vacation. Return true if we sleep in.`,
+    inputs: [
+      '(true, true)',
+      '(true, false)',
+      '(false, true)',
+      '(false, false)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'monkeyTrouble',
+    question: `We have two monkeys, a and b, and the parameters aSmile and
+            bSmile indicate if each is smiling. We are in trouble if they are both smiling
+            or if neither of them is smiling. Return true if we are in trouble.`,
+    inputs: [
+      '(true, true)',
+      '(false, false)',
+      '(true, false)',
+      '(false, true)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'sumDouble',
+    question: `Given two int values, return their sum. Unless the two values are the same,
+     then return double their sum.`,
+    inputs: [
+      '(1, 2)',
+      '(3, 2)',
+      '(2, 2)',
+      '(-1, 0)',
+      '(3, 3)',
+      '(0, 0)',
+      '(0, 1)',
+      '(3, 4)',
+    ],
+  }, {
+    title: 'Warmup-1',
+            	name: 'diff21',
+    question: `Given an int n, return the absolute difference between n and 21,
+              except return double the absolute difference if n is over 21.`,
+    inputs: [
+      '(19)',
+      '(10)',
+      '(21)',
+      '(22)',
+      '(25)',
+      '(30)',
+      '(0)',
+      '(1)',
+      '(2)',
+      '(-1)',
+      '(-2)',
+      '(50)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'parrotTrouble',
+    question: `We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23.
+  We are in trouble if the parrot is talking and the hour is before 7 or after 20.
+  Return true if we are in trouble.`,
+    inputs: [
+      '(true, 6)',
+      '(true, 7)',
+      '(false, 6)',
+      '(true, 21)',
+      '(false, 21)',
+      '(true, 23)',
+      '(false, 23)',
+      '(true, 20)',
+      '(false, 12)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'makes10',
+    question: 'Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.',
+    inputs: [
+      '(9, 10)',
+      '(9, 9)',
+      '(1, 9)',
+      '(10, 1)',
+      '(10, 10)',
+      '(8, 2)',
+      '(8, 3)',
+      '(10, 42)',
+      '(12, -2)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'nearHundred',
+    question: `Given an int n, return true if it is within 10 of 100 or 200.
+              Note: Math.abs(num) computes the absolute value of a number.`,
+    inputs: [
+      '(93)',
+      '(90)',
+      '(89)',
+      '(110)',
+      '(111)',
+      '(121)',
+      '(0)',
+      '(5)',
+      '(191)',
+      '(189)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'posNeg',
+    question: `Given 2 int values, return true if one is negative and one is positive.
+        Except if the parameter "negative" is true, then return true only if both are negative.`,
+    inputs: [
+      '(1, -1, false)',
+      '(-1, 1, false)',
+      '(-4, -5, true)',
+      '(-4, -5, false)',
+      '(-4, 5, false)',
+      '(-4, 5, true)',
+      '(1, 1, false)',
+      '(-1, -1, false)',
+      '(1, -1, true)',
+      '(-1, 1, true)',
+      '(1, 1, true)',
+      '(-1, -1, true)',
+      '(5, -5, false)',
+      '(-6, 6, false)',
+      '(-5, -6, false)',
+      '(-2, -1, false)',
+      '(1, 2, false)',
+      '(-5, 6, true)',
+      '(-5, -5, true)',
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'notString',
+    question: `Given a string, return a new string where "not " has been added to the front. However,
+    if the string already begins with "not", return the string unchanged. Note: use .equals() to
+    compare 2 strings.`,
+    inputs: [
+      "('candy')",
+      "('x')",
+      "('not bad')",
+      "('bad')",
+      "('not')",
+      "('is not')",
+      "('no')",
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'missingChar',
+    question: `Given a non-empty string and an int n, return a new string where the char at index n has been removed.
+  The value of n will be a valid index of a char in the original string (i.e. n will be in the range
+    0..str.length()-1 inclusive).`,
+    inputs: [
+      "('kitten', 1)",
+      "('kitten', 0)",
+      "('kitten', 4)",
+      "('Hi', 0)",
+      "('Hi', 1)",
+      "('code', 0)",
+      "('code', 1)",
+      "('code', 2)",
+      "('code', 3)",
+      "('chocolate', 8)",
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'frontBack',
+    question: `Given a string, return a new string where the first and last chars have
+          been exchanged.`,
+    inputs: [
+      "('code')",
+      "('a')",
+      "('ab')",
+      "('abc')",
+      "('')",
+      "('Chocolate')",
+      "('aavj')",
+      "('hello')",
+    ],
+  }, {
+    title: 'Warmup-1',
+    name: 'front3',
+    inputs: [
+      "('Java')",
+      "('Chocolate')",
+      "('abc')",
+      "('abcXYZ')",
+      "('ab')",
+      "('a')",
+      "('')",
+    ],
+    question: `Given a string, we'll say that the front is the first 3 chars of the string.
+            If the string length is less than 3, the front is whatever is there. Return a new
+            string which is 3 copies of the front.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'backAround',
+    inputs: [
+      "('cat')",
+      "('Hello')",
+      "('a')",
+      "('abc')",
+      "('read')",
+      "('boo')",
+    ],
+    question: `Given a string, take the last char and return a new string with the last
+            char added at the front and back, so 'cat' yields 'tcatt' The original string will be
+            length 1 or more.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'or35',
+    inputs: [
+      '(3)',
+      '(10)',
+      '(8)',
+      '(15)',
+      '(5)',
+      '(4)',
+      '(9)',
+      '(4)',
+      '(7)',
+      '(6)',
+      '(17)',
+      '(18)',
+      '(29)',
+      '(20)',
+      '(21)',
+      '(22)',
+      '(45)',
+      '(99)',
+      '(100)',
+      '(101)',
+      '(121)',
+      '(122)',
+      '(123)',
+    ],
+    question: `Return true if the given non-negative number is a multiple of 3 or a
+            multiple of 5. (Hint: Use the % 'mod' operator)`,
+  }, {
+    title: 'Warmup-1',
+    name: 'front22',
+    inputs: [
+      "('kitten')",
+      "('Ha')",
+      "('abc')",
+      "('ab')",
+      "('a')",
+      "('')",
+      "('Logic')",
+    ],
+    question: `Given a string, take the first 2 chars and return the string with the 2
+            chars added at both the front and back, so 'kitten' yields 'kikittenki' chars are
+            there.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'startHi',
+    inputs: [
+      "('hi there')",
+      "('hi')",
+      "('hello hi')",
+      "('he')",
+      "('h')",
+      "('')",
+      "('ho hi')",
+      "('hi ho')",
+    ],
+    question: `Given a string, return true if the string starts with 'hi'and
+            false otherwise.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'icyHot',
+    inputs: [
+      '(120, -1)',
+      '(-1, 120)',
+      '(2, 120)',
+      '(-1, 100)',
+      '(-2, 120)',
+      '(120, 120)',
+    ],
+    question: `Given two temperatures, return true if one is less than 0 and the
+              other is greater than 100.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'in1020',
+    inputs: [
+      '(12, 99)',
+      '(21, 12)',
+      '(8, 99)',
+      '(99, 10)',
+      '(20, 20)',
+      '(21, 21)',
+      '(9, 9)',
+    ],
+    question: `Given 2 int values, return true if either of them is in the range
+              10..20 inclusive.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'hasTeen',
+    inputs: [
+      '(13, 20, 10)',
+      '(20, 19, 10)',
+      '(20, 10, 13)',
+      '(1, 20, 12)',
+      '(19, 20, 12)',
+      '(12, 20, 19)',
+      '(12, 9, 20)',
+      '(12, 18, 20)',
+      '(14, 2, 20)',
+      '(4, 2, 20)',
+      '(11, 22, 22)',
+    ],
+    question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive. Given 3 int values,
+                return true if 1 or more of them are teen.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'loneTeen',
+    inputs: [
+      '(13, 99)',
+      '(21, 19)',
+      '(13, 13)',
+      '(14, 20)',
+      '(20, 15)',
+      '(16, 17)',
+      '(16, 9)',
+      '(16, 18)',
+      '(13, 19)',
+      '(13, 20)',
+      '(6, 18)',
+      '(99, 13)',
+      '(99, 99)',
+    ],
+    question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive.
+                Given 2 int values, return true if one or the other is teen, but not both.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'delDel',
+    inputs: [
+      "('adelbc')",
+      "('adelHello')",
+      "('abcdel')",
+      "('add')",
+      "('ad')",
+      "('a')",
+      "('')",
+      "('del')",
+      "('adel')",
+      "('aadelbb')",
+    ],
+    question: `Given a string, if the string "del" appears starting at index 1,
+                  return a string where that "del" has been deleted. Otherwise, return the string
+                  unchanged.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'mixStart',
+    inputs: [
+      "('mix snacks')",
+      "('pix snacks')",
+      "('piz snacks')",
+      "('nix')",
+      "('ni')",
+      "('n')",
+    ],
+    question: `Return true if the given string begins with 'mix', except the 'm' can be
+                  anything, so 'pix', '9ix' .. all count.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'startOz',
+    inputs: [
+      "('ozymandias')",
+      "('bzoo')",
+      "('oxx')",
+      "('ounce')",
+      "('o')",
+      "('abc')",
+      "('')",
+      "('zoo')",
+      "('aztec')",
+      "('zzzz')",
+      "('oznic')",
+    ],
+    question: `Given a string, return a string made of the first 2 chars (if present),
+                   however include first char only if it is 'o' and include the second only if it
+                   is 'z', so 'ozymandias' yields 'oz'.`,
+  },
+  {
+    title: 'Warmup-1',
+    name: 'intMax',
+    inputs: [
+      '(1, 2, 3)',
+      '(1, 3, 2)',
+      '(3, 2, 1)',
+      '(9, 3, 3)',
+      '(3, 9, 3)',
+      '(3, 3, 9)',
+      '(8, 2, 3)',
+      '(-3, -1, -2)',
+      '(6, 2, 5)',
+      '(5, 6, 2)',
+      '(5, 2, 6)',
+    ],
+    question: 'Given three int values, a b c, return the largest.',
+  },
+  {
+    title: 'Warmup-1',
+    name: 'close10',
+    inputs: [
+      '(8, 13)',
+      '(13, 8)',
+      '(13, 7)',
+      '(7, 13)',
+      '(9, 13)',
+      '(13, 8)',
+      '(10, 12)',
+      '(11, 10)',
+      '(5, 21)',
+      '(0, 20)',
+      '(0, 20)',
+      '(10, 10)',
+    ],
+    question: `Given 2 int values, return whichever value is nearest to the value 10,
+                 or return 0 in the event of a tie. Note that Math.abs(n) returns the absolute
+                  value of a number.`,
+  },
+  {
+    title: 'Warmup-1',
+    name: 'in3050',
+    inputs: [
+      '(30, 31)',
+      '(30, 41)',
+      '(40, 50)',
+      '(40, 51)',
+      '(39, 50)',
+      '(50, 39)',
+      '(40, 39)',
+      '(49, 48)',
+      '(50, 40)',
+      '(50, 51)',
+      '(35, 36)',
+      '(35, 45)',
+    ],
+    question: `Given 2 int values, return true if they are both in the range 30..40
+                inclusive, or they are both in the range 40..50 inclusive.`,
+  },
+  {
+    title: 'Warmup-1',
+    name: 'max1020',
+    inputs: [
+      '(11, 19)',
+      '(19, 11)',
+      '(11, 9)',
+      '(9, 21)',
+      '(10, 21)',
+      '(21, 10)',
+      '(9, 11)',
+      '(23, 10)',
+      '(20, 10)',
+      '(7, 20)',
+      '(17, 16)',
+    ],
+    question: `Given 2 positive int values, return the larger value that is in the range
+                10..20 inclusive, or return 0 if neither is in that range.`,
+  },
+  {
+    title: 'Warmup-1',
+    name: 'stringE',
+    inputs: [
+      "('Hello')",
+      "('Heelle')",
+      "('Heelele')",
+      "('HII')",
+      "('e')",
+      "('')",
+    ],
+    question: 'Return true if the given string contains between 1 and 3 \'e\' chars.',
+  },
+  {
+    title: 'Warmup-1',
+    name: 'lastDigit',
+    inputs: [
+      '(7, 17)',
+      '(6, 17)',
+      '(3, 113)',
+      '(114, 113)',
+      '(114, 4)',
+      '(10, 0)',
+      '(11, 0)',
+    ],
+    question: `Given two non-negative int values, return true if they have the same
+                last digit, such as with 27 and 57. Note that the % 'mod' operator computes
+                remainders, so 17 % 10 is 7.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'endUp',
+    inputs: [
+      "('Hello')",
+      "('hi there')",
+      "('hi')",
+      "('woo hoo')",
+      "('xyz12')",
+      "('x')",
+      "('')",
+    ],
+    question: `Given a string, return a new string where the last 3 chars are now in
+                upper case. If the string has less than 3 chars, uppercase whatever is there.
+                Note that str.toUpperCase() returns the uppercase version of a string.`,
+  }, {
+    title: 'Warmup-1',
+    name: 'everyNth',
+    inputs: [
+      "('Miracle', 2)",
+      "('abcdefg', 2)",
+      "('abcdefg', 3)",
+      "('Chocolate', 3)",
+      "('Chocolates', 3)",
+      "('Chocolates', 4)",
+      "('Chocolates', 100)",
+    ],
+    question: `Given a non-empty string and an int N, return the string made starting
+                  with char 0, and then every Nth char of the string. So if N is 3, use char 0, 3, 6,
+                   ... and so on. N is 1 or more.`,
+  },
+  {
+    title: 'Warmup-2',
+    name: 'stringTimes',
+    inputs: [
+      "('Hi', 2)",
+      "('Hi', 3)",
+      "('Hi', 1)",
+      "('Hi', 0)",
+      "('Hi', 5)",
+      "('Oh Boy!', 2)",
+      "('x', 4)",
+      "('', 4)",
+      "('code', 2)",
+      "('code', 3)",
+    ],
+    question: `Given a string and a non-negative int n, return a larger string that is n
+        copies of the original string.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'frontTimes',
+    inputs: [
+      "('Chocolate', 2)",
+      "('Chocolate', 3)",
+      "('Abc', 3)",
+      "('Ab', 4)",
+      "('A', 4)",
+      "('',4)",
+      "('Abc', 0)",
+    ],
+    question: `Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars,
+          or whatever is there if the string is less than length 3. Return n copies of the front.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'countXX',
+    inputs: [
+      "('abcxx')",
+      "('xxx')",
+      "('xxxx')",
+      "('abc')",
+      "('Hello There')",
+      "('Hexxo Thxxe')",
+      "('')",
+      "('Kittens')",
+      "('Kittensxxx')",
+    ],
+    question: `Count the number of 'xx' in the given string. We'll say that overlapping
+          is allowed, so 'xxx' contains 2 'xx'.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'doubleX',
+    inputs: [
+      "('axxbb')",
+      "('axaxax')",
+      "('xxxxx')",
+      "('xaxxx')",
+      "('aaaax')",
+      "('')",
+      "('abc')",
+      "('x')",
+      "('xx')",
+      "('xaxx')",
+    ],
+    question: `Given a string, return true if the first instance of "x" in the string is
+           immediately followed by another "x".`,
+  }, {
+    title: 'Warmup-2',
+    name: 'stringBits',
+    inputs: [
+      "('Hello')",
+      "('Hi')",
+      "('Heeololeo')",
+      "('HiHiHi')",
+      "('')",
+      "('Greetings')",
+      "('Chocolate')",
+      "('pi')",
+      "('Hello Kitten')",
+      "('hxaxpxpxy')",
+    ],
+    question: `Given a string, return a new string made of every other char starting
+          with the first, so "Hello" yields "Hlo".`,
+  }, {
+    title: 'Warmup-2',
+    name: 'stringSplosion',
+    question: 'Given a non-empty string like "Code" return a string like "CCoCodCode".',
+    inputs: [], // TODO: write inputs here
+  }, {
+    title: 'Warmup-2',
+    name: 'last2',
+    inputs: [
+      "('hixxhi')",
+      "('xaxxaxaxx')",
+      "('axxaaxx')",
+      "('xxaxxaxxaxx')",
+      "('xaxaxaa')",
+      "('xxxx')",
+      "('13121312')",
+      "('11212')",
+      "('13121311')",
+      "('hi')",
+      "('h')",
+      "('')",
+    ],
+    question: `Given a string, return the count of the number of times that a substring
+          length 2 appears in the string and also as the last 2 chars of the string, so
+          "hixxxhi" yields 1 (we won't count the end substring).`,
+  }, {
+    title: 'Warmup-2',
+    name: 'arrayCount9',
+    inputs: [
+      '([1,2,9])',
+      '([1,9,9])',
+      '([1,9,9,3,9])',
+      '([1,2,3])',
+      '([])',
+      '([4,2,4,3,1])',
+      '([9,2,4,3,1])',
+    ],
+    question: 'Given an array of ints, return the number of 9\'s in the array.',
+  }, {
+    title: 'Warmup-2',
+    name: 'arrayFront9',
+    inputs: [
+      '([1,2,9,3,4])',
+      '([1,2,3,4,9])',
+      '([1,2,3,4,5])',
+      '([9,2,3])',
+      '([1,9,9])',
+      '([1,2,3])',
+      '([1,9])',
+      '([5,5])',
+      '([2])',
+      '([9])',
+      '([])',
+      '([3,9,2,3,3])',
+    ],
+    question: `Given an array of ints, return true if one of the first 4 elements in
+          the array is a 9. The array length may be less than 4.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'array123',
+    question: `Given an array of ints, return true if the sequence of numbers 1, 2, 3
+        appears in the array somewhere.`,
+    inputs: [], // TODO
+  }, {
+    title: 'Warmup-2',
+    name: 'stringMatch',
+    inputs: [
+      "('xxcaazz', 'xxbaaz')",
+      "('abc', 'abc')",
+      "('abc', 'axc')",
+      "('hello', 'he')",
+      "('he', 'hello')",
+      "('', 'hello')",
+      "('aabbccdd', 'abbbxxd')",
+      "('aaxxaaxx', 'iaxxai')",
+      "('iaxxai', 'aaxxaaxx')",
+    ],
+    question: `Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring.
+          So "xxcaazz" and "xxbaaz" yields 3, since the "xx" "xx", "aa", and "az" substrings appear in the same place in both strings.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'stringX',
+    inputs: [
+      "('xxHxix')",
+      "('abxxxcd')",
+      "('xabxxxcdx')",
+      "('xKittenx')",
+      "('Hello')",
+      "('xx')",
+      "('x')",
+      "('')",
+    ],
+    question: `Given a string, return a version where all the "x" have been removed.
+            Except an "x" at the very start or end should not be removed.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'altPairs',
+    inputs: [
+      "('kitten')",
+      "('Chocolate')",
+      "('CodingHorror')",
+      "('yak')",
+      "('ya')",
+      "('y')",
+      "('')",
+      "('ThisThatTheOther')",
+    ],
+    question: `Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ...
+            so "kittens" yields "kien".`,
+  }, {
+    title: 'Warmup-2',
+    name: 'stringYak',
+    inputs: [
+      "('yakpak')",
+      "('pakyak')",
+      "('yak123ya')",
+      "('yak')",
+      "('yakxxxyak')",
+      "('xxcaazz', 'hiyakHi')",
+      "('xxxyakyyyakzzz')",
+    ],
+    question: `Suppose the string "yak" is unlucky. Given a string, return a version
+            where all the "yak" are removed, but the "a" can be any char. The "yak" strings
+            will not overlap.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'array667',
+    inputs: [
+      '([6,6,2])',
+      '([6,6,2,6])',
+      '([6,7,2,6])',
+      '([6,6,2,7,6,7])',
+      '([1,6,3])',
+      '([6,1])',
+      '([])',
+      '([3,6,7,6])',
+      '([3,6,6,7])',
+      '([6,3,6,6])',
+      '([6,7,6,6])',
+      '([1,2,3,5,6])',
+      '([1,2,3,6,6])',
+    ],
+    question: `Given an array of ints, return the number of times that two 6's
+              are next to each other in the array. Also count instances where the second
+              "6" is actually a 7.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'noTriples',
+    inputs: [
+      '([1,1,2,2,1])',
+      '([1,1,2,2,2,1])',
+      '([1,1,2,2,2,1])',
+      '([1,2,1])',
+      '([1,1,1])',
+      '([1,1])',
+      '([1])',
+      '([1])',
+      '([])',
+    ],
+    question: `Given an array of ints, we'll say that a triple is a value appearing 3 times
+                in a row in the array. Return true if the array does not contain any triples.`,
+  }, {
+    title: 'Warmup-2',
+    name: 'has271',
+    inputs: [
+      '([1,2,7,1])',
+      '([1,2,8,1])',
+      '([2,7,1])',
+      '([3,8,2])',
+      '([2,7,3])',
+      '([2,7,4])',
+      '([2,7,-1])',
+      '([2,7,-2])',
+      '([4,5,3,8,0])',
+      '([2,7,5,10,4])',
+      '([2,7,-2,4,9,3])',
+      '([2,7,5,10,1])',
+      '([2,7,-2,10,2])',
+    ],
+    question: `Given an array of ints, return true if it contains a 2, 7, 1
+                pattern -- a value, followed by the value plus 5, followed by the value
+                minus 1. Additionally the 271 counts even if the "1" differs by 2 or less
+                from the correct value.`,
+  })
+
+/**---Solutions--- **/
+// Warmup-1
+
+solutions.stringTimes = function (str, n) {
+  return str.repeat(n);
+};
+
+solutions.sleepIn = function (weekday, vacation) {
+  return !weekday || vacation;
+};
+
+solutions.diff21 = function (n) {
+  if (n <= 21) {
+    return 21 - n;
+  } else {
+    return (n - 21) * 2;
+  }
+};
+
+solutions.nearHundred = function (n) {
+  return ((Math.abs(100 - n) <= 10) ||
+	 (Math.abs(200 - n) <= 10));
+};
+
+solutions.missingChar = function (str, n) {
+  front = str.substring(0, n);
+  back = str.substring(n + 1, str.length);
+  return front + back;
+};
+
+solutions.backAround = function (str) {
+  last = str.substring(str.length - 1);
+  return last + str + last;
+};
+
+solutions.startHi = function (str) {
+  if (str.length < 2) {
+    return false;
+  }
+  front = str.substring(0, 2);
+  if (front == 'hi') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.hasTeen = function (a, b, c) {
+  return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
+};
+
+solutions.mixStart = function (str) {
+  if (str.length < 3) {
+    return false;
+  }
+  two = str.substring(1, 3);
+  if (two == 'ix') {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.close10 = function (a, b) {
+  aDiff = Math.abs(a - 10);
+  bDiff = Math.abs(b - 10);
+
+  if (aDiff < bDiff) {
+    return a;
+  }
+  if (bDiff < aDiff) {
+    return b;
+  }
+  return 0;
+};
+
+solutions.stringE = function (str) {
+  count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) == 'e') {
+      count++;
+    }
+  }
+  return (count >= 1 && count <= 3);
+};
+
+solutions.everyNth = function (str, n) {
+  result = '';
+  for (let i = 0; i < str.length; i = i + n) {
+    result = result + str.charAt(i);
+  }
+  return result;
+};
+
+solutions.monkeyTrouble = function (aSmile, bSmile) {
+  if (aSmile && bSmile) {
+    return true;
+  }
+  if (!aSmile && !bSmile) {
+    return true;
+  }
+  return false;
+};
+
+solutions.parrotTrouble = function (talking, hour) {
+  if (talking === true && (hour < 7 || hour > 20)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.posNeg = function (a, b, negative) {
+  if (negative === true) {
+    return a < 0 && b < 0;
+  }
+  if ((a < 0 && b > 0) || a > 0 && b < 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.frontBack = function (str) {
+  if (str.length <= 1) {
+    return str;
+  }
+  mid = str.substring(1, str.length - 1);
+
+  return (str.charAt(str.length - 1)) + mid + str.charAt(0);
+};
+
+solutions.or35 = function (n) {
+  if (n % 3 == 0 || n % 5 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.icyHot = function (temp1, temp2) {
+  if (temp1 < 0 && temp2 > 100 || temp2 < 0 && temp1 > 100) {
+    return true;
+  }
+  return false;
+};
+
+solutions.loneTeen = function (a, b) {
+  const isTeen = function (num) {
+    return num >= 13 && num <= 19;
+  };
+  const isTeenA = isTeen(a);
+  const isTeenB = isTeen(b);
+  return isTeenA && !isTeenB || !isTeenA && isTeenB;
+};
+
+solutions.startOz = function (str) {
+  result = '';
+
+  if (str.length >= 1 && str.charAt(0) == 'o') {
+    result += str.charAt(0);
+  }
+  if (str.length >= 2 && str.charAt(1) == 'z') {
+    result += str.charAt(1);
+  }
+  return result;
+};
+
+solutions.in3050 = function (a, b) {
+  if ((a >= 30 && a <= 40 && b >= 30 && b <= 40) || (a >= 40 && a <= 50 && b >= 40 && b <= 50)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.lastDigit = function (a, b) {
+  return (a % 10 == b % 10);
+};
+
+solutions.sumDouble = function (a, b) {
+  if (a == b) {
+    return 2 * (a + b);
+  } else {
+    return a + b;
+  }
+};
+
+solutions.makes10 = function (a, b) {
+  return ((a == 10 || b == 10) || (a + b == 10));
+};
+
+solutions.notString = function (str) {
+  if (str === null || str === undefined || str.substring(0, 3) === 'not') {
+    return str;
+  }
+  return `not ${str}`;
+};
+
+solutions.front3 = function (str) {
+  front = '';
+  if (str.length >= 3) {
+    front = str.substring(0, 3);
+  } else {
+    front = str;
+  }
+  return front + front + front;
+};
+
+solutions.front22 = function (str) {
+  take = 2;
+  if (take > str.length) {
+    take = str.length;
+  }
+  front = str.substring(0, take);
+  return front + str + front;
+};
+
+solutions.in1020 = function (a, b) {
+  if ((a >= 10 && a <= 20) || (b >= 10 && b <= 20)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+solutions.delDel = function (str) {
+  if (str.length < 4) {
+    return str;
+  }
+  let output = str;
+  if (str.substring(1, 4) == 'del') {
+    output = str.substring(0, 1) + str.substring(4, str.length);
+  }
+  return output;
+};
+
+solutions.intMax = function (a, b, c) {
+  max = 0;
+  if (a > b) {
+    max = a;
+  } else {
+    max = b;
+  }
+  if (c > max) {
+    max = c;
+  }
+  return max;
+};
+
+solutions.max1020 = function (a, b) {
+  const between1020 = function (num) {
+    return num >= 10 && num <= 20;
+  };
+  let result = 0;
+  if (between1020(a)) {
+    result = a;
+  }
+  if (b > result && between1020(b)) {
+    result = b;
+  }
+  return result;
+};
+
+solutions.endUp = function (str) {
+  if (str.length <= 3) {
+    return str.toUpperCase();
+  }
+  cut = str.length - 3;
+  front = str.substring(0, cut);
+  back = str.substring(cut);
+
+  return front + back.toUpperCase();
+};
+
+// Warmup-2
+solutions.doubleX = function (str) {
+  str.toLowerCase();
+  x = str.indexOf('x');
+  if (x == -1) {
+    return false;
+  }
+  if (x >= str.length) {
+    return false;
+  }
+  return str.substring(x + 1, x + 2) == 'x';
+};
+
+solutions.last2 = function (str) {
+  count = 0;
+  if (str.length < 2) {
+    return 0;
+  }
+  end = str.substring(str.length - 2);
+  for (x = 0; x < str.length - 2; x++) {
+    sub = str.substring(x, x + 2);
+    if (sub == end) {
+      count++;
+    }
+  }
+  return count;
+};
+
+solutions.array123 = function (nums) {
+  return !!(nums.join('').match(/123/g));
+};
+
+solutions.altPairs = function (str) {
+  result = '';
+  for (x = 0; x < str.length; x += 4) {
+    end = x + 2;
+    if (end > str.length) {
+      end = str.length;
+    }
+    result = result + str.substring(x, end);
+  }
+  return result;
+};
+
+solutions.noTriples = function (nums) {
+  for (x = 0; x < nums.length - 2; x++) {
+    first = nums[x];
+    if (first == nums[x + 1]) {
+      if (first == nums[x + 2]) {
+        return false;
+      }
+    }
+  } return true;
+};
+
+solutions.frontTimes = function (str, n) {
+  frontLen = 3;
+  if (frontLen > str.length) {
+    frontLen = str.length;
+  }
+  front = str.substring(0, frontLen);
+  result = '';
+  for (x = 0; x < n; x++) {
+    result = result + front;
+  }
+  return result;
+};
+
+solutions.stringBits = function (str) {
+  result = '';
+  for (x = 0; x < str.length; x += 2) {
+    result = result + str.substring(x, x + 1);
+  }
+  return result;
+};
+
+solutions.arrayCount9 = function (nums) {
+  count = 0;
+  for (x = 0; x < nums.length; x++) {
+    if (nums[x] == 9) {
+      count++;
+    }
+  }
+  return count;
+};
+
+solutions.stringMatch = function (a, b) {
+  len = Math.min(a.length, b.length);
+  count = 0;
+  for (x = 0; x < len - 1; x++) {
+    aSub = a.substring(x, x + 2);
+    bSub = b.substring(x, x + 2);
+    if (aSub == bSub) {
+      count++;
+    }
+  }
+  return count;
+};
+
+solutions.stringYak = function (str) {
+  result = '';
+  for (x = 0; x < str.length; x++) {
+    if (x + 2 < str.length && str.charAt(x) == 'y' && str.charAt(x + 2) == 'k') {
+      x = x + 2;
+    } else {
+      result = result + str.charAt(x);
+    }
+  }
+  return result;
+};
+
+solutions.has271 = function (nums) {
+  return !!(nums.join('').match(/271/g));
+};
+
+solutions.countXX = function (str) {
+  count = 0;
+  for (x = 0; x < str.length; x++) {
+    if (str.charAt(x) == 'x') {
+      if (str.charAt(x + 1) == 'x') {
+        count++;
+      }
+    }
+  }
+  return count++;
+};
+
+solutions.stringSplosion = function (str) {
+  result = '';
+  for (x = 0; x < str.length - 1; x++) {
+    result = result + str.substring(0, x + 1);
+  }
+  return result;
+};
+
+solutions.arrayFront9 = function (nums) {
+  for (x = 0; x < 4; x++) {
+    if (nums[x] == 9) {
+      return true;
+    }
+  }
+  return false;
+};
+
+solutions.stringX = function (str) {
+  result = '';
+  front = str.substring(0, 1);
+  end = str.substring(str.length - 1);
+  for (i = 1; i < str.length - 1; i++) {
+    if (str.charAt(i) !== 'x') {
+      result += str.charAt(i);
+    }
+  }
+  return front + result + end;
+};
+
+solutions.array667 = function (nums) {
+  count = 0;
+  for (x = 0; x < nums.length; x++) {
+    if (nums[x] == 6) {
+      if (nums[x + 1] == 6 || nums[x + 1] == 7) {
+        count++;
+      }
+    }
+  } return count;
+};

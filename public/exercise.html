@@ -8,10 +8,10 @@
   </head>
   <body>
     <div class="main">
-      <p class="heading"><b>Coding-JS</b></p>
+      <p class="heading"><a class="heading" href="."><b>Coding-JS</a></b></p>
       <p class="subheading"><a class="links"href="http://codingbat.com/" target="_blank">CodingBat</a> <i>exercises converted for Javascript</i></p>
-      <a class="links" href="index.html">Index</a>&nbsp;||&nbsp;<a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a><br>
-      <p id="title"> </p> <b>--</b> <p id="name"> </p>
+      <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a><br>
+      <h3><p id="title"> </p> <b>--</b> <p id="name"> </p></h3>
       <div class="probField">
         <p id="problem"></p>
       </div>
@@ -24,9 +24,10 @@
           <button class="btn" id="solve">Solve</button><br>
           <textarea id="answer"></textarea><br>
         </div>
+
         <div class = "solveArea">
           <button class="btn" id="show">Show Solution</button><br>
-          <textarea id="mySolution"></textarea>
+          <textarea id="mySolution" readonly="readonly";></textarea>
         </div>
       </div>
 
@@ -43,8 +44,13 @@
 </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
-  <script src="data/solutions.js"></script>
-  <script src="data/exercises.js"></script>
+
+  <script src="data/intro.js"></script>
+  <script src="data/warmup.js"></script>
+  <script src="data/string.js"></script>
+  <script src="data/logic.js"></script>
+  <script src="helpers.js"></script>
   <script src="main.js"></script>
+
 
 </html>
