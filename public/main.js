@@ -27,20 +27,20 @@ $(document).ready(() => {
     $('tr').remove();
     const answer = $('#answer').val();
 
-    console.log(answer);
+    // console.log(answer);
     eval(`var ans=${answer}`);
 
     const inputs = exercise.inputs;
-    console.log('inpute: ', inputs);
+    // console.log('inpute: ', inputs);
 
     let results = []
     inputs.forEach((inputStr) => {
       const input = inputParser(inputStr);
       const result = ans(...input);
-      console.log(input);
+      // console.log(input);
       const idealResult = solutions[exerciseName](...input);
       $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
-      console.log('result: ', result);
+      // console.log('result: ', result);
 
       var isCorrect = _.isEqual(result,idealResult)
       results.push(isCorrect)
