@@ -1,3 +1,3 @@
-CodingBatJS
+# CodingJS
 
-A static website to do codingbat problems in javascript.
+A static website to do CodingBat problems in JavaScript.
