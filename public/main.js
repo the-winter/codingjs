@@ -5,7 +5,7 @@ const exerciseName = urlParams.name || exercises[0].name;
 /** here we match the exerciseName (from querystring) to the problem in exercise obj**/
 const exercise = exercises.filter(exercise => exercise.name == exerciseName)[0];
 
-console.log(urlParams, exerciseName);
+// console.log(urlParams, exerciseName);
 
 
 
