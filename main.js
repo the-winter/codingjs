@@ -16,11 +16,14 @@ $(document).ready(() => {
   $('#problem').text(exercise.question);
   $('#answer').text('function '+exercise.name+'('+defaultInput(exercise.name)+'){\n\n}');
 
+
   for (var i = 0; i <= 2; i++) {
     var input = inputParser(exercise.inputs[i]);
-    var result = solutions[exerciseName](...input);
+		  window[exerciseName] = solutions[exerciseName];
+    var result = window[exerciseName](...input);
     // TODO make this a class instead of an element
     $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
+		window[exerciseName] = undefined;
   }
 
   $('#solve').on('click', () => {
@@ -38,7 +41,9 @@ $(document).ready(() => {
       const input = inputParser(inputStr);
       const result = ans(...input);
       // console.log(input);
+			  window[exerciseName] = solutions[exerciseName];
       const idealResult = solutions[exerciseName](...input);
+			  window[exerciseName] = undefined;
       $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
       // console.log('result: ', result);
 
@@ -47,7 +52,8 @@ $(document).ready(() => {
     });
 
     if (Math.min(...results) == 1){
-      $('.congrats').text("100% Passing. Well Done!")
+      $('.congrats').text("100% Passing. Well Done!");
+			localStorage[exerciseName] = "true";
     }
 
   });

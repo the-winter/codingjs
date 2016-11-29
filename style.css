@@ -57,6 +57,10 @@ div.probField {
     padding-left: 150px;
 }
 
+.tick {
+  color: #769c49;
+}
+
 .btn {
   font-size: 20px;
     width: 100px;

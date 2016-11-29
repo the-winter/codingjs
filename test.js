@@ -41,6 +41,7 @@ describe('solutions', function () {
         exercise.inputs.forEach(function(inputStr){
           it(`should run for ${exercise.name}${inputStr}`, function () {
             var js_inputs = inputParser(inputStr)
+            window[exercise.name] = solution;
             var idealResult = solution.apply(undefined, js_inputs)
             expect(idealResult).to.exist // check the result isn't undefined
           });
