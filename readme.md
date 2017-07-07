@@ -4,9 +4,9 @@ A static website to do CodingBat problems in JavaScript. Use it at [the-winter.g
 
 ## Screenshots
 
-![](img/screenshot0.png)
+![screenshot0](img/screenshot0.png)
 
-![](img/screenshot1.png)
+![screenshot1](img/screenshot1.png)
 
 ## Credits
 
