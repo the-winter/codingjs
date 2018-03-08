@@ -30,6 +30,10 @@ $(document).ready(() => {
     $('tr').remove();
     const answer = editor.getValue();
 
+    // whenever the user checks their solution, save the most recent version of their code to localStorage
+    let exerciseCode = exerciseName + "-code";
+    localStorage.setItem(exerciseCode, answer);
+
     // console.log(answer);
     eval(`var ans=${answer}`);
 
@@ -55,10 +59,6 @@ $(document).ready(() => {
       $('.congrats').text("100% Passing. Well Done!");
 			localStorage[exerciseName] = "true";
     }
-
-    // whenever the user checks their solution, save the most recent version of their code to localStorage
-    let exerciseCode = exerciseName + "-code";
-    localStorage.setItem(exerciseCode, answer);
   });
 
   $('#next').on('click', () => {
