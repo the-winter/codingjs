@@ -11,7 +11,7 @@ const exercise = exercises.filter(exercise => exercise.name == exerciseName)[0];
 
 $(document).ready(() => {
   // $('#problemsLink').prop('href', `problems?title=${exercise.title}`)
-	  $('#title').text(exercise.title);
+  $('#title').text(exercise.title);
   $('#name').text(exercise.name);
   $('#problem').text(exercise.question);
   $('#answer').text('function '+exercise.name+'('+defaultInput(exercise.name)+'){\n\n}');
@@ -71,10 +71,10 @@ $(document).ready(() => {
   })
 
 
-  $('#show').on('click', () => {
-    var s = solutions[exerciseName].toString();
-    var r = new RegExp(/function/);
-    var n = s.replace(r, `function ${exercise.name}`)
-    $('#mySolution').text(n)
-  })
+  // $('#show').on('click', () => {
+  //   var s = solutions[exerciseName].toString();
+  //   var r = new RegExp(/function/);
+  //   var n = s.replace(r, `function ${exercise.name}`)
+  //   $('#mySolution').text(n)
+  // })
 });
