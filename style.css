@@ -90,13 +90,13 @@ div.probField {
 }
 
 div#displayResults {
+    position: absolute;
+    top: 200px;
     margin-left: 600px;
 }
 
 .test-table {
-  position: absolute;
   padding-left: 150px;
-  top: 200px;
 }
 
 .test-table td {
