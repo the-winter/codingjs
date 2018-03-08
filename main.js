@@ -48,12 +48,14 @@ $(document).ready(() => {
   $('#title').text(exercise.title);
   $('#name').text(exercise.name);
   $('#problem').text(exercise.question);
-  $('#answer').text('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n\n}');
 
   //load previous solution from localStorage
   let exerciseCode = exerciseName + "-code";
   if (localStorage.getItem(exerciseCode)) {
     editor.setValue(localStorage.getItem(exerciseCode));
+  }
+  else {
+    editor.setValue('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n\n}');
   }
 
   for (var i = 0; i <= 2; i++) {
