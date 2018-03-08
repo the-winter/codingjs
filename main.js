@@ -55,7 +55,9 @@ $(document).ready(() => {
     editor.setValue(localStorage.getItem(exerciseCode));
   }
   else {
-    editor.setValue('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n\n}');
+    editor.setValue('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n  \n}');
+    editor.focus();
+    editor.setCursor({line: 1, ch: 2});
   }
 
   for (var i = 0; i <= 2; i++) {
