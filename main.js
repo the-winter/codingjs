@@ -1,4 +1,3 @@
-
 // Work out which excercise to show
 const urlParams = deParam(window.location.search);
 const exerciseName = urlParams.name || exercises[0].name;
@@ -10,7 +9,7 @@ const exercise = exercises.filter(exercise => exercise.name == exerciseName)[0];
 function saveCodeFile() {
   event.preventDefault(); // is this needed?
   let blob = new Blob([editor.getValue()], {
-      type: "text/javascript;charset=utf-8"
+    type: "text/javascript;charset=utf-8"
   });
   saveAs(blob, exerciseName + ".js", true);
 }
@@ -49,21 +48,21 @@ $(document).ready(() => {
   $('#title').text(exercise.title);
   $('#name').text(exercise.name);
   $('#problem').text(exercise.question);
-  $('#answer').text('function '+exercise.name+'('+defaultInput(exercise.name)+'){\n\n}');
+  $('#answer').text('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n\n}');
 
   //load previous solution from localStorage
   let exerciseCode = exerciseName + "-code";
-  if(localStorage.getItem(exerciseCode)) {
+  if (localStorage.getItem(exerciseCode)) {
     editor.setValue(localStorage.getItem(exerciseCode));
   }
 
   for (var i = 0; i <= 2; i++) {
     var input = inputParser(exercise.inputs[i]);
-		window[exerciseName] = solutions[exerciseName];
+    window[exerciseName] = solutions[exerciseName];
     var result = window[exerciseName](...input);
     // TODO make this a class instead of an element
     $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
-		window[exerciseName] = undefined;
+    window[exerciseName] = undefined;
   }
 
   $('#solve').on('click', () => {
@@ -84,30 +83,35 @@ $(document).ready(() => {
       const input = inputParser(inputStr);
       const result = ans(...input);
       // console.log(input);
-			  window[exerciseName] = solutions[exerciseName];
+      window[exerciseName] = solutions[exerciseName];
       const idealResult = solutions[exerciseName](...input);
-			  window[exerciseName] = undefined;
+      window[exerciseName] = undefined;
       $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
       // console.log('result: ', result);
 
-      var isCorrect = _.isEqual(result,idealResult)
+      var isCorrect = _.isEqual(result, idealResult)
       results.push(isCorrect)
     });
 
-    if (Math.min(...results) == 1){
+    if (Math.min(...results) == 1) {
       $('.congrats').text("100% Passing. Well Done!");
-			localStorage[exerciseName] = "true";
+      localStorage[exerciseName] = "true";
     }
+  });
 
 
   $('#next').on('click', () => {
-    var indx = _.findIndex(exercises, {name: exerciseName})+1;
+    var indx = _.findIndex(exercises, {
+      name: exerciseName
+    }) + 1;
     var x = exercises[indx];
     window.location.search = `?name=${x.name}&title=${x.title}`
   })
 
   $('#previous').on('click', () => {
-    var indx = _.findIndex(exercises, {name: exerciseName})-1;
+    var indx = _.findIndex(exercises, {
+      name: exerciseName
+    }) - 1;
     var x = exercises[indx];
     window.location.search = `?name=${x.name}&title=${x.title}`
   })
