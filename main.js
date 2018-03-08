@@ -56,6 +56,9 @@ $(document).ready(() => {
 			localStorage[exerciseName] = "true";
     }
 
+    // whenever the user checks their solution, save the most recent version of their code to localStorage
+    let exerciseCode = exerciseName + "-code";
+    localStorage.setItem(exerciseCode, answer);
   });
 
   $('#next').on('click', () => {
