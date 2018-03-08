@@ -19,7 +19,7 @@ $(document).ready(() => {
 
   for (var i = 0; i <= 2; i++) {
     var input = inputParser(exercise.inputs[i]);
-		  window[exerciseName] = solutions[exerciseName];
+		window[exerciseName] = solutions[exerciseName];
     var result = window[exerciseName](...input);
     // TODO make this a class instead of an element
     $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
@@ -28,7 +28,7 @@ $(document).ready(() => {
 
   $('#solve').on('click', () => {
     $('tr').remove();
-    const answer = $('#answer').val();
+    const answer = editor.getValue();
 
     // console.log(answer);
     eval(`var ans=${answer}`);
