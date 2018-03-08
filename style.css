@@ -94,7 +94,9 @@ div#displayResults {
 }
 
 .test-table {
+  position: absolute;
   padding-left: 150px;
+  top: 200px;
 }
 
 .test-table td {
