@@ -5,6 +5,12 @@
     <title>CodingJS</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title">
     <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
+    <style>
+      .CodeMirror {
+          border:1px solid #334;
+          width:600px;
+      }
+    </style>
   </head>
   <body>
     <div class="main">
@@ -45,6 +51,16 @@
       </div>
   </div>
 </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.min.js"></script>
+  <script src="codemirror-jsmode.js"></script>
+  <script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
+      lineNumbers: true,
+      matchBrackets: true,
+      mode: "text/javascript"
+    });
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
 
