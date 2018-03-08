@@ -17,6 +17,7 @@ function saveCodeFile() {
 
 function loadCodeFile() {
   // remove_fileInput_listener();
+  console.log("loading should happen now...");
   // $("#fileInput").click();
   // var fileInput = document.getElementById('fileInput');
   // fileInput.addEventListener('change', function(e) {
@@ -29,6 +30,19 @@ function loadCodeFile() {
   //     reader.readAsText(file);
   // });
 }
+
+//allow user to save/open code with keyboard shortcuts
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    saveCodeFile();
+  }
+  if (e.keyCode == 79 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    loadCodeFile();
+  }
+});
+
 
 $(document).ready(() => {
   // $('#problemsLink').prop('href', `problems?title=${exercise.title}`)
@@ -85,17 +99,6 @@ $(document).ready(() => {
 			localStorage[exerciseName] = "true";
     }
 
-    //allow user to save/open code with keyboard shortcuts
-    document.addEventListener("keydown", function(e) {
-      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-        e.preventDefault();
-        saveCodeFile();
-      }
-      if (e.keyCode == 79 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-        e.preventDefault();
-        loadCodeFile();
-      }
-    });
 
   $('#next').on('click', () => {
     var indx = _.findIndex(exercises, {name: exerciseName})+1;
