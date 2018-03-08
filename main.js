@@ -7,7 +7,28 @@ const exercise = exercises.filter(exercise => exercise.name == exerciseName)[0];
 
 // console.log(urlParams, exerciseName);
 
+function saveCodeFile() {
+  event.preventDefault(); // is this needed?
+  let blob = new Blob([editor.getValue()], {
+      type: "text/javascript;charset=utf-8"
+  });
+  saveAs(blob, exerciseName + ".js", true);
+}
 
+function loadCodeFile() {
+  // remove_fileInput_listener();
+  // $("#fileInput").click();
+  // var fileInput = document.getElementById('fileInput');
+  // fileInput.addEventListener('change', function(e) {
+  //     var file = fileInput.files[0];
+  //     var reader = new FileReader();
+  //     reader.onload = function(e) {
+  //         obj.setValue(reader.result);
+  //         fileInput.value = '';
+  //     };
+  //     reader.readAsText(file);
+  // });
+}
 
 $(document).ready(() => {
   // $('#problemsLink').prop('href', `problems?title=${exercise.title}`)
@@ -63,7 +84,18 @@ $(document).ready(() => {
       $('.congrats').text("100% Passing. Well Done!");
 			localStorage[exerciseName] = "true";
     }
-  });
+
+    //allow user to save/open code with keyboard shortcuts
+    document.addEventListener("keydown", function(e) {
+      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+        saveCodeFile();
+      }
+      if (e.keyCode == 79 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+        loadCodeFile();
+      }
+    });
 
   $('#next').on('click', () => {
     var indx = _.findIndex(exercises, {name: exerciseName})+1;
