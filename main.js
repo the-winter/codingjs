@@ -116,6 +116,13 @@ $(document).ready(() => {
     window.location.search = `?name=${x.name}&title=${x.title}`
   })
 
+  $('#save').on('click', () => {
+    saveCodeFile();
+  })
+
+  $('#open').on('click', () => {
+    loadCodeFile();
+  })
 
   // $('#show').on('click', () => {
   //   var s = solutions[exerciseName].toString();
