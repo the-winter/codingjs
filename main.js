@@ -16,6 +16,11 @@ $(document).ready(() => {
   $('#problem').text(exercise.question);
   $('#answer').text('function '+exercise.name+'('+defaultInput(exercise.name)+'){\n\n}');
 
+  //load previous solution from localStorage
+  let exerciseCode = exerciseName + "-code";
+  if(localStorage.getItem(exerciseCode)) {
+    editor.setValue(localStorage.getItem(exerciseCode));
+  }
 
   for (var i = 0; i <= 2; i++) {
     var input = inputParser(exercise.inputs[i]);
@@ -31,7 +36,6 @@ $(document).ready(() => {
     const answer = editor.getValue();
 
     // whenever the user checks their solution, save the most recent version of their code to localStorage
-    let exerciseCode = exerciseName + "-code";
     localStorage.setItem(exerciseCode, answer);
 
     // console.log(answer);
