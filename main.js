@@ -61,6 +61,11 @@ $(document).ready(() => {
     });
   }
 
+  // show solution button if already solved
+  // if (localStorage.getItem(exerciseName) === "true") {
+  //   $('#show').css('visibility','visible');
+  // }
+
   for (var i = 0; i <= 2; i++) {
     var input = inputParser(exercise.inputs[i]);
     window[exerciseName] = solutions[exerciseName];

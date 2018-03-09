@@ -27,7 +27,7 @@
       </ul>
       <div class="floatBox">
         <div class = "solveArea">
-          <button class="btn" id="solve">Solve</button><br>
+          <button class="btn" id="solve">Solve</button><button class="btn" id="show" style="visibility: hidden;">Show Solution</button><br>
           <textarea id="answer"></textarea><br>
           <button class="btn" id="save">Save</button><button class="btn" id="open">Open</button>
           <input type="file" id="fileInput" style="display:none;">
@@ -36,12 +36,13 @@
         <!-- <div class = "solveArea">
           <button class="btn" id="show">Show Solution</button><br>
           <textarea id="mySolution" readonly="readonly";></textarea>
-        </div>
-      </div> -->
+        </div> -->
+      </div>
 
       <div id="displayResults">
         <p class = "congrats"></p>
         <p class = "errorMessage"></p>
+        <p id = "mySolution"></p>
         <table id = "testArea" class="test-table">
           <tbody id="tests">
 

@@ -73,6 +73,11 @@ div.probField {
     height: 50px;
 }
 
+#show {
+  width: auto;
+  float:right;
+}
+
 .floatBox {
   float: left;
 }
@@ -90,9 +95,9 @@ div.probField {
 }
 
 #mySolution {
-  width: 600px;
-	height: 300px;
-  font-size: 18px;
+	height: auto;
+  font-size: 12px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 div#displayResults {
