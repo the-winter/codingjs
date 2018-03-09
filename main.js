@@ -104,7 +104,7 @@ $(document).ready(() => {
       }
     } catch (theError) {
       // console.log(theError);
-      $('.congrats').text(theError);
+      $('.errorMessage').text(theError);
     }
   });
 

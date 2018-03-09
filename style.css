@@ -57,6 +57,12 @@ div.probField {
     padding-left: 150px;
 }
 
+.errorMessage {
+  font-size: 30px;
+  color: #ff0000;
+  padding-left: 150px;
+}
+
 .tick {
   color: #769c49;
 }
