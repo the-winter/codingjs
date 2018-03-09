@@ -26,8 +26,12 @@ function inputParser(inputStr) {
   // return eval(`[${inputStr.slice(1, -1)}]`) // another way of doing it
   const x = inputStr.slice(1, -1);
   var y = '['+x+']';
-   eval("var z ="+y);
-   return z
+  try {
+    eval("var z ="+y);
+  } catch (e) {
+    z = e.toString();
+  }
+  return z
 }
 
 /** creates default input to start function **/
