@@ -1340,13 +1340,9 @@ solutions.sum3 = function (nums) {
 }
 
 solutions.rotateLeft3 = function (nums) {
-    var newA = [];
-
-     newA[0] = nums[1];
-     newA[1] = nums[2];
-     newA[2] = nums[0];
-
-    return newA;
+    let first = nums.shift();
+    nums.push(first);
+    return nums;
 }
 
 solutions.reverse3 = function (nums) {
