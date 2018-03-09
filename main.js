@@ -79,6 +79,7 @@ $(document).ready(() => {
 
     // console.log(answer);
     try {
+      $(".errorMessage").text("");
       eval(`var ans=${answer}`);
       const inputs = exercise.inputs;
       // console.log('inpute: ', inputs);
@@ -103,7 +104,6 @@ $(document).ready(() => {
         localStorage[exerciseName] = "true";
       }
     } catch (theError) {
-      // console.log(theError);
       $('.errorMessage').text(theError);
     }
   });
