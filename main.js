@@ -76,7 +76,13 @@ $(document).ready(() => {
     localStorage.setItem(exerciseCode, answer);
 
     // console.log(answer);
-    eval(`var ans=${answer}`);
+    try {
+      eval(`var ans=${answer}`);
+    }
+    catch(theError) {
+      // console.log(theError);
+      $('.congrats').append(theError);
+    }
 
     const inputs = exercise.inputs;
     // console.log('inpute: ', inputs);
