@@ -18,15 +18,15 @@ function loadCodeFile() {
   // remove_fileInput_listener();
   var fileInput = document.getElementById('fileInput');
   fileInput.addEventListener('change', function(e) {
-      var file = fileInput.files[0];
-      var reader = new FileReader();
-      reader.onload = function(e) {
-          editor.setValue(reader.result);
-          fileInput.value = '';
-      };
-      reader.readAsText(file);
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      editor.setValue(reader.result);
+      fileInput.value = '';
+    };
+    reader.readAsText(file);
   });
-  $("#fileInput").click();  // activate the hidden file input
+  $("#fileInput").click(); // activate the hidden file input
 }
 
 //allow user to save/open code with keyboard shortcuts
@@ -52,11 +52,13 @@ $(document).ready(() => {
   let exerciseCode = exerciseName + "-code";
   if (localStorage.getItem(exerciseCode)) {
     editor.setValue(localStorage.getItem(exerciseCode));
-  }
-  else {
+  } else {
     editor.setValue('function ' + exercise.name + '(' + defaultInput(exercise.name) + '){\n  \n}');
     editor.focus();
-    editor.setCursor({line: 1, ch: 2});
+    editor.setCursor({
+      line: 1,
+      ch: 2
+    });
   }
 
   for (var i = 0; i <= 2; i++) {
@@ -78,33 +80,31 @@ $(document).ready(() => {
     // console.log(answer);
     try {
       eval(`var ans=${answer}`);
-    }
-    catch(theError) {
+      const inputs = exercise.inputs;
+      // console.log('inpute: ', inputs);
+
+      let results = []
+      inputs.forEach((inputStr) => {
+        const input = inputParser(inputStr);
+        const result = ans(...input);
+        // console.log(input);
+        window[exerciseName] = solutions[exerciseName];
+        const idealResult = solutions[exerciseName](...input);
+        window[exerciseName] = undefined;
+        $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+        // console.log('result: ', result);
+
+        var isCorrect = _.isEqual(result, idealResult)
+        results.push(isCorrect)
+      });
+
+      if (Math.min(...results) == 1) {
+        $('.congrats').text("100% Passing. Well Done!");
+        localStorage[exerciseName] = "true";
+      }
+    } catch (theError) {
       // console.log(theError);
-      $('.congrats').append(theError);
-    }
-
-    const inputs = exercise.inputs;
-    // console.log('inpute: ', inputs);
-
-    let results = []
-    inputs.forEach((inputStr) => {
-      const input = inputParser(inputStr);
-      const result = ans(...input);
-      // console.log(input);
-      window[exerciseName] = solutions[exerciseName];
-      const idealResult = solutions[exerciseName](...input);
-      window[exerciseName] = undefined;
-      $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
-      // console.log('result: ', result);
-
-      var isCorrect = _.isEqual(result, idealResult)
-      results.push(isCorrect)
-    });
-
-    if (Math.min(...results) == 1) {
-      $('.congrats').text("100% Passing. Well Done!");
-      localStorage[exerciseName] = "true";
+      $('.congrats').text(theError);
     }
   });
 
