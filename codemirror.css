@@ -6,6 +6,8 @@
   height: 300px;
   color: black;
   direction: ltr;
+  border:1px solid #334;
+  width:700px;
 }
 
 /* PADDING */

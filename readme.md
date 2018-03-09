@@ -1,13 +1,7 @@
 # CodingJS
 
-A static website to do CodingBat problems in JavaScript. Use it at [the-winter.github.io/codingjs]( https://the-winter.github.io/codingjs).
-
-## Screenshots
-
-![screenshot0](img/screenshot0.png)
-
-![screenshot1](img/screenshot1.png)
+A static website to do CodingBat problems in JavaScript.
 
 ## Credits
 
-Thanks to [nodingbat](https://github.com/omariio/nodingbat) and [mirandaio/codingbat](https://github.com/mirandaio/codingbat) for providing some solutions and [codingbat](codingbat.com) for providing problems.
+Thanks to [the_winter](https://github.com/the-winter/codingjs) for the original version that this is based off of. Also to [nodingbat](https://github.com/omariio/nodingbat) and [mirandaio/codingbat](https://github.com/mirandaio/codingbat) for providing some solutions and [codingbat](codingbat.com) for providing problems.
