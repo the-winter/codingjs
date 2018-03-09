@@ -114,9 +114,15 @@ div#displayResults {
 }
 
 .problems {
+  column-count: 3;
   width: 600px;
   overflow-wrap: break-word;
 }
+
+.probTitle {
+  column-span: all;
+}
+
 .exercise-link {
   padding: 5px;
 }
