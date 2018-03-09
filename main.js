@@ -81,11 +81,11 @@ $(document).ready(() => {
 
     // whenever the user checks their solution, save the most recent version of their code to localStorage
     localStorage.setItem(exerciseCode, answer);
-
+    let ans;
     // console.log(answer);
     try {
       $(".errorMessage").text("");
-      eval(`let ans=${answer}`);
+      eval(`ans=${answer}`);
       const inputs = exercise.inputs;
       // console.log('inpute: ', inputs);
 
