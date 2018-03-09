@@ -16,18 +16,17 @@ function saveCodeFile() {
 
 function loadCodeFile() {
   // remove_fileInput_listener();
-  console.log("loading should happen now...");
-  // $("#fileInput").click();
-  // var fileInput = document.getElementById('fileInput');
-  // fileInput.addEventListener('change', function(e) {
-  //     var file = fileInput.files[0];
-  //     var reader = new FileReader();
-  //     reader.onload = function(e) {
-  //         obj.setValue(reader.result);
-  //         fileInput.value = '';
-  //     };
-  //     reader.readAsText(file);
-  // });
+  var fileInput = document.getElementById('fileInput');
+  fileInput.addEventListener('change', function(e) {
+      var file = fileInput.files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+          editor.setValue(reader.result);
+          fileInput.value = '';
+      };
+      reader.readAsText(file);
+  });
+  $("#fileInput").click();  // activate the hidden file input
 }
 
 //allow user to save/open code with keyboard shortcuts
