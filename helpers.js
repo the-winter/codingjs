@@ -17,6 +17,13 @@ function formatResults(funcName, inputStr, idealOutput, output) {
      </tr>`;
 }
 
+function tableHeader() {
+  return `<tr>
+         <th>Test → Expected</th>
+         <th>Yours</th>
+         <th colspan="2">Result</th>
+     </tr>`;
+}
 
  /**
   * it converts nodingbat input (as stored) to js
