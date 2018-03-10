@@ -39,6 +39,10 @@ document.addEventListener("keydown", function(e) {
     e.preventDefault();
     loadCodeFile();
   }
+  if (e.key == "Enter" && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    $("#solve").click(); //run code on ctrl-enter
+  }
 });
 
 
