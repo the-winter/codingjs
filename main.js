@@ -70,6 +70,7 @@ $(document).ready(() => {
   //   $('#show').css('visibility','visible');
   // }
 
+  // example/sample runs
   for (let i = 0; i <= 2; i++) {
     let input = inputParser(exercise.inputs[i]);
     window[exerciseName] = solutions[exerciseName];
@@ -79,30 +80,55 @@ $(document).ready(() => {
     window[exerciseName] = undefined;
   }
 
+
   $('#solve').on('click', () => {
     $('tr').remove();
+    $('#tests').append(tableHeader());
     const answer = editor.getValue();
 
     // whenever the user checks their solution, save the most recent version of their code to localStorage
     localStorage.setItem(exerciseCode, answer);
+
     let ans;
-    // console.log(answer);
     try {
       $(".errorMessage").text("");
       eval(`ans=${answer}`);
       const inputs = exercise.inputs;
-      // console.log('inpute: ', inputs);
 
       let results = []
       inputs.forEach((inputStr) => {
-        const input = inputParser(inputStr);
-        const result = ans(...input);
-        // console.log(input);
+        let input = inputParser(inputStr);
+        console.log(ans);
+        console.log("input at start " + input);
+        let result;
+        let idealResult;
+        // if the input is an array, make a copy to avoid user changing the passed array...
+        if (Array.isArray(input) === true) {
+          let inputCopy = input.slice();
+          let secondInputCopy = input.slice();
+          console.log("inputCopy at start " + inputCopy);
+
+          result = ans(...inputCopy);
+          console.log("inputCopy after result " + inputCopy);
+          console.log("input after result " + input);
+
+
+          console.log("secondInputCopy at start " + secondInputCopy);
+          idealResult = solutions[exerciseName](...secondInputCopy);
+          console.log("secondInputCopy after idealResult " + secondInputCopy);
+
+          console.log("input " + input);
+          console.log("result " + result);
+          console.log("ideal result " + idealResult);
+        }
+        else {
+          result = ans(...input);
+          idealResult = solutions[exerciseName](...input);
+        }
+
         window[exerciseName] = solutions[exerciseName];
-        const idealResult = solutions[exerciseName](...input);
         window[exerciseName] = undefined;
         $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
-        // console.log('result: ', result);
 
         let isCorrect = _.isEqual(result, idealResult)
         results.push(isCorrect)
