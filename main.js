@@ -95,35 +95,22 @@ $(document).ready(() => {
       eval(`ans=${answer}`);
       const inputs = exercise.inputs;
 
-      let results = []
+      let results = [];
       inputs.forEach((inputStr) => {
         let input = inputParser(inputStr);
-        console.log(ans);
-        console.log("input at start " + input);
         let result;
         let idealResult;
+
         // if the input is an array, make a copy to avoid user changing the passed array...
         if (Array.isArray(input) === true) {
-          let inputCopy = input.slice();
-          let secondInputCopy = input.slice();
-          console.log("inputCopy at start " + inputCopy);
+          let inputCopy = inputParser(inputStr);
 
+          idealResult = solutions[exerciseName](...input);
           result = ans(...inputCopy);
-          console.log("inputCopy after result " + inputCopy);
-          console.log("input after result " + input);
-
-
-          console.log("secondInputCopy at start " + secondInputCopy);
-          idealResult = solutions[exerciseName](...secondInputCopy);
-          console.log("secondInputCopy after idealResult " + secondInputCopy);
-
-          console.log("input " + input);
-          console.log("result " + result);
-          console.log("ideal result " + idealResult);
         }
         else {
-          result = ans(...input);
           idealResult = solutions[exerciseName](...input);
+          result = ans(...input);
         }
 
         window[exerciseName] = solutions[exerciseName];
@@ -139,6 +126,8 @@ $(document).ready(() => {
         localStorage[exerciseName] = "true";
       }
     } catch (theError) {
+      $('.congrats').text("");
+      $('th').remove();
       $('.errorMessage').text(theError);
     }
   });
