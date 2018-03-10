@@ -114,6 +114,10 @@ div#displayResults {
   border: solid 1px black
 }
 
+th {
+  border: solid 1px black
+}
+
 .status-box {
   width: 2em;
 }

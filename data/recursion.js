@@ -487,9 +487,9 @@ solutions.factorial =  function (n) {
 }
 
 solutions.bunnyEars = function (bunnies) {
-  var bunnyEarsRecursive = function(bunnies){
+  let bunnyEarsRecursive = function(bunnies){
     if (bunnies <= 0) return 0;
-    var result = bunnyEarsRecursive(bunnies-1);
+    let result = bunnyEarsRecursive(bunnies-1);
     return 2 + result;
   }
   return bunnyEarsRecursive(bunnies)

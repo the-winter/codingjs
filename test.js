@@ -35,14 +35,14 @@ describe('main', () => {
 
 describe('solutions', function () {
   exercises.forEach(function(exercise){
-    var solution = solutions[exercise.name];
+    let solution = solutions[exercise.name];
 
       describe(exercise.name, function(){
         exercise.inputs.forEach(function(inputStr){
           it(`should run for ${exercise.name}${inputStr}`, function () {
-            var js_inputs = inputParser(inputStr)
+            let js_inputs = inputParser(inputStr)
             window[exercise.name] = solution;
-            var idealResult = solution.apply(undefined, js_inputs)
+            let idealResult = solution.apply(undefined, js_inputs)
             expect(idealResult).to.exist // check the result isn't undefined
           });
         })

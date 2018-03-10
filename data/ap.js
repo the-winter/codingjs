@@ -313,7 +313,7 @@ exercises.push(
 
 solutions.scoresIncreasing = function (scores) {
 
-  for (var i = 1; i < scores.length; i++){
+  for (let i = 1; i < scores.length; i++){
     if (scores[i] != scores[i-1] && scores[i] < scores[i-1]){
       return false;
     }
@@ -322,9 +322,9 @@ solutions.scoresIncreasing = function (scores) {
 }
 
 solutions.scores100 = function (scores) {
-  var count=0;
+  let count=0;
 
-  for (var i = 0; i < scores.length; i++){
+  for (let i = 0; i < scores.length; i++){
     if (scores[i] == 100 && scores[i+1] == 100){
       count+= 1;
     }
@@ -334,7 +334,7 @@ solutions.scores100 = function (scores) {
 
 solutions.scoresClump = function (scores) {
 
-  for (var i = 0; i < scores.length-1; i++){
+  for (let i = 0; i < scores.length-1; i++){
     if (scores[i+2] - scores[i] <= 2){
       return true;
     }
@@ -345,27 +345,27 @@ solutions.scoresClump = function (scores) {
 solutions.scoresAverage = function (scores) {
 
   function average(nums){
-    var sum = 0;
-    for (var i = 0; i < nums.length; i++) {
+    let sum = 0;
+    for (let i = 0; i < nums.length; i++) {
       sum += nums[i]
     }
     return sum/nums.length;
   }
 
-  var half = scores.length/2
-  var first = [];
-  var second = [];
+  let half = scores.length/2
+  let first = [];
+  let second = [];
 
-  for (var i = 0; i < half; i++){
+  for (let i = 0; i < half; i++){
     first.push(scores[i])
   };
 
-   for (var i = half; i < scores.length; i++){
+   for (let i = half; i < scores.length; i++){
     second.push(scores[i])
   };
 
-  var av1 = average(first);
-  var av2 = average(second);
+  let av1 = average(first);
+  let av2 = average(second);
 
   if (av1 > av2){
     return av1;
@@ -375,8 +375,8 @@ solutions.scoresAverage = function (scores) {
 
 solutions.wordsCount = function (words, len) {
 
-  var count = 0;
-  for (var i = 0; i < words.length; i++){
+  let count = 0;
+  for (let i = 0; i < words.length; i++){
     if (words[i].length == len) {
       count+=1;
     }
@@ -386,17 +386,17 @@ solutions.wordsCount = function (words, len) {
 
 solutions.wordsFront = function (words, n) {
 
-  var arr = [];
-  for (var i = 0; i < n; i++){
+  let arr = [];
+  for (let i = 0; i < n; i++){
     arr.push(words[i]);
   }
   return arr;
 }
 
 solutions.wordsWithoutList = function (words, len) {
-  var arr = [];
+  let arr = [];
 
-  for (var i = 0; i < words.length; i++){
+  for (let i = 0; i < words.length; i++){
     if (words[i].length != len){
       arr.push(words[i]);
     }
@@ -406,9 +406,9 @@ solutions.wordsWithoutList = function (words, len) {
 
 solutions.hasOne = function (n) {
 
-    var str = n.toString()
+    let str = n.toString()
 
-    var j = str.length-1;
+    let j = str.length-1;
     while (j >= 0){
        if(parseInt(str[j])%10 == 1) {
          return true;
@@ -419,9 +419,9 @@ solutions.hasOne = function (n) {
 }
 
 solutions.dividesSelf = function (n) {
-  var num = n.toString();
+  let num = n.toString();
 
-  var j = num.length - 1;
+  let j = num.length - 1;
 
   while (j >= 0) {
     if (n%parseInt(num[j]) != 0){
@@ -434,10 +434,10 @@ solutions.dividesSelf = function (n) {
 
 solutions.copyEvens = function (nums, count) {
 
- var erray = [];
- var j = count;
+ let erray = [];
+ let j = count;
 
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
     if (nums[i]%2 == 0){
         erray.push(nums[i]);
         j --;
@@ -448,24 +448,23 @@ solutions.copyEvens = function (nums, count) {
 }
 
 solutions.copyEndy = function (nums, count) {
-    var endies = [];
-    var count= count;
-
-  for (var i = 0; i < nums.length; i++){
-    if ((nums[i] >= 0 && nums[i] <= 10) || (nums[i] >= 90 && nums[i] <= 100)){
-        endies.push(nums[i]);
-        count-= 1;
+  let newArray = [];
+  for (let i=0; i<nums.length; i++) {
+    let n = nums[i];
+	if (n >= 0 && n <= 10 || n >= 90 && n <= 100) {
+      newArray.push(n);
     }
-
-    if (count < 1) break;
+    if (newArray.length === count) {
+      break;
+    }
   }
-  return endies;
+  return newArray;
 }
 
 solutions.matchUp = function (a, b) {
-    var count = 0;
+    let count = 0;
 
-    for(var i = 0; i < a.length; i++) {
+    for(let i = 0; i < a.length; i++) {
         if(a[i].length > 0 && b[i].length > 0 &&
             a[i].charAt(0) == b[i].charAt(0)) {
               count++;
@@ -476,9 +475,9 @@ solutions.matchUp = function (a, b) {
 }
 
 solutions.scoreUp = function (key, answers) {
-  var score = 0;
+  let score = 0;
 
-  for (var i = 0; i < key.length; i++){
+  for (let i = 0; i < key.length; i++){
       if (answers[i] == "?"){
         score += 0;
       }
@@ -492,9 +491,9 @@ solutions.scoreUp = function (key, answers) {
 }
 
 solutions.wordsWithout = function (words, target){
-   var nuarr = [];
+   let nuarr = [];
 
-   for (var i = 0; i < words.length; i++){
+   for (let i = 0; i < words.length; i++){
        if (words[i] != target){
            nuarr.push(words[i]);
        }
@@ -505,8 +504,8 @@ solutions.wordsWithout = function (words, target){
 solutions.scoresSpecial = function (a, b){
   function largest(x){
 
-    var big = 0;
-    for (var i = 0; i < x.length; i++){
+    let big = 0;
+    for (let i = 0; i < x.length; i++){
        if (x[i] > big && x[i]%10 == 0){
            big = x[i]
        }
@@ -514,15 +513,15 @@ solutions.scoresSpecial = function (a, b){
 
     return big;
   }
-   var ares = largest(a);
-   var bres = largest(b);
+   let ares = largest(a);
+   let bres = largest(b);
 
    return ares + bres;
 }
 
 solutions.sumHeights = function (heights, start, end) {
-  var res = 0;
-  for (var i = start; i < end; i++){
+  let res = 0;
+  for (let i = start; i < end; i++){
       res += Math.abs(heights[i] - heights[i+1])
   }
   return res;
@@ -530,8 +529,8 @@ solutions.sumHeights = function (heights, start, end) {
 
 solutions.sumHeights2 = function (heights, start, end) {
 
-  var sum = 0;
-  for (var i = start; i < end; i++){
+  let sum = 0;
+  for (let i = start; i < end; i++){
     if (heights[i+1] > heights[i]){
         sum+= Math.abs(heights[i] - heights[i+1]) * 2
     } else {
@@ -542,8 +541,8 @@ solutions.sumHeights2 = function (heights, start, end) {
 }
 
 solutions.bigHeights = function (heights, start, end) {
-  var count = 0;
-  for (var i = start; i < end; i++){
+  let count = 0;
+  for (let i = start; i < end; i++){
       if (Math.abs(heights[i] - heights[i+1]) >= 5){
           count += 1;
       }
@@ -566,14 +565,14 @@ solutions.userCompare = function (aName, aId, bName, bId) {
 }
 
 solutions.mergeTwo = function (a, b, n) {
-  var abinit = a.concat(b);
-  var ab = abinit.sort();
+  let abinit = a.concat(b);
+  let ab = abinit.sort();
 
-  var arr = ""
+  let arr = ""
 
-  var count = n;
+  let count = n;
 
-  for (var i = 0; i < ab.length-1; i++){
+  for (let i = 0; i < ab.length-1; i++){
     if (count <= 0) {break;}
 
     if (ab[i] == ab[i+1] && arr.charAt(arr.length-1) != ab[i]){
@@ -589,11 +588,11 @@ solutions.mergeTwo = function (a, b, n) {
 }
 
 solutions.commonTwo = function (a, b) {
-   var str = "";
-   var count = 0;
+   let str = "";
+   let count = 0;
 
-   for (var i = 0; i < b.length; i++){
-    for (var j = 0; j < a.length; j++){
+   for (let i = 0; i < b.length; i++){
+    for (let j = 0; j < a.length; j++){
       if (a[j] == b[i] && !str.includes(a[j])){
           str += a[j];
           count ++;

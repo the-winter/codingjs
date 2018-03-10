@@ -16,10 +16,10 @@ function saveCodeFile() {
 
 function loadCodeFile() {
   // remove_fileInput_listener();
-  var fileInput = document.getElementById('fileInput');
+  let fileInput = document.getElementById('fileInput');
   fileInput.addEventListener('change', function(e) {
-    var file = fileInput.files[0];
-    var reader = new FileReader();
+    let file = fileInput.files[0];
+    let reader = new FileReader();
     reader.onload = function(e) {
       editor.setValue(reader.result);
       fileInput.value = '';
@@ -38,6 +38,10 @@ document.addEventListener("keydown", function(e) {
   if (e.keyCode == 79 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
     e.preventDefault();
     loadCodeFile();
+  }
+  if (e.key == "Enter" && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    $("#solve").click(); //run code on ctrl-enter
   }
 });
 
@@ -66,41 +70,67 @@ $(document).ready(() => {
   //   $('#show').css('visibility','visible');
   // }
 
-  for (var i = 0; i <= 2; i++) {
-    var input = inputParser(exercise.inputs[i]);
+  // example/sample runs
+  for (let i = 0; i <= 2; i++) {
+    let input = inputParser(exercise.inputs[i]);
     window[exerciseName] = solutions[exerciseName];
-    var result = window[exerciseName](...input);
+    let result = window[exerciseName](...input);
     // TODO make this a class instead of an element
     $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
     window[exerciseName] = undefined;
   }
 
+
   $('#solve').on('click', () => {
     $('tr').remove();
+    $('#tests').append(tableHeader());
     const answer = editor.getValue();
 
     // whenever the user checks their solution, save the most recent version of their code to localStorage
     localStorage.setItem(exerciseCode, answer);
 
-    // console.log(answer);
+    let ans;
     try {
       $(".errorMessage").text("");
-      eval(`var ans=${answer}`);
+      eval(`ans=${answer}`);
       const inputs = exercise.inputs;
-      // console.log('inpute: ', inputs);
 
       let results = []
       inputs.forEach((inputStr) => {
-        const input = inputParser(inputStr);
-        const result = ans(...input);
-        // console.log(input);
+        let input = inputParser(inputStr);
+        console.log(ans);
+        console.log("input at start " + input);
+        let result;
+        let idealResult;
+        // if the input is an array, make a copy to avoid user changing the passed array...
+        if (Array.isArray(input) === true) {
+          let inputCopy = input.slice();
+          let secondInputCopy = input.slice();
+          console.log("inputCopy at start " + inputCopy);
+
+          result = ans(...inputCopy);
+          console.log("inputCopy after result " + inputCopy);
+          console.log("input after result " + input);
+
+
+          console.log("secondInputCopy at start " + secondInputCopy);
+          idealResult = solutions[exerciseName](...secondInputCopy);
+          console.log("secondInputCopy after idealResult " + secondInputCopy);
+
+          console.log("input " + input);
+          console.log("result " + result);
+          console.log("ideal result " + idealResult);
+        }
+        else {
+          result = ans(...input);
+          idealResult = solutions[exerciseName](...input);
+        }
+
         window[exerciseName] = solutions[exerciseName];
-        const idealResult = solutions[exerciseName](...input);
         window[exerciseName] = undefined;
         $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
-        // console.log('result: ', result);
 
-        var isCorrect = _.isEqual(result, idealResult)
+        let isCorrect = _.isEqual(result, idealResult)
         results.push(isCorrect)
       });
 
@@ -115,18 +145,18 @@ $(document).ready(() => {
 
 
   $('#next').on('click', () => {
-    var indx = _.findIndex(exercises, {
+    let indx = _.findIndex(exercises, {
       name: exerciseName
     }) + 1;
-    var x = exercises[indx];
+    let x = exercises[indx];
     window.location.search = `?name=${x.name}&title=${x.title}`
   })
 
   $('#previous').on('click', () => {
-    var indx = _.findIndex(exercises, {
+    let indx = _.findIndex(exercises, {
       name: exerciseName
     }) - 1;
-    var x = exercises[indx];
+    let x = exercises[indx];
     window.location.search = `?name=${x.name}&title=${x.title}`
   })
 
@@ -139,9 +169,9 @@ $(document).ready(() => {
   })
 
   // $('#show').on('click', () => {
-  //   var s = solutions[exerciseName].toString();
-  //   var r = new RegExp(/function/);
-  //   var n = s.replace(r, `function ${exercise.name}`)
+  //   let s = solutions[exerciseName].toString();
+  //   let r = new RegExp(/function/);
+  //   let n = s.replace(r, `function ${exercise.name}`)
   //   $('#mySolution').text(n)
   // })
 });

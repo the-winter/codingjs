@@ -1457,9 +1457,9 @@ solutions.withoutX2 = function (str) {
 // String-2
 
 solutions.doubleChar = function (str) {
-  var dStr = "";
+  let dStr = "";
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
       dStr += str[i]+str[i];
   }
   return dStr;
@@ -1467,9 +1467,9 @@ solutions.doubleChar = function (str) {
 
 solutions.countHi = function (str) {
 
-  var count = 0;
+  let count = 0;
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
       if (str[i] + str[i+1] == "hi"){
           count +=1;
       }
@@ -1479,10 +1479,10 @@ solutions.countHi = function (str) {
 }
 
 solutions.catDog = function (str) {
-  var cat = 0;
-  var dog = 0;
+  let cat = 0;
+  let dog = 0;
 
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
       if(str.substring(i, i+3) == "cat") {
           cat += 1;
       }
@@ -1495,9 +1495,9 @@ solutions.catDog = function (str) {
 }
 
 solutions.countCode = function (str) {
-  var count = 0;
+  let count = 0;
 
-    for (var i = 0; i < str.length; i++){
+    for (let i = 0; i < str.length; i++){
         if(str.substring(i, i+2) == "co" && str.substring(i+3, i+4) == "e"){
             count += 1;
         }
@@ -1507,8 +1507,8 @@ solutions.countCode = function (str) {
 }
 
 solutions.endOther = function (a, b) {
-  var short = "";
-  var long = "";
+  let short = "";
+  let long = "";
 
     if (a == b) {
         return true;
@@ -1522,14 +1522,14 @@ solutions.endOther = function (a, b) {
         long += a.toLowerCase();
     }
 
-    var longEnd = long.substring(long.length -short.length);
+    let longEnd = long.substring(long.length -short.length);
 
     return longEnd == short;
 }
 
 solutions.xyzThere = function (str) {
-  var x = "xyz";
-  for (var i = 0; i < str.length; i++){
+  let x = "xyz";
+  for (let i = 0; i < str.length; i++){
     if(str.substring(i, i+3) == x && str.charAt(i-1, i) != "."){
         return true;
     }
@@ -1538,7 +1538,7 @@ solutions.xyzThere = function (str) {
 }
 
 solutions.bobThere = function (str) {
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
       if (str.charAt(i) == "b" && str.charAt(i+2) == "b"){
           return true;
       }
@@ -1547,9 +1547,9 @@ solutions.bobThere = function (str) {
 }
 
 solutions.xyBalance = function (str) {
-    var y = false;
+    let y = false;
     //backwards loop
-    for(var i = str.length - 1; i >= 0; i--) {
+    for(let i = str.length - 1; i >= 0; i--) {
         if(str.charAt(i) == 'y')
             y = true;
 
@@ -1561,8 +1561,8 @@ solutions.xyBalance = function (str) {
 }
 
 solutions.mixString = function (a, b) {
-    var large = "";
-    var newStr = "";
+    let large = "";
+    let newStr = "";
 
     if (a.length > b.length) {
         large += a.length;
@@ -1570,7 +1570,7 @@ solutions.mixString = function (a, b) {
         large += b.length;
     }
 
-    for (var i = 0; i < large; i++) {
+    for (let i = 0; i < large; i++) {
         if (a[i] != undefined) {
           newStr += a[i];
         }
@@ -1583,8 +1583,8 @@ solutions.mixString = function (a, b) {
 }
 
 solutions.repeatEnd = function (str, n) {
-    var retStr = "";
-  var sub = str.substring(str.length - n);
+    let retStr = "";
+  let sub = str.substring(str.length - n);
 
     while (n != 0) {
         retStr += sub;
@@ -1596,9 +1596,9 @@ solutions.repeatEnd = function (str, n) {
 
 solutions.repeatFront = function (str, n) {
 
-    var nu = "";
+    let nu = "";
 
-    for (var i = n; i > 0; i--){
+    for (let i = n; i > 0; i--){
         nu += str.substring(0, i);
     }
 
@@ -1606,14 +1606,14 @@ solutions.repeatFront = function (str, n) {
 }
 
 solutions.repeatSeparator = function repeatSeparator(word, sep, count) {
-  var nu = "";
+  let nu = "";
 
       if (count == 0){
         return "";
       }
 
 
-    for (var i = 0; i < count - 1; i++){
+    for (let i = 0; i < count - 1; i++){
         nu += word;
         nu += sep;
     }
@@ -1624,9 +1624,9 @@ solutions.repeatSeparator = function repeatSeparator(word, sep, count) {
 }
 
 solutions.prefixAgain = function (str, n) {
-    var prefix = str.substring(0, n);
+    let prefix = str.substring(0, n);
 
-    for (var i = str.length; i > n; i--){
+    for (let i = str.length; i > n; i--){
         if(str.substring(i-n, i) == prefix) {
             return true;
         }
@@ -1638,8 +1638,8 @@ solutions.xyzMiddle = function (str) {
     if(str.length < 3)
         return false;
 
-    var start1 = str.length / 2 - 2;
-    var start2 = str.length / 2 - 1;
+    let start1 = str.length / 2 - 2;
+    let start2 = str.length / 2 - 1;
 
     if(str.length % 2 == 0) {
         return str.substring(start1, start1 + 3) == "xyz" ||
@@ -1650,18 +1650,18 @@ solutions.xyzMiddle = function (str) {
 }
 
 solutions.getSandwich = function (str) {
-  var temp1 = "";
-  var i1 = 0;
-    for (var i = 0; i < str.length; i++){
+  let temp1 = "";
+  let i1 = 0;
+    for (let i = 0; i < str.length; i++){
         if (str.slice(i, i+5) == "bread") {
             temp1 = str.slice(i, i+5);
             i1 = i+5;
             break;
         }
     }
-  var temp2 = "";
-  var i2 = 0;
-    for (var i = str.length; i >= 0; i--){
+  let temp2 = "";
+  let i2 = 0;
+    for (let i = str.length; i >= 0; i--){
         if (str.slice(i-5, i) == "bread") {
             temp2 = str.slice(i-5, i);
             i2 = i-5;
@@ -1669,9 +1669,9 @@ solutions.getSandwich = function (str) {
         }
     }
 
-    var res = "";
+    let res = "";
 
-    for (var j = i1; j < i2; j++){
+    for (let j = i1; j < i2; j++){
         res += str[j];
     }
 
@@ -1680,7 +1680,7 @@ solutions.getSandwich = function (str) {
 
 solutions.sameStarChar = function (str) {
 
-    for (var i = 1; i < str.length - 1; i++){
+    for (let i = 1; i < str.length - 1; i++){
         if (str.charAt(i) == '*' && str.charAt(i-1) != str.charAt(i+1)){
             return false;
         }
@@ -1689,9 +1689,9 @@ solutions.sameStarChar = function (str) {
 }
 
 solutions.oneTwo = function (str) {
-    var nust = "";
+    let nust = "";
 
-    for (var i = 0; i < str.length-1; i+= 3){
+    for (let i = 0; i < str.length-1; i+= 3){
         if (str[i+2] != undefined){
           nust += str[i+1]; //c
           nust += str[i+2]; //b
@@ -1702,8 +1702,8 @@ solutions.oneTwo = function (str) {
 }
 
 solutions.zipZap = function (str) {
-  var nust = "";
-  for (var i = 0; i < str.length; i++){
+  let nust = "";
+  for (let i = 0; i < str.length; i++){
     if (str[i-1] != "z" || str[i+1] != "p"){
       nust += str[i];
     }
@@ -1722,10 +1722,10 @@ solutions.starOut = function (str) {
             return str;
     }
 
-    var len = str.length;
-    var arr = new Array();
+    let len = str.length;
+    let arr = new Array();
 
-    var count = 0;
+    let count = 0;
 
 
     if(str.charAt(0) != '*' && str.charAt(1) != '*') {
@@ -1733,7 +1733,7 @@ solutions.starOut = function (str) {
         count++;
     }
 
-    for(var i = 1; i < str.length - 1; i++) {
+    for(let i = 1; i < str.length - 1; i++) {
         if(str.charAt(i-1)!='*' && str.charAt(i) != '*' &&
             str.charAt(i+1) != '*') {
             arr[count] = str.charAt(i);
@@ -1747,19 +1747,19 @@ solutions.starOut = function (str) {
         count++;
     }
 
-    var x = arr.toString();
+    let x = arr.toString();
 
      return x.replace(/,/g, "");
 }
 
 solutions.plusOut = function (str, word) {
-  var slen = str.length;
-  var wlen = word.length;
-  var fin = "";
+  let slen = str.length;
+  let wlen = word.length;
+  let fin = "";
 
-  for (var i = 0; i < slen; i++) {
+  for (let i = 0; i < slen; i++) {
     if (i <= slen - wlen) {
-      var tmp = str.substring(i,i+wlen);
+      let tmp = str.substring(i,i+wlen);
       if (tmp == word) {
         fin += word;
         i += wlen-1;
@@ -1774,17 +1774,17 @@ solutions.plusOut = function (str, word) {
 }
 
 solutions.wordEnds = function (str, word){
-  var slen = str.length;
-  var wlen = word.length;
-  var res = "";
+  let slen = str.length;
+  let wlen = word.length;
+  let res = "";
 
   if (slen.length < 1){
     return str;
   }
 
-  for (var i = 0; i < slen; i++) {
+  for (let i = 0; i < slen; i++) {
     if (i <= slen - wlen){
-      var temp = str.substring(i, i+wlen);
+      let temp = str.substring(i, i+wlen);
       if (temp == word){
         if (str[i-1] != undefined) {
           res += str[i-1];
@@ -1806,8 +1806,8 @@ solutions.wordEnds = function (str, word){
 // String-3
 
 solutions.countYZ = function (str){
-  var count=0;
-  for (var i = 0; i < str.length; i++) {
+  let count=0;
+  for (let i = 0; i < str.length; i++) {
     if (!str[i].match(/[a-z]/i) || str.charAt(i) == " ") {
 
        if (str.charAt(i-1).toLowerCase() == "y" || str.charAt(i-1).toLowerCase() == "z"){
@@ -1825,12 +1825,12 @@ solutions.countYZ = function (str){
 
 solutions.withoutString = function (base, remove){
 
- var rlen = remove.length;
+ let rlen = remove.length;
 
-  var res = "";
+  let res = "";
 
-  for (var i = 0; i < base.length; i++){
-    var subbie = base.substring(i, i+ rlen);
+  for (let i = 0; i < base.length; i++){
+    let subbie = base.substring(i, i+ rlen);
     if (subbie.toLowerCase() != remove.toLowerCase()) {
        if (base[i] == " " && res.charAt(res.length-1) == " "){
         }  else {
@@ -1844,15 +1844,15 @@ solutions.withoutString = function (base, remove){
 }
 
 solutions.equalIsNot = function (str){
-  var is = "is";
-  var not = "not";
+  let is = "is";
+  let not = "not";
 
-  var isCount = 0;
-  var notCount = 0;
+  let isCount = 0;
+  let notCount = 0;
 
-  for (var i = 0; i < str.length; i++) {
-     var checkIs = str.substring(i, i+is.length);
-     var checkNot = str.substring(i, i+not.length);
+  for (let i = 0; i < str.length; i++) {
+     let checkIs = str.substring(i, i+is.length);
+     let checkNot = str.substring(i, i+not.length);
 
      if (checkIs == is){
        isCount += 1;
@@ -1869,7 +1869,7 @@ solutions.equalIsNot = function (str){
 
 solutions.gHappy = function (str) {
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
     if (str[i] == "g" && (str[i-1] != "g" && str[i+1] != "g")){
       return false;
     }
@@ -1879,10 +1879,10 @@ solutions.gHappy = function (str) {
 
 solutions.countTriple = function countTriple(str) {
 
-  var count = 0;
+  let count = 0;
 
-  for (var i = 0; i <= str.length-2; i++) {
-    var triple = str.substring(i, i+3);
+  for (let i = 0; i <= str.length-2; i++) {
+    let triple = str.substring(i, i+3);
     if (triple[0] == triple[1] && triple[1] == triple[2]){
       count += 1;
     }
@@ -1892,11 +1892,11 @@ solutions.countTriple = function countTriple(str) {
 
 solutions.sumDigits = function (str) {
 
-  var add = (a, b) => a+b;
+  let add = (a, b) => a+b;
 
-  var nums = []
+  let nums = []
 
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
 
     if (Number.isInteger(parseInt(str[i]))) {
         nums.push(parseInt(str[i]))
@@ -1911,10 +1911,10 @@ solutions.sumDigits = function (str) {
 }
 
 solutions.sameEnds = function (string) {
-   var start = Math.ceil(string.length/2);
-   var end = string.length/2;
+   let start = Math.ceil(string.length/2);
+   let end = string.length/2;
 
-    for (var i = 0; i < string.length/2; i++){
+    for (let i = 0; i < string.length/2; i++){
       if (string.substring(0, end) == string.substring(start)){
         return string.substring(0, end);
       } else {
@@ -1926,9 +1926,9 @@ solutions.sameEnds = function (string) {
 }
 
 solutions.mirrorEnds = function (string) {
-    var result = "";
+    let result = "";
 
-    for (var i = 0; i < string.length; i++) {
+    for (let i = 0; i < string.length; i++) {
       if (string[i] == string[string.length - i - 1]) {
         result += string[i]
       } else {
@@ -1940,10 +1940,10 @@ solutions.mirrorEnds = function (string) {
 }
 
 solutions.maxBlock = function (str) {
-  var count = 0;
-  var stick = 1;
+  let count = 0;
+  let stick = 1;
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
     if (i < str.length-1 && str[i] == str[i+1]){
       stick += 1;
     } else {
@@ -1961,11 +1961,11 @@ solutions.maxBlock = function (str) {
 
 solutions.sumNumbers = function (str) {
 
-  var len = str.length;
-  var temp = "";
-  var sum = 0;
+  let len = str.length;
+  let temp = "";
+  let sum = 0;
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
     if (parseInt(str[i])){
       if (i < len-1 && parseInt(str[i+1])){
         temp+= str[i]
@@ -1981,9 +1981,9 @@ solutions.sumNumbers = function (str) {
 
 solutions.notReplace = function (str) {
 
-  var result = "";
+  let result = "";
 
-  for (var i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++){
        /* using charAt here rather than bracket index, b/c bracket index shows undefined for chars at
       -1 index, causing error. charAt shows "", so no error*/
       if ((str.charAt(i-1).match(/[a-z]/i)

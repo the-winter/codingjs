@@ -1312,19 +1312,19 @@ exercises.push(
 // Array-1
 
 solutions.firstLast6 = function (nums) {
-  var end = nums.length - 1;
+  let end = nums.length - 1;
   return nums[0] == 6 || nums[end] == 6;
 }
 
 solutions.sameFirstLast = function (nums) {
-    var end = nums.length - 1;
+    let end = nums.length - 1;
    if (nums.length >= 1){
        return nums[0] == nums[end];
    } else {return false;}
 }
 
 solutions.makePi = function () {
-    var nums = [3, 1, 4];
+    let nums = [3, 1, 4];
     return nums;
 }
 
@@ -1351,7 +1351,7 @@ solutions.reverse3 = function (nums) {
 }
 
 solutions.maxEnd3 = function (nums) {
-    var max = nums[0] > nums[2] ? nums[0] : nums[2];
+    let max = nums[0] > nums[2] ? nums[0] : nums[2];
 
     nums[0] = max;
     nums[1] = max;
@@ -1373,14 +1373,14 @@ solutions.sum2 =  function (nums) {
 }
 
 solutions.middleWay = function (a, b) {
-  var newArr = []
+  let newArr = []
   newArr.push(a[1], b[1]);
 
     return newArr;
 }
 
 solutions.makeEnds =  function (nums) {
-     var nArr = [];
+     let nArr = [];
      nArr.push(nums[0], nums[nums.length - 1]);
 
      return nArr;
@@ -1404,10 +1404,10 @@ solutions.no23 = function (nums) {
 }
 
 solutions.makeLast = function (nums) {
-  var i = 0;
-  var newNums = [];
-  var last = nums.slice(nums.length - 1); //calling slice on array returns array with 'sliced' portion
-  var double = nums.length * 2;
+  let i = 0;
+  let newNums = [];
+  let last = nums.slice(nums.length - 1); //calling slice on array returns array with 'sliced' portion
+  let double = nums.length * 2;
 
   while (i < double - 1) {
         newNums.push(0);
@@ -1430,9 +1430,9 @@ solutions.double23 = function (nums) {
 }
 
 solutions.fix23 = function (nums) {
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
       if (nums[i] == 2 && nums[i+1] == 3) {
-         var tri = nums.indexOf(3);
+         let tri = nums.indexOf(3);
          nums[tri] = 0;
     }
   }
@@ -1440,7 +1440,7 @@ solutions.fix23 = function (nums) {
 }
 
 solutions.start1 = function (a, b) {
-  var count = 0;
+  let count = 0;
    if (a[0] == 1) {
     count += 1;
    }
@@ -1460,16 +1460,16 @@ solutions.biggerTwo = function (a, b) {
 }
 
 solutions.makeMiddle = function (nums) {
-  var first_half = nums.splice(0, nums.length/2);
+  let first_half = nums.splice(0, nums.length/2);
 
-  var one = first_half.pop();
-  var two = nums.shift();
+  let one = first_half.pop();
+  let two = nums.shift();
 
   return [one, two]
 }
 
 solutions.plusTwo = function (a, b) {
-  var duoArr = new Array();
+  let duoArr = new Array();
   duoArr[0]= a[0];
   duoArr[1]= a[1];
   duoArr[2]= b[0];
@@ -1483,8 +1483,8 @@ solutions.swapEnds = function (nums) {
   	  return nums;
     }
 
-  var toStart = nums.pop();
-  var toEnd = nums.shift()
+  let toStart = nums.pop();
+  let toEnd = nums.shift()
 
 	nums.unshift(toStart);
 	nums.push(toEnd);
@@ -1493,14 +1493,14 @@ solutions.swapEnds = function (nums) {
 }
 
 solutions.midThree = function (nums) {
-     var x = Math.floor(nums.length/2); // since 5/2 is 2.5, floor gives 2
+     let x = Math.floor(nums.length/2); // since 5/2 is 2.5, floor gives 2
      return nums.slice(x-1, x+2);
 }
 
 solutions.maxTriple = function (nums) {
-  var mid = Math.floor(nums.length/2);
-  var start = nums[0]
-  var end = nums[nums.length - 1];
+  let mid = Math.floor(nums.length/2);
+  let start = nums[0]
+  let end = nums[nums.length - 1];
 
   if ( nums[mid] > start && nums[mid] > end){
   	return nums[mid];
@@ -1521,13 +1521,13 @@ solutions.frontPiece = function (nums) {
 
 solutions.unlucky1 = function (nums) {
 
-  var sections = [
+  let sections = [
     nums.slice(-2),
     nums.slice(0,3)
   ]
 
   for (let section of sections) {
-    for (var i = 0; i < section.length; i++) {
+    for (let i = 0; i < section.length; i++) {
       if (section[i] == 1 && section[i + 1] == 3)
         return true;
     }
@@ -1536,18 +1536,18 @@ solutions.unlucky1 = function (nums) {
 }
 
 solutions.make2 = function (a, b) {
-  var newAr = a.concat(b);
+  let newAr = a.concat(b);
 
     return [newAr[0], newAr[1]];
 }
 
 solutions.front11 = function (a, b) {
-  var sections = [
+  let sections = [
 	a,
 	b
    ]
 
-    var newA = [];
+    let newA = [];
 
     for (let section of sections) {
         if (section.length == 0) {
@@ -1563,9 +1563,9 @@ solutions.front11 = function (a, b) {
 // Array-2
 
 solutions.countEvens = function (nums) {
-  var count = 0;
+  let count = 0;
 
-    for (var i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++){
         if (nums[i]%2 == 0){
             count += 1;
         }
@@ -1574,45 +1574,45 @@ solutions.countEvens = function (nums) {
 }
 
 solutions.bigDiff = function (nums) {
-  var minn = Math.min(...nums);
-  var maxx = Math.max(...nums);
+  let minn = Math.min(...nums);
+  let maxx = Math.max(...nums);
 
     return Math.abs(maxx - minn);
 }
 
 solutions.centeredAverage = function (nums) {
-    var minn = Math.min(...nums);
-    var minIn = nums.indexOf(minn);
+    let minn = Math.min(...nums);
+    let minIn = nums.indexOf(minn);
     nums.splice(minIn, 1);
 
-    var maxx = Math.max(...nums);
-    var maxIn = nums.indexOf(maxx);
+    let maxx = Math.max(...nums);
+    let maxIn = nums.indexOf(maxx);
     nums.splice(maxIn, 1);
 
-    var total = 0;
-    for(var i = 0; i < nums.length; i++) {
+    let total = 0;
+    for(let i = 0; i < nums.length; i++) {
         total += nums[i];
     }
     return total / nums.length;
 }
 
 solutions.sum13 = function (nums) {
-    var pre13 = [];
-  for (var i = 0; i < nums.length; i++){
+    let pre13 = [];
+  for (let i = 0; i < nums.length; i++){
      if(nums[i] == 13 || nums[i-1]==13) {
 
      } else {
          pre13.push(nums[i]);
      }
   }
-  var sum = pre13.reduce((a, b) => a + b, 0)
+  let sum = pre13.reduce((a, b) => a + b, 0)
   return sum;
 }
 
 solutions.sum67 = function (nums) {
-  var summ = 0;
+  let summ = 0;
 
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
       if(nums[i] != 6){
           summ += nums[i];
       } else {
@@ -1625,7 +1625,7 @@ solutions.sum67 = function (nums) {
 }
 
 solutions.has22 = function (nums) {
-   for (var i = 0; i < nums.length; i++){
+   for (let i = 0; i < nums.length; i++){
         if (nums[i] == 2 && nums[i+1] == 2){
             return true;
         }
@@ -1634,7 +1634,7 @@ solutions.has22 = function (nums) {
 }
 
 solutions.lucky13 = function (nums) {
-  for(var i = 0; i < nums.length; i++){
+  for(let i = 0; i < nums.length; i++){
     if (nums[i] == 1 || nums[i] == 3){
         return false;
     }
@@ -1644,9 +1644,9 @@ solutions.lucky13 = function (nums) {
 }
 
 solutions.sum28 = function (nums) {
-  var count = 0;
+  let count = 0;
 
-    for(var i = 0; i < nums.length; i++){
+    for(let i = 0; i < nums.length; i++){
         if(nums[i] == 2){
             count += nums[i];
         }
@@ -1656,10 +1656,10 @@ solutions.sum28 = function (nums) {
 
 solutions.more14 = function (nums) {
 
-    var one = 0;
-    var four = 0;
+    let one = 0;
+    let four = 0;
 
-    for (var i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++){
         if (nums[i] == 1){
             one += 1;
         }
@@ -1672,8 +1672,8 @@ solutions.more14 = function (nums) {
 }
 
 solutions.fizzArray = function (n) {
-  var newA = [];
-    for (var i = 0; i < n; i++){
+  let newA = [];
+    for (let i = 0; i < n; i++){
         newA[i] = i;
     }
     return newA;
@@ -1681,7 +1681,7 @@ solutions.fizzArray = function (n) {
 
 solutions.only14 = function (nums) {
 
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
       if (nums[i] != 4 && nums[i] != 1){
           return false;
       }
@@ -1690,18 +1690,18 @@ solutions.only14 = function (nums) {
 }
 
 solutions.fizzArray2 = function (n) {
-    var nu = [];
-    for (var i = 0; i < n; i++){
+    let nu = [];
+    for (let i = 0; i < n; i++){
         nu[i] = i.toString();
     }
     return nu;
 }
 
 solutions.no14 = function (nums) {
-var has1 = false;
-var has4 = false;
+let has1 = false;
+let has4 = false;
 
-for (var i = 0; i < nums.length; i++){
+for (let i = 0; i < nums.length; i++){
     if (nums[i] == 1){
         has1 = true;
     }
@@ -1715,7 +1715,7 @@ for (var i = 0; i < nums.length; i++){
 }
 
 solutions.isEverywhere = function (nums, val) {
- for (var i = 0; i < nums.length-1; i++){
+ for (let i = 0; i < nums.length-1; i++){
      if (nums[i] != val && nums[i+1] != val){
          return false;
      }
@@ -1724,10 +1724,10 @@ solutions.isEverywhere = function (nums, val) {
 }
 
 solutions.either24 = function (nums) {
-    var has22 = false;
-    var has44 = false;
+    let has22 = false;
+    let has44 = false;
 
-    for(var i = 0; i < nums.length - 1; i++) {
+    for(let i = 0; i < nums.length - 1; i++) {
         if(nums[i] == 2 && nums[i+1] == 2)
             has22 = true;
 
@@ -1739,10 +1739,10 @@ solutions.either24 = function (nums) {
 }
 
 solutions.matchUp = function (nums1, nums2) {
-  var count = 0;
+  let count = 0;
 
-    for (var i = 0; i < nums1.length; i++){
-        var diff = Math.abs(nums1[i] - nums2[i]);
+    for (let i = 0; i < nums1.length; i++){
+        let diff = Math.abs(nums1[i] - nums2[i]);
         if (diff > 0 && diff < 3) {
             count += 1;
         }
@@ -1751,7 +1751,7 @@ solutions.matchUp = function (nums1, nums2) {
 }
 
 solutions.has77 = function (nums) {
-  for (var i = 0; i < nums.length - 1; i++){
+  for (let i = 0; i < nums.length - 1; i++){
       if ((nums[i] == 7 && nums[i+1] == 7) || (nums[i] == 7 && nums[i+2] == 7)) {
           return true;
       }
@@ -1760,9 +1760,9 @@ solutions.has77 = function (nums) {
 }
 
 solutions.has12 = function (nums) {
-  var has1 = false;
+  let has1 = false;
 
-    for (var i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++){
         if (nums[i] == 1){
             has1 = true;
         }
@@ -1775,7 +1775,7 @@ solutions.has12 = function (nums) {
 }
 
 solutions.modThree = function (nums) {
-  for (var i = 0; i < nums.length - 1; i++){
+  for (let i = 0; i < nums.length - 1; i++){
       if (nums[i]%2 == nums[i+1]%2 && nums[i+1]%2 == nums[i+2]%2){
           return true;
       }
@@ -1784,8 +1784,8 @@ solutions.modThree = function (nums) {
 }
 
 solutions.haveThree = function (nums) {
-  var three = 0;
-  for (var i = 0; i < nums.length; i++){
+  let three = 0;
+  for (let i = 0; i < nums.length; i++){
       if (nums[i] == 3) {
            if (nums[i+1] == 3){
             return false;
@@ -1798,7 +1798,7 @@ solutions.haveThree = function (nums) {
 }
 
 solutions.twoTwo = function (nums) {
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
      if(nums[i] == 2){
          if (nums[i+1] != 2){
              return false;
@@ -1810,14 +1810,14 @@ solutions.twoTwo = function (nums) {
 }
 
 solutions.sameEnds = function (nums, len) {
-  var front = nums.slice(0, len);
-  var end = nums.slice(nums.length - len);
+  let front = nums.slice(0, len);
+  let end = nums.slice(nums.length - len);
 
   return front.toString() == end.toString();
 }
 
 solutions.tripleUp = function (nums) {
-  for (var i = nums.length; i > 0; i--){
+  for (let i = nums.length; i > 0; i--){
       if (nums[i] - nums[i-1] == 1){
           if (nums[i-1] - nums[i-2] == 1){
               return true;
@@ -1828,8 +1828,8 @@ solutions.tripleUp = function (nums) {
 }
 
 solutions.fizzArray3 = function fizzArray3(start, end) {
-  var newA = [];
-    for (var i = start; i < end; i++){
+  let newA = [];
+    for (let i = start; i < end; i++){
         newA.push(i);
     }
     return newA;
@@ -1841,7 +1841,7 @@ solutions.shiftLeft = function (nums) {
         return nums;
     }
 
-    var first = nums.shift();
+    let first = nums.shift();
 
     nums.push(first);
 
@@ -1849,8 +1849,8 @@ solutions.shiftLeft = function (nums) {
 }
 
 solutions.tenRun = function (nums) {
-    var current;
-    var i = 0;
+    let current;
+    let i = 0;
 
     while(i < nums.length && nums[i] % 10 != 0)
         i++;
@@ -1874,9 +1874,9 @@ solutions.tenRun = function (nums) {
 
 solutions.pre4 = function (nums) {
 
-  var b44 = [];
+  let b44 = [];
 
-  var i = 0;
+  let i = 0;
 
   while (i < nums.length && nums[i] !=4){
       b44.push(nums[i]);
@@ -1886,9 +1886,9 @@ solutions.pre4 = function (nums) {
 }
 
 solutions.post4 = function (nums) {
-  var aft4 = [];
+  let aft4 = [];
 
-    var i = nums.length-1;
+    let i = nums.length-1;
   while (i > 0 && nums[i] != 4) {
       aft4.push(nums[i]);
       i--;
@@ -1897,7 +1897,7 @@ solutions.post4 = function (nums) {
 }
 
 solutions.notAlone = function (nums, val) {
-  for (var i = 0; i < nums.length-1; i++) {
+  for (let i = 0; i < nums.length-1; i++) {
       if (nums[i] == val){
         if (nums[i+1] == undefined){
             return nums;
@@ -1923,14 +1923,14 @@ solutions.zeroFront = function (nums) {
     if(nums.length == 0)
     return nums;
 
-    var i = 0;
+    let i = 0;
 
     while(nums[i] == 0)
         i++;
 
-    for(var j = i + 1; j < nums.length; j++) {
+    for(let j = i + 1; j < nums.length; j++) {
         if(nums[j] == 0) {
-            var temp = nums[i];
+            let temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;
             i++;
@@ -1941,14 +1941,14 @@ solutions.zeroFront = function (nums) {
 }
 
 solutions.withoutTen = function (nums) {
-    var nlen = nums.length;
+    let nlen = nums.length;
 
-    var newA = nums.filter(notten);
+    let newA = nums.filter(notten);
 
-    var tlen = newA.length;
-    var x = nlen - tlen;
+    let tlen = newA.length;
+    let x = nlen - tlen;
 
-    var i = 0;
+    let i = 0;
 
     while (i < x) {
         newA.push(0);
@@ -1963,8 +1963,8 @@ function notten (num){
 }
 
 solutions.zeroMax = function (nums) {
-    var odd = 0;
-    for (var i = nums.length-1; i >= 0; i--){
+    let odd = 0;
+    for (let i = nums.length-1; i >= 0; i--){
 
         if (nums[i] != 0 && nums[i]%2 !=0){
             if (nums[i] > odd){
@@ -1980,10 +1980,10 @@ solutions.zeroMax = function (nums) {
 }
 
 solutions.evenOdd = function (nums) {
-  var even = nums.filter(isEven);
-  var odd = nums.filter(isOdd);
+  let even = nums.filter(isEven);
+  let odd = nums.filter(isOdd);
 
-  var newA = even.concat(odd);
+  let newA = even.concat(odd);
 
   return newA;
 }
@@ -1998,9 +1998,9 @@ function isOdd(num){
 
 solutions.fizzBuzz = function (start, end) {
 
-  var strArray = [];
+  let strArray = [];
 
-  for (var i = start; i < end; i++){
+  for (let i = start; i < end; i++){
     if (i%3 == 0 && i%5 == 0){
         strArray.push("FizzBuzz");
     } else if (i%3 == 0) {
@@ -2008,7 +2008,7 @@ solutions.fizzBuzz = function (start, end) {
     } else if (i%5 == 0) {
         strArray.push("Buzz");
     } else {
-        var str = i.toString();
+        let str = i.toString();
         strArray.push(str);
     }
   }
@@ -2018,16 +2018,16 @@ solutions.fizzBuzz = function (start, end) {
 // Array-3
 
 solutions.maxSpan = function (nums) {
-    var max = 0;
+    let max = 0;
 
-    for(var i = 0; i < nums.length; i++) {
-        var j = nums.length - 1;
+    for(let i = 0; i < nums.length; i++) {
+        let j = nums.length - 1;
 
         while(nums[i] != nums[j]){
             j--;
         }
 
-        var span = j - i + 1;
+        let span = j - i + 1;
 
         if(span > max)
             max = span;
@@ -2037,19 +2037,19 @@ solutions.maxSpan = function (nums) {
 }
 
 solutions.fix34 = function (nums) {
-    var i = 0;
+    let i = 0;
 
     while(i < nums.length && nums[i] != 3)
         i++;
 
-    var j = i + 1;
+    let j = i + 1;
 
     while(j < nums.length && nums[j] != 4)
         j++;
 
     while(i < nums.length) {
         if(nums[i] == 3) {
-            var temp = nums[i+1];
+            let temp = nums[i+1];
             nums[i+1] = nums[j];
             nums[j] = temp;
 
@@ -2064,8 +2064,8 @@ solutions.fix34 = function (nums) {
 
 solutions.fix45 = function (nums) {
 
-  var i = 0;
-  var j = 0;
+  let i = 0;
+  let j = 0;
 
     while (j < nums.length && nums[j] != 5){
         j++;
@@ -2073,7 +2073,7 @@ solutions.fix45 = function (nums) {
 
     while (i < nums.length) {
         if (nums[i] == 4){
-            var temp = nums[i+1];
+            let temp = nums[i+1];
             nums[i+1] = nums[j];
             nums[j] = temp;
 
@@ -2086,14 +2086,14 @@ solutions.fix45 = function (nums) {
 }
 
 solutions.canBalance = function (nums) {
-    var first = 0;
-    var second = 0;
+    let first = 0;
+    let second = 0;
 
-   for (var i = 0; i < nums.length; i++){
+   for (let i = 0; i < nums.length; i++){
        second += nums[i]; //adding all nums together
    }
 
-   for (var i = 0; i <= nums.length - 2; i++){
+   for (let i = 0; i <= nums.length - 2; i++){
        first += nums[i];
        second -= nums[i];
 
@@ -2107,10 +2107,10 @@ solutions.canBalance = function (nums) {
 
 solutions.linearIn = function (outer, inner) {
   //index for inner array, also acts as a 'count' variable
- var j = 0;
+ let j = 0;
 
     //looping through the outer array once. looking for matches.
-    for (var i = 0; i < outer.length; i++){
+    for (let i = 0; i < outer.length; i++){
        if (inner[j] == outer[i]){
          j++;
      }
@@ -2122,16 +2122,16 @@ solutions.linearIn = function (outer, inner) {
 
 solutions.squareUp = function (n) {
 
-  var subArray = [];
-  var j = n;
+  let subArray = [];
+  let j = n;
   while (j > 0){
     subArray.push(0);
     j--;
   }
 
-  var output = [];
+  let output = [];
 
-  for (var i = n-1; i >= 0; i--){
+  for (let i = n-1; i >= 0; i--){
     subArray.splice(i, 1, n-i);
     output = output.concat(subArray);
   }
@@ -2139,11 +2139,11 @@ solutions.squareUp = function (n) {
 }
 
 solutions.seriesUp = function (n) {
-  var modArr = [];
+  let modArr = [];
 
-  for (var i = 0; i < n; i++){
-    var j = i;
-    var x = 1;
+  for (let i = 0; i < n; i++){
+    let j = i;
+    let x = 1;
     while (j >= 0){
       modArr.push(x);
       x += 1;
@@ -2159,22 +2159,22 @@ solutions.maxMirror = function (nums) {
 function matchesForN(nums, n) {
 // initially lets solve for n=3, then we can generalise to any n
 // step1 get the candidates, which is [1,2,3] and [2,3,4] etc
-var candidates = [];
+let candidates = [];
 
-for (var i=0; i < nums.length - (n-1); i++){
-  var candidate = nums.slice(i, i+n);
+for (let i=0; i < nums.length - (n-1); i++){
+  let candidate = nums.slice(i, i+n);
   candidates.push(candidate);
 }
 
   //step2. reverse nums. Since reverse() alters the array, prevent that by saving
   // reversed array in a variable.
-  var rev_nums = nums.slice().reverse();
+  let rev_nums = nums.slice().reverse();
 
-  var comparisons = [];
+  let comparisons = [];
 
   //step3. make the copmarison arrays. like in candidates but reversed.
-  for (var i = 0; i < rev_nums.length - (n-1); i++){
-    var comparison = rev_nums.slice(i, i+n);
+  for (let i = 0; i < rev_nums.length - (n-1); i++){
+    let comparison = rev_nums.slice(i, i+n);
     comparisons.push(comparison);
   }
 
@@ -2195,7 +2195,7 @@ for (var i=0; i < nums.length - (n-1); i++){
 
 //function we call to check if the sub-arrays are equal
 function isEqual (array1,array) {
-    for (var i = 0, l=array1.length; i < l; i++) {
+    for (let i = 0, l=array1.length; i < l; i++) {
         // Check if we have nested arrays
         if (array1[i] instanceof Array && array[i] instanceof Array) {
             // recurse into the nested arrays
@@ -2210,7 +2210,7 @@ function isEqual (array1,array) {
     return true;
 }
 
-  for (var n = nums.length; n >= 0; n--){
+  for (let n = nums.length; n >= 0; n--){
     let matches = matchesForN(nums, n);
     if (matches.length){
       return n;
@@ -2219,10 +2219,10 @@ function isEqual (array1,array) {
 }
 
 solutions.countClumps = function (nums){
-  var yardStick = -1;
-  var clumps = 0;
+  let yardStick = -1;
+  let clumps = 0;
 
-  for (var i = 0; i < nums.length; i++){
+  for (let i = 0; i < nums.length; i++){
     if (nums[i] == nums[i+1] && nums[i] != yardStick){
       clumps += 1;
       yardStick = nums[i];
