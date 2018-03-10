@@ -448,18 +448,17 @@ solutions.copyEvens = function (nums, count) {
 }
 
 solutions.copyEndy = function (nums, count) {
-    let endies = [];
-    let count= count;
-
-  for (let i = 0; i < nums.length; i++){
-    if ((nums[i] >= 0 && nums[i] <= 10) || (nums[i] >= 90 && nums[i] <= 100)){
-        endies.push(nums[i]);
-        count-= 1;
+  let newArray = [];
+  for (let i=0; i<nums.length; i++) {
+    let n = nums[i];
+	if (n >= 0 && n <= 10 || n >= 90 && n <= 100) {
+      newArray.push(n);
     }
-
-    if (count < 1) break;
+    if (newArray.length === count) {
+      break;
+    }
   }
-  return endies;
+  return newArray;
 }
 
 solutions.matchUp = function (a, b) {
