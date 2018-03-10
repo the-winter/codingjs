@@ -52,8 +52,14 @@ function inputParser(inputStr) {
 
 function defaultInput(exName){
   let sol = solutions[exName].toString();
-  let x = sol.match(/function ?(\(.+\))/)[1];
-  let y = x.slice(1,-1);
-  let z = y.split(",");
-  return z.map((item, i) => item);
+  try {
+    let x = sol.match(/function ?(\(.+\))/)[1];
+    let y = x.slice(1,-1);
+    let z = y.split(",");
+    return z.map((item, i) => item);
+  }
+  catch(e) {
+    // should only fail if there's no arguments
+    return "";
+  }
 }

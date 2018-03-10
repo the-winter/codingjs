@@ -72,12 +72,17 @@ $(document).ready(() => {
 
   // example/sample runs
   for (let i = 0; i <= 2; i++) {
-    let input = inputParser(exercise.inputs[i]);
-    window[exerciseName] = solutions[exerciseName];
-    let result = window[exerciseName](...input);
-    // TODO make this a class instead of an element
-    $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
-    window[exerciseName] = undefined;
+    try {
+      let input = inputParser(exercise.inputs[i]);
+      window[exerciseName] = solutions[exerciseName];
+      let result = window[exerciseName](...input);
+      // TODO make this a class instead of an element
+      $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
+      window[exerciseName] = undefined;
+    }
+    catch(e){
+      break;
+    }
   }
 
 
