@@ -85,6 +85,10 @@ $(document).ready(() => {
     }
   }
 
+  // js syntax help
+  $('.ajax-popup-link').magnificPopup({
+    type: 'ajax'
+  });
 
   $('#solve').on('click', () => {
     $('tr').remove();

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JS Reference</title>
+  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script> -->
+  <style media="screen">
+    section {
+      font-size: 0.75em;
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+      position: relative;
+      color: #FFF;
+      padding: 20px;
+      /* width: auto; */
+      /* max-width: 500px; */
+      margin: 20px auto;
+    }
+
+    div {
+      -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    pre {
+      padding: 1em;
+      font-size: 0.8em;
+      background-color: #EEEEEE;
+      color: #000;
+    }
+
+
+
+    table.minimalistBlack {
+      border: 3px solid #FFFFFF;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+    }
+    table.minimalistBlack td, table.minimalistBlack th {
+      border: 1px solid #FFFFFF;
+      padding: 5px 4px;
+      color: #000;
+    }
+    table.minimalistBlack thead {
+      background: #CFCFCF;
+      background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+      border-bottom: 3px solid #FFFFFF;
+    }
+    table.minimalistBlack thead th {
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+    }
+
+  </style>
+</head>
+
+<body>
+  <section id="mainContent">
+
+    <div>
+      <h2>Functions</h2>
+      <p>For these exercises, always <code>return</code> the answer!</p>
+      <pre><code>function adder(first, second) {
+  theAnswer = first + second;
+  return theAnswer;
+}</code></pre>
+    </div>
+
+    <div>
+      <h2>Relational Operators</h2>
+
+      <table class="minimalistBlack">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>===</code></td>
+            <td>exactly equals</td>
+          </tr>
+          <tr>
+            <td><code>!==</code></td>
+            <td>does not equal</td>
+          </tr>
+          <tr>
+            <td><code>=</code></td>
+            <td>assignment</td>
+          </tr>
+          <tr>
+            <td><code>+=</code></td>
+            <td>add or concatenate</td>
+          </tr>
+          <tr>
+            <td><code>-=</code></td>
+            <td>subtract</td>
+          </tr>
+          <tr>
+            <td><code>></code></td>
+            <td>greater than</td>
+          </tr>
+          <tr>
+            <td><code>>=</code></td>
+            <td>greater than or equal</td>
+          </tr>
+          <tr>
+            <td><code><</code></td>
+            <td>less than</td>
+          </tr>
+          <tr>
+            <td><code><=</code></td>
+            <td>less than or equal</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div>
+      <h2>Logical Operators</h3>
+
+      <table class="minimalistBlack">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>!</code></td>
+            <td>not</td>
+          </tr>
+          <tr>
+            <td><code>&&</code></td>
+            <td>and</td>
+          </tr>
+          <tr>
+            <td><code>||</code></td>
+            <td>or</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>If / Else If / Else</h2>
+      <pre><code>let someNumber = prompt("Pick a number");
+
+if (someNumber < 42) {
+  // something
+}
+else if (someNumber === 42) {
+  // another thing
+}
+else {
+  // some default action
+}</code></pre>
+
+    </div>
+
+    <div>
+      <h2>While Loop</h2>
+      <pre><code>let number = 0;
+while (number < 5) {
+  console.log(number);
+  number = number + 1;
+}
+
+// 0
+// 1
+// 2
+// 3
+// 4</code></pre>
+    </div>
+
+    <div>
+      <h2>For Loop</h2>
+      <pre><code>for (let number = 5; number > 0; number -= 1) {
+  console.log(number);
+}
+console.log("Blastoff!");
+
+// 5
+// 4
+// 3
+// 2
+// 1
+// Blastoff!</code></pre>
+    </div>
+
+    <div>
+      <h2>Arrays</h2>
+      <pre><code>let nums = [42, 13, 78];
+nums[0];  // 42
+nums[2];  // 78
+nums.length;  // 3
+
+nums.push(99);
+// now nums = [42, 13, 78, 99]
+
+let first = nums.shift();
+// now first = 42 and nums = [13, 78, 99]</code></pre>
+    </div>
+
+
+  </section>
+</body>
+
+</html>
