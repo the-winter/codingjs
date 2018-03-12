@@ -106,9 +106,11 @@ $(document).ready(() => {
 
       let results = [];
       inputs.forEach((inputStr) => {
-        let input = inputParser(inputStr);
+        const input = inputParser(inputStr);
         let result;
         let idealResult;
+
+        window[exerciseName] = solutions[exerciseName];
 
         // if the input is an array, make a copy to avoid user changing the passed array...
         if (Array.isArray(input) === true) {
@@ -122,8 +124,8 @@ $(document).ready(() => {
           result = ans(...input);
         }
 
-        window[exerciseName] = solutions[exerciseName];
         window[exerciseName] = undefined;
+
         $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
 
         let isCorrect = _.isEqual(result, idealResult)
