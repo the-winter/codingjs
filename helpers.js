@@ -102,7 +102,7 @@ function loadAllSolutionsFromFile() {
     let file = fileInput.files[0];
     let reader = new FileReader();
     reader.onload = function(e) {
-      localStorage.clear();
+      // localStorage.clear();
       let parsedFile = JSON.parse(reader.result);
       writeLocalStorage(parsedFile);
       location.reload();
