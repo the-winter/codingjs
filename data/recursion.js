@@ -68,7 +68,7 @@ exercises.push(
 ] },
   { question: 'Given a non-negative int n, return the sum of its digits recursively (no loops). Note that mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit (126 / 10 is 12).',
     title: 'Recursion-1',
-    name: 'simDigits1',
+    name: 'sumDigits1',
     inputs: [
   "(126)",
   "(49)",
@@ -523,11 +523,11 @@ solutions.triangle = function (rows) {
   return rows + triangle(rows-1)
 }
 
-solutions.simDigits1 = function (n) {
+solutions.sumDigits1 = function (n) {
     if(n <= 0){
        return 0;
     }
-    return n % 10 + simDigits1(Math.floor(n/10));
+    return n % 10 + sumDigits1(Math.floor(n/10));
 }
 
 solutions.count7 = function (n) {
