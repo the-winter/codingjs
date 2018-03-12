@@ -12,7 +12,14 @@
     <p class="heading"><img src="favicon-96x96.png" width="32px" alt="favicon" />&nbsp;<b>CodingJS</b></p>
     <p class="subheading">Solve programming problems in Javascript!<br/>
        <i>This site will only store your progress within your current web browser.<br>
-          To keep your solutions permanently, be sure to save your solution as a file.</i></p>
+          To keep your solutions permanently, be sure to save your solution as a file.</i>
+    </p>
+
+    <div id="topButtonContainer">
+      <button class="btn-top" id="saveAll">Save All Solutions</button>
+      <button class="btn-top" id="loadAll">Load Progress</button>
+      <input type="file" id="fileInput" style="display:none;">
+    </div>
 
     <div class="exerciseIndex">
 
@@ -28,6 +35,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
   <script src="data/intro.js"></script>
   <script src="data/warmup.js"></script>
   <script src="data/string.js"></script>

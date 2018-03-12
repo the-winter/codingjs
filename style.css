@@ -73,6 +73,22 @@ div.probField {
     height: 50px;
 }
 
+#topButtonContainer{
+  position: absolute;
+  float: right;
+  top: 10px;
+  right: 10px;
+}
+
+.btn-top {
+  font-size: 20px;
+    width: 200px;
+    height: 50px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 20px;
+}
+
 #show {
   width: auto;
   float:right;

@@ -19,7 +19,13 @@ $(document).ready(() => {
     });
   }
 
+  $('#saveAll').on('click', () => {
+    saveAllSolutionsToFile();
+  })
 
+  $('#loadAll').on('click', () => {
+    loadAllSolutionsFromFile();
+  })
 
 
 })

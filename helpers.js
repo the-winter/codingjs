@@ -63,3 +63,60 @@ function defaultInput(exName){
     return "";
   }
 }
+
+
+function saveCodeFile() {
+  event.preventDefault(); // is this needed?
+  let blob = new Blob([editor.getValue()], {
+    type: "text/javascript;charset=utf-8"
+  });
+  saveAs(blob, exerciseName + ".js", true);
+}
+
+function loadCodeFile() {
+  // remove_fileInput_listener();
+  let fileInput = document.getElementById('fileInput');
+  fileInput.addEventListener('change', function(e) {
+    let file = fileInput.files[0];
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      editor.setValue(reader.result);
+      fileInput.value = '';
+    };
+    reader.readAsText(file);
+  });
+  $("#fileInput").click(); // activate the hidden file input
+}
+
+function saveAllSolutionsToFile() {
+  let allSolutions = getLocalStorage();
+  let blob = new Blob([allSolutions], {
+    type: "text/javascript;charset=utf-8"
+  });
+  saveAs(blob, "combinedSolutions.js", true);
+}
+
+function loadAllSolutionsFromFile() {
+  let fileInput = document.getElementById('fileInput');
+  fileInput.addEventListener('change', function(e) {
+    let file = fileInput.files[0];
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      localStorage.clear();
+      let parsedFile = JSON.parse(reader.result);
+      writeLocalStorage(parsedFile);
+      location.reload();
+      fileInput.value = '';
+    };
+    reader.readAsText(file);
+  });
+  $("#fileInput").click(); // activate the hidden file input
+}
+
+function getLocalStorage() {
+    return JSON.stringify(localStorage);
+}
+
+function writeLocalStorage(data) {
+    Object.keys(data).forEach(function(key) { localStorage.setItem(key, data[key])});
+}

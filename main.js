@@ -4,30 +4,6 @@ const exerciseName = urlParams.name || exercises[0].name;
 /** here we match the exerciseName (from querystring) to the problem in exercise obj**/
 const exercise = exercises.filter(exercise => exercise.name == exerciseName)[0];
 
-// console.log(urlParams, exerciseName);
-
-function saveCodeFile() {
-  event.preventDefault(); // is this needed?
-  let blob = new Blob([editor.getValue()], {
-    type: "text/javascript;charset=utf-8"
-  });
-  saveAs(blob, exerciseName + ".js", true);
-}
-
-function loadCodeFile() {
-  // remove_fileInput_listener();
-  let fileInput = document.getElementById('fileInput');
-  fileInput.addEventListener('change', function(e) {
-    let file = fileInput.files[0];
-    let reader = new FileReader();
-    reader.onload = function(e) {
-      editor.setValue(reader.result);
-      fileInput.value = '';
-    };
-    reader.readAsText(file);
-  });
-  $("#fileInput").click(); // activate the hidden file input
-}
 
 //allow user to save/open code with keyboard shortcuts
 document.addEventListener("keydown", function(e) {
