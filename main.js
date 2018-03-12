@@ -43,6 +43,14 @@ document.addEventListener("keydown", function(e) {
     e.preventDefault();
     $("#solve").click(); //run code on ctrl-enter
   }
+  // if (e.keyCode == 74 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+  //   e.preventDefault();
+  //   $("#jsref-link").click(); //help screen on ctrl-j
+  // }
+  if (e.keyCode == 191 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+    e.preventDefault();
+    editor.toggleComment();
+  }
 });
 
 

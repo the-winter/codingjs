@@ -13,7 +13,7 @@
       <p class="heading"><a class="heading" href="."><img src="favicon-96x96.png" width="32px" alt="favicon" />&nbsp;<b>CodingJS</a></b></p>
       <p class="subheading">Solve programming problems in Javascript!</p>
 
-      <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a>&nbsp;~&nbsp;<a href="jsref.html" class="links ajax-popup-link">JS Syntax Help</a><br>
+      <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a>&nbsp;~&nbsp;<a href="jsref.html" class="links ajax-popup-link" id="jsref-link">JS Syntax Help</a><br>
       <h3><p id="title"> </p> <b>--</b> <p id="name"> </p></h3>
       <div class="probField">
         <p id="problem"></p>
@@ -61,6 +61,10 @@
 
 </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/addon/comment/comment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/addon/edit/matchbrackets.min.js"></script>
+
+
   <script src="codemirror-jsmode.js"></script>
   <script type="text/javascript">
     var editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
