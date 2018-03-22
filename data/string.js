@@ -1167,7 +1167,7 @@ exercises.push({
 // String-1
 
 solutions.helloName = function (name) {
-  return `Hello ${name}`;
+  return `Hello ${name}!`;
 };
 
 solutions.makeAbba = function (a, b) {
