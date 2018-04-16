@@ -6,9 +6,13 @@ let titles = title? [title] : allTitles
 $(document).ready(() => {
 
   for (title of titles){
-    let div = $('<div class="problems"></div>').appendTo('.exerciseIndex  ')
-    div.append(`<h3 class="probTitle" id="${title}">${title}</h3>`)
+    let outerDiv = document.getElementById('exerciseIndex');
+    outerDiv.innerHTML += `<h3 class="probTitle" id="${title}">${title}</h3>`;
+    // var outerDiv = document.getElementById("exerciseIndex");
+    // var content = document.createTextNode(`<h3 class="probTitle" id="${title}">${title}</h3>`);
+    // outerDiv.appendChild(content);
 
+    let div = $('<div class="problems"></div>').appendTo('#exerciseIndex');
     let x = exercises.filter((ex) => ex.title == title);
 
     x.forEach((ex) => {
