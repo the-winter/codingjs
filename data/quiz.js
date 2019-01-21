@@ -14,7 +14,23 @@ exercises.push(
   "(50)",
   "(2)",
   "(3)"
-] }
+] },
+  { 
+    title: 'QuizQuestions',
+    name: 'makes8',
+    question: 'Given 2 ints, a and b, return true if one if them is 8 or if their sum is 8.',
+    inputs: [
+      '(5, 8)',
+      '(3, 8)',
+      '(3, 4)',
+      '(4, 4)',
+      '(5, 2)',
+      '(5, 3)',
+      '(8, 7)',
+      '(8, 8)',
+      '(-16, 24)',
+      '(9, 1)',
+    ], }
 )
 
 /** --- solutions --- **/
@@ -30,3 +46,8 @@ solutions.sumDownBy2 =  function (n) {
      return n + sumDownBy2(n-2);
    }
 }
+
+
+solutions.makes8 = function (a, b) {
+  return ((a == 8 || b == 8) || (a + b == 8));
+};
