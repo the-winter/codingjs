@@ -69,7 +69,7 @@ solutions.makes8 = function (a, b) {
   return ((a == 8 || b == 8) || (a + b == 8));
 };
 
-solutions.countEvens = function (nums) {
+solutions.countOdds = function (nums) {
   let count = 0;
 
     for (let i = 0; i < nums.length; i++){
