@@ -48,6 +48,19 @@ exercises.push(
       question: `Return the number of odd integers in the given array. Note: the % "mod"
       operator computes the remainder, e.g. 5 % 2 is 1.`
     },
+    { question: 'The fibonacci sequence is a famous bit of mathematics, and it happens to have a recursive definition. The first two values in the sequence are 0 and 1 (essentially 2 base cases). Each subsequent value is the sum of the previous two values, so the whole sequence is: 0, 1, 1, 2, 3, 5, 8, 13, 21 and so on. Define a recursive fibonacci(n) method that returns the nth fibonacci number, with n=0 representing the start of the sequence.',
+      title: 'QuizQuestions',
+      name: 'fibonacciquiz',
+      inputs: [
+      "(0)",
+      "(1)",
+      "(2)",
+      "(3)",
+      "(4)",
+      "(5)",
+      "(6)",
+      "(7)"
+   ] },
 )
 
 /** --- solutions --- **/
@@ -78,4 +91,11 @@ solutions.countOdds = function (nums) {
         }
     }
     return count;
+}
+
+solutions.fibonacciquiz = function (n) {
+  if (n < 2) {
+      return n;;
+  };
+    return fibonacci(n-1) + fibonacci(n-2)
 }
