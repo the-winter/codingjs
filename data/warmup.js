@@ -136,8 +136,7 @@ exercises.push(
     title: 'Warmup-1',
     name: 'notString',
     question: `Given a string, return a new string where "not " has been added to the front. However,
-    if the string already begins with "not", return the string unchanged. Note: use .equals() to
-    compare 2 strings.`,
+    if the string already begins with "not", return the string unchanged.`,
     inputs: [
       "('candy')",
       "('x')",
