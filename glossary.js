@@ -16,7 +16,7 @@ $(document).ready(() => {
     let x = exercises.filter((ex) => ex.title == title);
 
     x.forEach((ex) => {
-      div.append(`<span class="exercise-link" id="${ex.name}"><a href='exercise?name=${ex.name}&title=${ex.title}'>${ex.name}</a>&nbsp;</span><br />`)
+      div.append(`<span class="exercise-link" id="${ex.name}"><a href='exercise.html?name=${ex.name}&title=${ex.title}'>${ex.name}</a>&nbsp;</span><br />`)
      if (localStorage[ex.name] == "true"){
         $(`#${ex.name}`).append('<span class="tick"><b>✓</b></span>');
       }
