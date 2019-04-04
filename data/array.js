@@ -436,6 +436,23 @@ exercises.push(
   },
   {
     title: 'Array-2',
+    name: 'findLowestIndex',
+    inputs: [
+      "([99, 98, 97, 96, 95])",
+      "([2, 2, 0])",
+      "([1, 3, 5])",
+      "([5])",
+      "([11, 9, 0, 1])",
+      "([2, 11, 9, 0])",
+      "([2])",
+      "([2, 5, -12])",
+    ],
+    
+    question: `Return the index of the minimum value in an array. The input array will have at
+     least one element in it.`
+  },
+  {
+    title: 'Array-2',
     name: 'countEvens',
     inputs: [
       "([2, 1, 2, 3, 4])",
@@ -447,6 +464,7 @@ exercises.push(
       "([2])",
       "([2, 5, 12])",
     ],
+    
     question: `Return the number of even ints in the given array. Note: the % "mod"
     operator computes the remainder, e.g. 5 % 2 is 1.`
   },
@@ -626,6 +644,23 @@ exercises.push(
     ],
     question: `Given an array of ints, return true if the number of 1's is greater
     than the number of 4's`
+  },
+  {
+    title: 'Array-2',
+    name: 'prependSum',
+    inputs: [
+      "([1, 2, 4, 4])",
+      "([3, 3, 0])",
+      "([1, 1, 1, 1, 1])",
+      "([5, 7])",
+      "([0, 0, 0, 0])",
+      "([12, 13, 19, 20])",
+      "([-2, 2, -2, 2])",
+      "([5, 4, 3, 2, 1, 0])",
+    ],
+    
+    question: `Return a modified version of the input array (nums), where the first two items have been removed
+    and one item – the sum of those two items - is added to the start of the array.`
   },
   {
     title: 'Array-2',
@@ -845,6 +880,25 @@ exercises.push(
     ],
     question: `Given an array of ints, return true if the array contains either
     3 even or 3 odd values all next to each other.`
+  },
+  {
+    title: 'Array-2',
+    name: 'findTheMedian',
+    inputs: [
+      "([4,9,9,2,1,5])",
+      "([1, 5, 3, 1 , 5])",
+      "([10, 12, 15])",
+      "([5])",
+      "([11, 9, 0, 1])",
+      "([-1, 11, -2, 10, -3, 15])",
+      "([2, 10, 15, 13])",
+      "([2, 5, -12])",
+    ],
+    
+    question: `Write a method that returns the median value of an array. The input array will never be empty.
+    \nIf the array is odd in length, the median is the value in the centre of the array.\
+    \nIf the array is even, the median should be the average of the two middle values. \n 
+    Hint: You will need to ensure the input array is sorted - there is a sort() array method you can use for this step.`
   },
   {
     title: 'Array-2',
@@ -1304,7 +1358,8 @@ exercises.push(
   "([0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
   "([0, 0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
   "([])"
-] }
+] },
+
 );
 
 /** --- Solutions --- **/
@@ -1438,6 +1493,17 @@ solutions.fix23 = function (nums) {
   return nums;
 }
 
+solutions.findTheMedian = function (nums) {
+  if (nums.length % 2 === 1){
+    return nums[(nums.length-1)/2];
+  }
+  else{
+    return (nums[nums.length/2-1] + nums[nums.length/2])/2;
+  }
+}
+
+
+
 solutions.start1 = function (a, b) {
   let count = 0;
    if (a[0] == 1) {
@@ -1478,18 +1544,35 @@ solutions.plusTwo = function (a, b) {
 }
 
 solutions.swapEnds = function (nums) {
-    if (nums.length < 2) {
-  	  return nums;
-    }
+  if (nums.length < 2) {
+    return nums;
+  }
 
-  let toStart = nums.pop();
-  let toEnd = nums.shift()
+let toStart = nums.pop();
+let toEnd = nums.shift()
 
-	nums.unshift(toStart);
-	nums.push(toEnd);
+nums.unshift(toStart);
+nums.push(toEnd);
 
-	return nums;
+return nums;
 }
+
+solutions.findLowestIndex = function (nums) {
+  let minVal = nums[0];
+  let minValIndex = 0;
+  for (let i = 0; i < nums.length; i++){
+    let cur = nums[i];
+    if (cur < minVal){
+      minVal = cur;
+      minValIndex=i;
+    }
+  }
+  return minValIndex;
+
+}
+
+
+
 
 solutions.midThree = function (nums) {
      let x = Math.floor(nums.length/2); // since 5/2 is 2.5, floor gives 2
@@ -1677,6 +1760,13 @@ solutions.fizzArray = function (n) {
     }
     return newA;
 }
+
+solutions.prependSum = function (nums) {
+  nums.unshift(nums.shift() + nums.shift());
+  return nums;
+}
+
+
 
 solutions.only14 = function (nums) {
 
