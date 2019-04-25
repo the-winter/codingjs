@@ -38804,29 +38804,20 @@ module.exports = deParam;
 /** creates default input to start function **/
 solutions = require("../solutions.js");
 
-function defaultInput(exName){
-  let sol = solutions[exName].toString();
+module.exports = function defaultInput(exerciseName){
+  let solutionFullText = solutions[exerciseName].toString();
   try {
-    let x = sol.match(/function ?(\(.+\))/)[1];
-    let y = x.slice(1,-1);
-    let z = y.split(",");
-    return z.map((item, i) => item);
+    let openingBracketLocation = solutionFullText.indexOf("(");
+    let closingBracketLocation = solutionFullText.indexOf(")");
+    let args = solutionFullText.substring(openingBracketLocation+1, closingBracketLocation);
+    let argumentList = args.split(",");
+    return argumentList.map((item, i) => item);
   }
   catch(e) {
     // should only fail if there's no arguments
     return "";
   }
 }
-
-module.exports = defaultInput;
-
-// function defaultInput(inputStr) {
-//   z = inputParser(inputStr)
-//   let inps = z.map((item, i) => 'input'+(i+1));
-//   return inps;
-// }
-// exercise.inputs[0]  this is the input to function when called
-
 },{"../solutions.js":36}],39:[function(require,module,exports){
 let $ = require("jquery");
 let inputParser = require("./inputParser.js");
