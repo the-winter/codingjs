@@ -1,3 +1,9 @@
+html { 
+  /* allows whole page to load before displaying content... 
+  programatically switch this to visible via JS when page is ready */
+  visibility:hidden; 
+}
+
 body {
   font-size: 20px;
   background-color: #f9f9f9;

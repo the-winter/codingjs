@@ -1,4 +1,4 @@
-exercises.push(
+module.exports = [
   { question: 'Given an integer, n, return the sum of the positive integers n + (n-2) + (n-4) + ...    Note: Your solution must be recursive. In other words, there can be no for or while loops in your solution.',
     title: 'QuizQuestions',
     name: 'sumDownBy2',
@@ -61,41 +61,4 @@ exercises.push(
       "(6)",
       "(7)"
    ] },
-)
-
-/** --- solutions --- **/
-
-solutions.sumDownBy2 =  function (n) {
-   if (n <= 0) {
-       return 0;
-   }
-   else if (n === 1) {
-     return 1;
-   }
-   else {
-     return n + sumDownBy2(n-2);
-   }
-}
-
-
-solutions.makes8 = function (a, b) {
-  return ((a == 8 || b == 8) || (a + b == 8));
-};
-
-solutions.countOdds = function (nums) {
-  let count = 0;
-
-    for (let i = 0; i < nums.length; i++){
-        if (nums[i]%2 === 1){
-            count += 1;
-        }
-    }
-    return count;
-}
-
-solutions.fib = function (n) {
-  if (n < 2) {
-      return n;;
-  };
-    return fib(n-1) + fib(n-2)
-}
+];
