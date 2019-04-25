@@ -8,7 +8,7 @@ module.exports = function(exercise, exerciseName) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
             let result = solutions[exerciseName](...input);
-            $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
+            $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
         }
         catch(e){
             break;

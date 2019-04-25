@@ -38504,10 +38504,10 @@ $('#solve').on('click', () => {
   let exerciseCode = exerciseName + "-code";
   localStorage.setItem(exerciseCode, answer);
 
-  let ans;
+  let userCode;
   try {
     $(".errorMessage").text("");
-    eval(`ans=${answer}`);
+    eval(`userCode=${answer}`);
     const inputs = exercise.inputs;
 
     let results = [];
@@ -38520,7 +38520,7 @@ $('#solve').on('click', () => {
       let inputCopy = inputParser(exercise, inputStr);
 
       idealResult = solutions[exerciseName](...input);
-      result = ans(...inputCopy);
+      result = userCode(...inputCopy);
 
       $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
 
@@ -38838,7 +38838,7 @@ module.exports = function(exercise, exerciseName) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
             let result = solutions[exerciseName](...input);
-            $('.examples').append(`${exerciseName}${exercise.inputs[i]} → ${result}<br>`);
+            $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
         }
         catch(e){
             break;
