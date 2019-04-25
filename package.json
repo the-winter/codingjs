@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify ./src/main.js > ./dist/bundle.js",
-    "watch": "watchify ./src/main.js -o ./dist/bundle.js -v",
-    "build-min": "browserify -g uglifyify --mangle-props reserved='solutions' ./src/main.js > ./dist/bundle-min.js"
+    "watch": "watchify ./src/main.js -o ./dist/bundle.js -v"
   },
   "author": "Dan Schellenberg",
   "license": "ISC",
