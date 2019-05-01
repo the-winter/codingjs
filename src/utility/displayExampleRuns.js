@@ -7,7 +7,14 @@ module.exports = function(exercise, exerciseName) {
     for (let i = 0; i <= 2; i++) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
-            let result = solutions[exerciseName](...input);
+            let result;
+            if (exercise.inputType === "map") {
+                result = solutions[exerciseName](input);
+            }
+            else {
+                result = solutions[exerciseName](...input);
+            }
+            // console.log(result)
             $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
         }
         catch(e){

@@ -29958,7 +29958,7 @@ let quizExercises = require("./data/quiz.js");
 let exercises = [...displayedExercises, ...quizExercises];
 
 module.exports = exercises;
-},{"./data/quiz.js":17,"./exercisesToShowOnIndex.js":26}],10:[function(require,module,exports){
+},{"./data/quiz.js":18,"./exercisesToShowOnIndex.js":27}],10:[function(require,module,exports){
 module.exports = [
   { question: 'Given an array of scores, return true if each score is equal or greater than the one before. The array will be length 2 or more.',
     title: 'AP-1',
@@ -34238,6 +34238,22 @@ solutions.cigarParty = function (cigars, isWeekend) {
 
 module.exports = solutions;
 },{}],16:[function(require,module,exports){
+module.exports = [
+  { question: 'Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that value, and set the key "a" to have the value "". Basically "b" is a bully, taking the value and replacing it with the empty string.',
+    title: 'Map-1',
+    name: 'mapBully',
+    inputType: "map",
+  inputs: [
+  '([["a", "candy"], ["b", "dirt"]])',
+  '([["a", "candy"]])',
+  '([["a", "candy"], ["b", "carrot"], ["c", "meh"]])',
+  '([["b", "carrot"]])',
+  '([["c", "meh"]])',
+  '([["a", "sparkle"], ["c", "meh"]])'
+] },
+];
+
+},{}],17:[function(require,module,exports){
 /** --- solutions --- **/
 
 let solutions = {};
@@ -34251,7 +34267,7 @@ solutions.mapBully = function (someMap) {
 }
 
  module.exports = solutions;
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = [
   { question: 'Given an integer, n, return the sum of the positive integers n + (n-2) + (n-4) + ...    Note: Your solution must be recursive. In other words, there can be no for or while loops in your solution.',
     title: 'QuizQuestions',
@@ -34317,7 +34333,7 @@ module.exports = [
    ] },
 ];
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /** --- solutions --- **/
 
 let solutions = {};
@@ -34358,7 +34374,7 @@ solutions.countOdds = function (nums) {
  }
 
  module.exports = solutions;
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = [
   { question: 'Given n of 1 or more, return the factorial of n, which is n * (n-1) * (n-2) ... 1. Compute the result recursively (without loops).',
     title: 'Recursion-1',
@@ -34838,7 +34854,7 @@ module.exports = [
 ] }
 ];
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /** --- solutions --- **/
 
 let solutions = {};
@@ -35194,7 +35210,7 @@ solutions.factorial =  function (n) {
  }
 
  module.exports = solutions;
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = [{
     title: 'String-1',
     name: 'helloName',
@@ -36359,7 +36375,7 @@ module.exports = [{
   "('AAAis is')"
 ] }
 ];
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /** --- Solutions --- **/
 // String-1
 
@@ -37200,7 +37216,7 @@ solutions.notReplace = function (str) {
 }
 
 module.exports = solutions;
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = [
   {
     title: 'Warmup-1',
@@ -37990,7 +38006,7 @@ module.exports = [
                 from the correct value.`,
   }
 ];
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /**---Solutions--- **/
 // Warmup-1
 
@@ -38436,7 +38452,7 @@ solutions.array667 = function (nums) {
 };
   
 module.exports = solutions;
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 let $ = require("jquery");
 let _ = require("lodash");
 let CodeMirror = require("codemirror-minified");
@@ -38519,10 +38535,35 @@ $('#solve').on('click', () => {
       // if the input is an array/object, make a copy to avoid user changing the passed version...
       let inputCopy = inputParser(exercise, inputStr);
 
-      idealResult = solutions[exerciseName](...input);
-      result = userCode(...inputCopy);
+      if (exercise.inputType === "map") {
+        let formattedInput = "(";
+        for (let item of input) {
+          formattedInput = formattedInput + "{" + item[0] + ":" + item[1] + "}";
+        }
+        formattedInput = formattedInput + ")";
 
-      $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+        idealResult = solutions[exerciseName](input);
+        result = userCode(inputCopy);
+
+        let formattedMapIdealResult = "";
+        for (let item of idealResult) {
+          formattedMapIdealResult = formattedMapIdealResult + "{" + item[0] + ":" + item[1] + "}";
+        }
+
+        let formattedMapUserResult = "";
+        for (let item of result) {
+          formattedMapUserResult = formattedMapUserResult + "{" + item[0] + ":" + item[1] + "}";
+        }
+
+        
+
+        $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult));
+      }
+      else {
+        idealResult = solutions[exerciseName](...input);
+        result = userCode(...inputCopy);
+        $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+      }
 
       let isCorrect = _.isEqual(result, idealResult);
       results.push(isCorrect);
@@ -38542,7 +38583,7 @@ $('#solve').on('click', () => {
 function isTrue(someValue) {
   return someValue === true;
 }
-},{"../node_modules/codemirror-minified/addon/comment/comment.js":1,"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":2,"../node_modules/codemirror-minified/mode/javascript/javascript.js":4,"./allExercisesIncludingHidden.js":9,"./listeners/exerciseListeners":32,"./listeners/keyboardShortcuts":34,"./solutions.js":36,"./utility/deParam.js":37,"./utility/displayExampleRuns.js":39,"./utility/formatResults.js":40,"./utility/inputParser.js":41,"./utility/setInitialEditorContents.js":42,"./utility/tableHeader.js":43,"codemirror-minified":3,"jquery":6,"lodash":7}],26:[function(require,module,exports){
+},{"../node_modules/codemirror-minified/addon/comment/comment.js":1,"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":2,"../node_modules/codemirror-minified/mode/javascript/javascript.js":4,"./allExercisesIncludingHidden.js":9,"./listeners/exerciseListeners":33,"./listeners/keyboardShortcuts":35,"./solutions.js":37,"./utility/deParam.js":38,"./utility/displayExampleRuns.js":40,"./utility/formatResults.js":41,"./utility/inputParser.js":42,"./utility/setInitialEditorContents.js":43,"./utility/tableHeader.js":44,"codemirror-minified":3,"jquery":6,"lodash":7}],27:[function(require,module,exports){
 
 let warmupExercises = require("./data/warmup.js");
 let stringExercises = require("./data/string.js");
@@ -38550,14 +38591,15 @@ let recursionExercises = require("./data/recursion.js");
 let logicExercises =require("./data/logic.js");
 let arrayExcercies = require("./data/array.js");
 let apExcercises = require("./data/ap.js");
-// let mapExercises = require("./data/map.js");
+let mapExercises = require("./data/map.js");
 
 let mainPageExercises = [...warmupExercises, ...stringExercises,
                          ...logicExercises, ...arrayExcercies,
-                         ...recursionExercises, ...apExcercises];
+                         ...recursionExercises, ...apExcercises,
+                        ...mapExercises];
 
 module.exports = mainPageExercises;
-},{"./data/ap.js":10,"./data/array.js":12,"./data/logic.js":14,"./data/recursion.js":19,"./data/string.js":21,"./data/warmup.js":23}],27:[function(require,module,exports){
+},{"./data/ap.js":10,"./data/array.js":12,"./data/logic.js":14,"./data/map.js":16,"./data/recursion.js":20,"./data/string.js":22,"./data/warmup.js":24}],28:[function(require,module,exports){
 let deParam = require("./utility/deParam.js");
 let _ = require("lodash");
 let $ = require("jquery");
@@ -38585,7 +38627,7 @@ for (title of titles){
 }
 
 
-},{"./exercisesToShowOnIndex.js":26,"./listeners/indexSaveLoadAll.js":33,"./utility/deParam.js":37,"jquery":6,"lodash":7}],28:[function(require,module,exports){
+},{"./exercisesToShowOnIndex.js":27,"./listeners/indexSaveLoadAll.js":34,"./utility/deParam.js":38,"jquery":6,"lodash":7}],29:[function(require,module,exports){
 let $ = require("jquery");
 
 function loadAllSolutionsFromFile() {
@@ -38610,7 +38652,7 @@ function writeLocalStorage(data) {
 }
 
 module.exports = loadAllSolutionsFromFile;
-},{"jquery":6}],29:[function(require,module,exports){
+},{"jquery":6}],30:[function(require,module,exports){
 let $ = require("jquery");
 
 module.exports = function loadCodeFile(editor) {
@@ -38627,7 +38669,7 @@ module.exports = function loadCodeFile(editor) {
   });
   $("#fileInput").click(); // activate the hidden file input
 }
-},{"jquery":6}],30:[function(require,module,exports){
+},{"jquery":6}],31:[function(require,module,exports){
 let FileSaver = require('file-saver');
 
 function saveAllSolutionsToFile() {
@@ -38643,7 +38685,7 @@ function getLocalStorage() {
 }
 
 module.exports = saveAllSolutionsToFile;
-},{"file-saver":5}],31:[function(require,module,exports){
+},{"file-saver":5}],32:[function(require,module,exports){
 let FileSaver = require('file-saver');
 
 module.exports = function saveCodeFile(editor, exerciseName) {
@@ -38654,7 +38696,7 @@ module.exports = function saveCodeFile(editor, exerciseName) {
   FileSaver.saveAs(blob, exerciseName + ".js", true);
 }
 
-},{"file-saver":5}],32:[function(require,module,exports){
+},{"file-saver":5}],33:[function(require,module,exports){
 let $ = require("jquery");
 let _ = require("lodash");
 let magnificPopup = require("magnific-popup");
@@ -38700,7 +38742,7 @@ module.exports = function(editor, exerciseName) {
     //   $('#mySolution').text(n)
     // })
 };
-},{"../exercisesToShowOnIndex":26,"../io/loadCodeFile.js":29,"../io/saveCodeFile.js":31,"jquery":6,"lodash":7,"magnific-popup":8}],33:[function(require,module,exports){
+},{"../exercisesToShowOnIndex":27,"../io/loadCodeFile.js":30,"../io/saveCodeFile.js":32,"jquery":6,"lodash":7,"magnific-popup":8}],34:[function(require,module,exports){
 let $ = require("jquery");
 let saveAllSolutionsToFile = require("../io/saveAllSolutionsToFile.js");
 let loadAllSolutionsFromFile = require("../io/loadAllSolutionsFromFile.js");
@@ -38713,7 +38755,7 @@ $('#saveAll').on('click', () => {
 $('#loadAll').on('click', () => {
     loadAllSolutionsFromFile();
 })
-},{"../io/loadAllSolutionsFromFile.js":28,"../io/saveAllSolutionsToFile.js":30,"jquery":6}],34:[function(require,module,exports){
+},{"../io/loadAllSolutionsFromFile.js":29,"../io/saveAllSolutionsToFile.js":31,"jquery":6}],35:[function(require,module,exports){
 let $ = require("jquery");
 let saveCodeFile = require("../io/saveCodeFile.js");
 let loadCodeFile = require("../io/loadCodeFile.js");
@@ -38743,7 +38785,7 @@ module.exports = function (editor, exerciseName) {
       // }
     });
   };
-},{"../io/loadCodeFile.js":29,"../io/saveCodeFile.js":31,"jquery":6}],35:[function(require,module,exports){
+},{"../io/loadCodeFile.js":30,"../io/saveCodeFile.js":32,"jquery":6}],36:[function(require,module,exports){
 let $ = require("jquery");
 
 if (location.pathname === "/") {
@@ -38762,7 +38804,7 @@ else if (location.pathname === "/exercise.html") {
 $(document).ready(function() {
   document.getElementsByTagName("html")[0].style.visibility = "visible";
 });
-},{"./exercisePage.js":25,"./indexPage.js":27,"jquery":6}],36:[function(require,module,exports){
+},{"./exercisePage.js":26,"./indexPage.js":28,"jquery":6}],37:[function(require,module,exports){
 let warmupSolutions = require("./data/warmupSolutions.js");
 let stringSolutions = require("./data/stringSolutions.js");
 let recursionSolutions = require("./data/recursionSolutions.js");
@@ -38791,7 +38833,7 @@ let solutions = Object.assign({},
     );
 
 module.exports = solutions;
-},{"./data/apSolutions.js":11,"./data/arraySolutions.js":13,"./data/logicSolutions.js":15,"./data/mapSolutions.js":16,"./data/quizSolutions.js":18,"./data/recursionSolutions.js":20,"./data/stringSolutions.js":22,"./data/warmupSolutions.js":24}],37:[function(require,module,exports){
+},{"./data/apSolutions.js":11,"./data/arraySolutions.js":13,"./data/logicSolutions.js":15,"./data/mapSolutions.js":17,"./data/quizSolutions.js":19,"./data/recursionSolutions.js":21,"./data/stringSolutions.js":23,"./data/warmupSolutions.js":25}],38:[function(require,module,exports){
 /** takes url parameter and transforms into object **/
 function deParam(urlStr) {
   const subbie = urlStr.substring(1);
@@ -38800,7 +38842,7 @@ function deParam(urlStr) {
 }
 
 module.exports = deParam;
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 /** creates default input to start function **/
 solutions = require("../solutions.js");
 
@@ -38818,7 +38860,7 @@ module.exports = function defaultInput(exerciseName){
     return "";
   }
 }
-},{"../solutions.js":36}],39:[function(require,module,exports){
+},{"../solutions.js":37}],40:[function(require,module,exports){
 let $ = require("jquery");
 let inputParser = require("./inputParser.js");
 let solutions = require("../solutions.js");
@@ -38828,7 +38870,14 @@ module.exports = function(exercise, exerciseName) {
     for (let i = 0; i <= 2; i++) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
-            let result = solutions[exerciseName](...input);
+            let result;
+            if (exercise.inputType === "map") {
+                result = solutions[exerciseName](input);
+            }
+            else {
+                result = solutions[exerciseName](...input);
+            }
+            // console.log(result)
             $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
         }
         catch(e){
@@ -38836,7 +38885,7 @@ module.exports = function(exercise, exerciseName) {
         }
     }
 }
-},{"../solutions.js":36,"./inputParser.js":41,"jquery":6}],40:[function(require,module,exports){
+},{"../solutions.js":37,"./inputParser.js":42,"jquery":6}],41:[function(require,module,exports){
 let _ = require("lodash");
 
 /** Return row for html table **/
@@ -38851,7 +38900,7 @@ function formatResults(funcName, inputStr, idealOutput, output) {
 }
 
 module.exports = formatResults;
-},{"lodash":7}],41:[function(require,module,exports){
+},{"lodash":7}],42:[function(require,module,exports){
  /**
   * it converts nodingbat input (as stored) to js
   *     e.g. inputParser('(1,2)')=>[1,2]
@@ -38862,21 +38911,27 @@ module.exports = function inputParser(exercise, inputStr) {
   let functionInput;
 
   //TODO: figure out how to make passing map data types work...
-  // if (exercise.inputType === "map") {
-  //   let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-  //   eval("functionInput = new Map(" + tempArrayOfArgs + ")");
-  // }
-  // else {
+  if (exercise.inputType === "map") {
+    let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
+    // eval("functionInput = new Map()");
+    functionInput = new Map();
+    for (let item of tempArrayOfArgs) {
+      // eval("functionInput.set(" + item[0] + ", " + item[1] + ");");
+      functionInput.set(item[0], item[1]);
+    }
+    // console.log(functionInput);
+  }
+  else {
     try {
       let arrayOfArgs = '[' + argsWithoutParentheses + ']';
       eval("functionInput = " + arrayOfArgs);
     } catch (e) {
       functionInput = e.toString();
     }
-  // }
+  }
   return functionInput;
 }
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 let defaultInput = require("./defaultInput.js");
 
 module.exports = function (editor, exerciseName, exercise) {
@@ -38894,7 +38949,7 @@ module.exports = function (editor, exerciseName, exercise) {
         });
     }
 };
-},{"./defaultInput.js":38}],43:[function(require,module,exports){
+},{"./defaultInput.js":39}],44:[function(require,module,exports){
 function tableHeader() {
     return `<tr>
                 <th>Test → Expected</th>
@@ -38904,4 +38959,4 @@ function tableHeader() {
 }
 
 module.exports = tableHeader;
-},{}]},{},[35]);
+},{}]},{},[36]);

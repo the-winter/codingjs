@@ -80,10 +80,36 @@ $('#solve').on('click', () => {
       // if the input is an array/object, make a copy to avoid user changing the passed version...
       let inputCopy = inputParser(exercise, inputStr);
 
-      idealResult = solutions[exerciseName](...input);
-      result = userCode(...inputCopy);
+      if (exercise.inputType === "map") {
+        //TODO: refactor this to put map formatting into it's own function...
+        let formattedInput = "(";
+        for (let item of input) {
+          formattedInput = formattedInput + "{" + item[0] + ":" + item[1] + "}";
+        }
+        formattedInput = formattedInput + ")";
 
-      $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+        idealResult = solutions[exerciseName](input);
+        result = userCode(inputCopy);
+
+        let formattedMapIdealResult = "";
+        for (let item of idealResult) {
+          formattedMapIdealResult = formattedMapIdealResult + "{" + item[0] + ":" + item[1] + "}";
+        }
+
+        let formattedMapUserResult = "";
+        for (let item of result) {
+          formattedMapUserResult = formattedMapUserResult + "{" + item[0] + ":" + item[1] + "}";
+        }
+
+        
+
+        $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult));
+      }
+      else {
+        idealResult = solutions[exerciseName](...input);
+        result = userCode(...inputCopy);
+        $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+      }
 
       let isCorrect = _.isEqual(result, idealResult);
       results.push(isCorrect);
