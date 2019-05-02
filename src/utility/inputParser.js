@@ -7,18 +7,20 @@ module.exports = function inputParser(exercise, inputStr) {
   
   let functionInput;
 
-  //TODO: figure out how to make passing map data types work...
-  // if (exercise.inputType === "map") {
-  //   let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-  //   eval("functionInput = new Map(" + tempArrayOfArgs + ")");
-  // }
-  // else {
+  if (exercise.inputType === "map") {
+    let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
+    functionInput = new Map();
+    for (let item of tempArrayOfArgs) {
+      functionInput.set(item[0], item[1]);
+    }
+  }
+  else {
     try {
       let arrayOfArgs = '[' + argsWithoutParentheses + ']';
       eval("functionInput = " + arrayOfArgs);
     } catch (e) {
       functionInput = e.toString();
     }
-  // }
+  }
   return functionInput;
 }

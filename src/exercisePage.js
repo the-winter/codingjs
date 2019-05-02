@@ -11,6 +11,7 @@ let tableHeader = require("./utility/tableHeader.js");
 let formatResults = require("./utility/formatResults.js");
 let setInitialEditorContents = require("./utility/setInitialEditorContents.js");
 let displayExampleRuns = require("./utility/displayExampleRuns.js");
+let prettyPrintMap = require("./utility/prettyPrintMap.js");
 
 let exerciseListeners = require("./listeners/exerciseListeners");
 let keyboardShortcuts = require("./listeners/keyboardShortcuts");
@@ -80,10 +81,23 @@ $('#solve').on('click', () => {
       // if the input is an array/object, make a copy to avoid user changing the passed version...
       let inputCopy = inputParser(exercise, inputStr);
 
-      idealResult = solutions[exerciseName](...input);
-      result = userCode(...inputCopy);
+      if (exercise.inputType === "map") {
+        //TODO: refactor this to put map formatting into it's own function...
+        let formattedInput = prettyPrintMap(input, "parentheses");
 
-      $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+        idealResult = solutions[exerciseName](input);
+        result = userCode(inputCopy);
+
+        let formattedMapIdealResult = prettyPrintMap(idealResult);
+        let formattedMapUserResult = prettyPrintMap(result);
+
+        $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult));
+      }
+      else {
+        idealResult = solutions[exerciseName](...input);
+        result = userCode(...inputCopy);
+        $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result));
+      }
 
       let isCorrect = _.isEqual(result, idealResult);
       results.push(isCorrect);
