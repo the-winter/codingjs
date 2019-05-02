@@ -34249,7 +34249,7 @@ module.exports = [
     '([["a", "candy"], ["b", "carrot"], ["c", "meh"]])',
     '([["b", "carrot"]])',
     '([["c", "meh"]])',
-    '([["a", "sparkle"], ["c", "meh"]])'
+    '([["a", "sparkle"], ["c", "meh"]])',
   ] },
   { question: 'Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that same value. In all cases remove the key "c", leaving the rest of the map unchanged.',
     title: 'Map-1',
@@ -34260,7 +34260,7 @@ module.exports = [
     '([["b", "xyz"], ["c", "ccc"]])',
     '([["a", "aaa"], ["c", "meh"], ["d", "hi"]])',
     '([["a", "xyz"], ["b", "1234"], ["c", "yo"], ["z", "zzz"]])',
-    '([["a", "xyz"], ["b", "1234"], ["c", "yo"], ["d", "ddd"], ["e", "everything"]])'
+    '([["a", "xyz"], ["b", "1234"], ["c", "yo"], ["d", "ddd"], ["e", "everything"]])',
   ] },
   { question: 'Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".',
     title: 'Map-1',
@@ -34272,7 +34272,44 @@ module.exports = [
     '([["b", "There"]])',
     '([["c", "meh"]])',
     '([["a", "aaa"], ["ab", "nope"], ["b", "bbb"], ["c", "ccc"]])',
-    '([["ab", "nope"], ["b", "bbb"], ["c", "ccc"]])'
+    '([["ab", "nope"], ["b", "bbb"], ["c", "ccc"]])',
+  ] },
+  { question: 'Given a map of food keys and topping values, modify and return the map as follows: if the key "ice cream" is present, set its value to "cherry". In all cases, set the key "bread" to have the value "butter".',
+    title: 'Map-1',
+    name: 'topping1',
+    inputType: "map",
+    inputs: [
+    '([["ice cream", "peanuts"]])',
+    '([[]])',
+    '([["pancake", "syrup"]])',
+    '([["bread", "dirt"], ["ice cream", "strawberries"]])',
+    '([["bread", "jam"], ["ice cream", "strawberries"], ["salad", "oil"]])',
+    '([["bread", "nutella"]])',
+  ] },
+  { question: 'Given a map of food keys and their topping values, modify and return the map as follows: if the key "ice cream" has a value, set that as the value for the key "yogurt" also. If the key "spinach" has a value, change that value to "nuts".',
+    title: 'Map-1',
+    name: 'topping2',
+    inputType: "map",
+    inputs: [
+      '([["ice cream", "cherry"]])',
+      '([["spinach", "dirt"], ["ice cream", "cherry"]])',
+      '([["yogurt", "salt"]])',
+      '([["yogurt", "salt"], ["bread", "butter"]])',
+      '([[]])',
+      '([["ice cream", "air"], ["salad", "oil"]])',
+  ] },
+  { question: 'Given a map of food keys and topping values, modify and return the map as follows: if the key "potato" has a value, set that as the value for the key "fries". If the key "salad" has a value, set that as the value for the key "spinach".',
+    title: 'Map-1',
+    name: 'topping3',
+    inputType: "map",
+    inputs: [
+      '([["potato", "ketchup"]])',
+      '([["potato", "butter"]])',
+      '([["salad", "oil"], ["potato", "ketchup"]])',
+      '([["toast", "butter"], ["salad", "oil"], ["potato", "ketchup"]])',
+      '([[]])',
+      '([["salad", "pepper"], ["fries", "salt"]])',
+      
   ] },
 ];
 
@@ -34301,6 +34338,34 @@ solutions.mapAB = function (someMap) {
   if (someMap.has("a") && someMap.has("b")) {
     let combinedString = someMap.get("a") + someMap.get("b");
     someMap.set("ab", combinedString);
+  }
+  return someMap;
+}
+
+solutions.topping1 = function (someMap) {
+  if (someMap.has("ice cream")) {
+    someMap.set("ice cream", "cherry");
+  }
+  someMap.set("bread", "butter");
+  return someMap;
+}
+
+solutions.topping2 = function (someMap) {
+  if (someMap.has("ice cream")) {
+    someMap.set("yogurt", someMap.get("ice cream"));
+  }
+  if (someMap.has("spinach")) {
+    someMap.set("spinach", "nuts");
+  }
+  return someMap;
+}
+
+solutions.topping3 = function (someMap) {
+  if (someMap.has("potato")) {
+    someMap.set("fries", someMap.get("potato"));
+  }
+  if (someMap.has("salad")) {
+    someMap.set("spinach", someMap.get("salad"));
   }
   return someMap;
 }
@@ -38947,10 +39012,15 @@ module.exports = function inputParser(exercise, inputStr) {
   let functionInput;
 
   if (exercise.inputType === "map") {
-    let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-    functionInput = new Map();
-    for (let item of tempArrayOfArgs) {
-      functionInput.set(item[0], item[1]);
+    if (argsWithoutParentheses === "[[]]") {
+      return new Map();
+    }
+    else {
+      let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
+      functionInput = new Map();
+      for (let item of tempArrayOfArgs) {
+        functionInput.set(item[0], item[1]);
+      }
     }
   }
   else {
@@ -38967,16 +39037,28 @@ module.exports = function inputParser(exercise, inputStr) {
 // function to show the Map data type in a user-friendly way
 //  - without doing something like this, it just shows up as Object()
 
+let _ = require("lodash");
+
 function prettyPrintMap(theMap, style="no_parentheses") {
   let formattedMapResult = "";
   if (style == "parentheses") {
     formattedMapResult = "(";
   }
-  // console.log(theMap);
-  for (let item of theMap) {
-    // console.log(item);
-    formattedMapResult = formattedMapResult + "{'" + item[0] + "': '" + item[1] + "'}";
+  formattedMapResult = formattedMapResult + "{";
+  
+  //check if it is an empty map
+  let emtpyMap = new Map();
+  let isEmpty = _.isEqual(theMap, emtpyMap);
+  if (!isEmpty) {
+    for (let item of theMap) {
+      formattedMapResult += `'${item[0]}: ${item[1]}', `;
+    }
+  
+    formattedMapResult = formattedMapResult.slice(0, -2);    
   }
+  
+  formattedMapResult = formattedMapResult + "}";
+
   if (style == "parentheses") {
     formattedMapResult = formattedMapResult +  ")";
   }
@@ -38985,7 +39067,7 @@ function prettyPrintMap(theMap, style="no_parentheses") {
 
 module.exports = prettyPrintMap;
 
-},{}],44:[function(require,module,exports){
+},{"lodash":7}],44:[function(require,module,exports){
 let defaultInput = require("./defaultInput.js");
 
 module.exports = function (editor, exerciseName, exercise) {

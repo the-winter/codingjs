@@ -8,10 +8,15 @@ module.exports = function inputParser(exercise, inputStr) {
   let functionInput;
 
   if (exercise.inputType === "map") {
-    let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-    functionInput = new Map();
-    for (let item of tempArrayOfArgs) {
-      functionInput.set(item[0], item[1]);
+    if (argsWithoutParentheses === "[[]]") {
+      return new Map();
+    }
+    else {
+      let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
+      functionInput = new Map();
+      for (let item of tempArrayOfArgs) {
+        functionInput.set(item[0], item[1]);
+      }
     }
   }
   else {

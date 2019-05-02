@@ -26,4 +26,32 @@ solutions.mapAB = function (someMap) {
   return someMap;
 }
 
+solutions.topping1 = function (someMap) {
+  if (someMap.has("ice cream")) {
+    someMap.set("ice cream", "cherry");
+  }
+  someMap.set("bread", "butter");
+  return someMap;
+}
+
+solutions.topping2 = function (someMap) {
+  if (someMap.has("ice cream")) {
+    someMap.set("yogurt", someMap.get("ice cream"));
+  }
+  if (someMap.has("spinach")) {
+    someMap.set("spinach", "nuts");
+  }
+  return someMap;
+}
+
+solutions.topping3 = function (someMap) {
+  if (someMap.has("potato")) {
+    someMap.set("fries", someMap.get("potato"));
+  }
+  if (someMap.has("salad")) {
+    someMap.set("spinach", someMap.get("salad"));
+  }
+  return someMap;
+}
+
  module.exports = solutions;
