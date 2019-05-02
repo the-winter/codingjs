@@ -38466,6 +38466,7 @@ let tableHeader = require("./utility/tableHeader.js");
 let formatResults = require("./utility/formatResults.js");
 let setInitialEditorContents = require("./utility/setInitialEditorContents.js");
 let displayExampleRuns = require("./utility/displayExampleRuns.js");
+let prettyPrintMap = require("./utility/prettyPrintMap.js");
 
 let exerciseListeners = require("./listeners/exerciseListeners");
 let keyboardShortcuts = require("./listeners/keyboardShortcuts");
@@ -38536,26 +38537,14 @@ $('#solve').on('click', () => {
       let inputCopy = inputParser(exercise, inputStr);
 
       if (exercise.inputType === "map") {
-        let formattedInput = "(";
-        for (let item of input) {
-          formattedInput = formattedInput + "{" + item[0] + ":" + item[1] + "}";
-        }
-        formattedInput = formattedInput + ")";
+        //TODO: refactor this to put map formatting into it's own function...
+        let formattedInput = prettyPrintMap(input, "parentheses");
 
         idealResult = solutions[exerciseName](input);
         result = userCode(inputCopy);
 
-        let formattedMapIdealResult = "";
-        for (let item of idealResult) {
-          formattedMapIdealResult = formattedMapIdealResult + "{" + item[0] + ":" + item[1] + "}";
-        }
-
-        let formattedMapUserResult = "";
-        for (let item of result) {
-          formattedMapUserResult = formattedMapUserResult + "{" + item[0] + ":" + item[1] + "}";
-        }
-
-        
+        let formattedMapIdealResult = prettyPrintMap(idealResult);
+        let formattedMapUserResult = prettyPrintMap(result);
 
         $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult));
       }
@@ -38583,7 +38572,7 @@ $('#solve').on('click', () => {
 function isTrue(someValue) {
   return someValue === true;
 }
-},{"../node_modules/codemirror-minified/addon/comment/comment.js":1,"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":2,"../node_modules/codemirror-minified/mode/javascript/javascript.js":4,"./allExercisesIncludingHidden.js":9,"./listeners/exerciseListeners":33,"./listeners/keyboardShortcuts":35,"./solutions.js":37,"./utility/deParam.js":38,"./utility/displayExampleRuns.js":40,"./utility/formatResults.js":41,"./utility/inputParser.js":42,"./utility/setInitialEditorContents.js":43,"./utility/tableHeader.js":44,"codemirror-minified":3,"jquery":6,"lodash":7}],27:[function(require,module,exports){
+},{"../node_modules/codemirror-minified/addon/comment/comment.js":1,"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":2,"../node_modules/codemirror-minified/mode/javascript/javascript.js":4,"./allExercisesIncludingHidden.js":9,"./listeners/exerciseListeners":33,"./listeners/keyboardShortcuts":35,"./solutions.js":37,"./utility/deParam.js":38,"./utility/displayExampleRuns.js":40,"./utility/formatResults.js":41,"./utility/inputParser.js":42,"./utility/prettyPrintMap.js":43,"./utility/setInitialEditorContents.js":44,"./utility/tableHeader.js":45,"codemirror-minified":3,"jquery":6,"lodash":7}],27:[function(require,module,exports){
 
 let warmupExercises = require("./data/warmup.js");
 let stringExercises = require("./data/string.js");
@@ -38864,6 +38853,7 @@ module.exports = function defaultInput(exerciseName){
 let $ = require("jquery");
 let inputParser = require("./inputParser.js");
 let solutions = require("../solutions.js");
+let prettyPrintMap = require("./prettyPrintMap.js");
 
 module.exports = function(exercise, exerciseName) {
     // example/sample runs
@@ -38872,20 +38862,28 @@ module.exports = function(exercise, exerciseName) {
             let input = inputParser(exercise, exercise.inputs[i]);
             let result;
             if (exercise.inputType === "map") {
+                // display syntax message
+                if (i === 0) {
+                    $('.examples').append(`<p><em>Note that the Map syntax for the example runs and output has been simplified for user readability, but would not actually create a Map() properly.</em></p>`);
+                }
+
                 result = solutions[exerciseName](input);
+                let mapInput = new Map(input);
+                let formattedInput = prettyPrintMap(mapInput, "parentheses");
+                let formattedResult = prettyPrintMap(result);
+                $('.examples').append(`<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
             }
             else {
                 result = solutions[exerciseName](...input);
+                $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
             }
-            // console.log(result)
-            $('.examples').append(`<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
         }
         catch(e){
             break;
         }
     }
 }
-},{"../solutions.js":37,"./inputParser.js":42,"jquery":6}],41:[function(require,module,exports){
+},{"../solutions.js":37,"./inputParser.js":42,"./prettyPrintMap.js":43,"jquery":6}],41:[function(require,module,exports){
 let _ = require("lodash");
 
 /** Return row for html table **/
@@ -38910,16 +38908,12 @@ module.exports = function inputParser(exercise, inputStr) {
   
   let functionInput;
 
-  //TODO: figure out how to make passing map data types work...
   if (exercise.inputType === "map") {
     let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-    // eval("functionInput = new Map()");
     functionInput = new Map();
     for (let item of tempArrayOfArgs) {
-      // eval("functionInput.set(" + item[0] + ", " + item[1] + ");");
       functionInput.set(item[0], item[1]);
     }
-    // console.log(functionInput);
   }
   else {
     try {
@@ -38932,6 +38926,26 @@ module.exports = function inputParser(exercise, inputStr) {
   return functionInput;
 }
 },{}],43:[function(require,module,exports){
+// function to show the Map data type in a user-friendly way
+//  - without doing something like this, it just shows up as Object()
+
+function prettyPrintMap(theMap, style="no_parentheses") {
+  let formattedMapResult = "";
+  if (style == "parentheses") {
+    formattedMapResult = "(";
+  }
+  for (let item of theMap) {
+    formattedMapResult = formattedMapResult + "{'" + item[0] + "': '" + item[1] + "'}";
+  }
+  if (style == "parentheses") {
+    formattedMapResult = formattedMapResult +  ")";
+  }
+  return formattedMapResult;
+}
+
+module.exports = prettyPrintMap;
+
+},{}],44:[function(require,module,exports){
 let defaultInput = require("./defaultInput.js");
 
 module.exports = function (editor, exerciseName, exercise) {
@@ -38949,7 +38963,7 @@ module.exports = function (editor, exerciseName, exercise) {
         });
     }
 };
-},{"./defaultInput.js":39}],44:[function(require,module,exports){
+},{"./defaultInput.js":39}],45:[function(require,module,exports){
 function tableHeader() {
     return `<tr>
                 <th>Test → Expected</th>

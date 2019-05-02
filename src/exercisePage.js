@@ -11,6 +11,7 @@ let tableHeader = require("./utility/tableHeader.js");
 let formatResults = require("./utility/formatResults.js");
 let setInitialEditorContents = require("./utility/setInitialEditorContents.js");
 let displayExampleRuns = require("./utility/displayExampleRuns.js");
+let prettyPrintMap = require("./utility/prettyPrintMap.js");
 
 let exerciseListeners = require("./listeners/exerciseListeners");
 let keyboardShortcuts = require("./listeners/keyboardShortcuts");
@@ -82,26 +83,13 @@ $('#solve').on('click', () => {
 
       if (exercise.inputType === "map") {
         //TODO: refactor this to put map formatting into it's own function...
-        let formattedInput = "(";
-        for (let item of input) {
-          formattedInput = formattedInput + "{" + item[0] + ":" + item[1] + "}";
-        }
-        formattedInput = formattedInput + ")";
+        let formattedInput = prettyPrintMap(input, "parentheses");
 
         idealResult = solutions[exerciseName](input);
         result = userCode(inputCopy);
 
-        let formattedMapIdealResult = "";
-        for (let item of idealResult) {
-          formattedMapIdealResult = formattedMapIdealResult + "{" + item[0] + ":" + item[1] + "}";
-        }
-
-        let formattedMapUserResult = "";
-        for (let item of result) {
-          formattedMapUserResult = formattedMapUserResult + "{" + item[0] + ":" + item[1] + "}";
-        }
-
-        
+        let formattedMapIdealResult = prettyPrintMap(idealResult);
+        let formattedMapUserResult = prettyPrintMap(result);
 
         $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult));
       }

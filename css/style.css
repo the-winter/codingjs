@@ -121,6 +121,7 @@ div.probField {
   list-style-type: none;
   font-family: "Courier New", Courier, monospace;
   font-size: 0.85em;
+  width: 650px;
 }
 
 .solveArea {
