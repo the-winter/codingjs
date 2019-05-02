@@ -15,7 +15,7 @@ function prettyPrintMap(theMap, style="no_parentheses") {
   let isEmpty = _.isEqual(theMap, emtpyMap);
   if (!isEmpty) {
     for (let item of theMap) {
-      formattedMapResult += `'${item[0]}: ${item[1]}', `;
+      formattedMapResult += `'${item[0]}': '${item[1]}', `;
     }
   
     formattedMapResult = formattedMapResult.slice(0, -2);    

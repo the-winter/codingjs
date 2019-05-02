@@ -34309,7 +34309,58 @@ module.exports = [
       '([["toast", "butter"], ["salad", "oil"], ["potato", "ketchup"]])',
       '([[]])',
       '([["salad", "pepper"], ["fries", "salt"]])',
-      
+
+  ] },
+  { question: 'Modify and return the given map as follows: if the keys "a" and "b" are both in the map and have equal values, remove them both.',
+    title: 'Map-1',
+    name: 'mapAB2',
+    inputType: "map",
+    inputs: [
+      '([["a", "aaa"], ["b", "aaa"], ["c", "cake"]])',
+      '([["a", "aaa"], ["b", "bbb"]])',
+      '([["a", "aaa"], ["b", "bbb"], ["c", "aaa"]])',
+      '([["a", "aaa"]])',
+      '([["b", "bbb"]])',
+      '([["a", ""], ["b", ""], ["c", "ccc"]])',
+      '([[]])',
+      '([["a", "a"], ["b", "b"], ["z", "zebra"]])',
+  ] },
+  { question: 'Modify and return the given map as follows: if exactly one of the keys "a" or "b" has a value in the map (but not both), set the other to have that same value in the map.',
+    title: 'Map-1',
+    name: 'mapAB3',
+    inputType: "map",
+    inputs: [
+      '([["a", "aaa"], ["c", "cake"]])',
+      '([["b", "bbb"], ["c", "cake"]])',
+      '([["a", "aaa"], ["b", "bbb"], ["c", "cake"]])',
+      '([["ccc", "ccc"]])',
+      '([["c", "a"], ["d", "b"]])',
+      '([[]])',
+      '([["a", ""]])',
+      '([["b", ""]])',
+      '([["a", ""], ["b", ""]])',
+      '([["aa", "aa"], ["a", "apple"], ["z", "zzz"]])',
+  ] },
+  { question: 'Modify and return the given map as follows: if the keys "a" and "b" have values that have different lengths, then set "c" to have the longer value. If the values exist and have the same length, change them both to the empty string in the map.',
+    title: 'Map-1',
+    name: 'mapAB4',
+    inputType: "map",
+    inputs: [
+      '([["a", "aaa"], ["b", "bb"], ["c", "cake"]])',
+      '([["a", "aa"], ["b", "bbb"], ["c", "cake"]])',
+      '([["a", "aa"], ["b", "bbb"]])',
+      '([["a", "aaa"]])',
+      '([["b", "bbb"]])',
+      '([["a", "aaa"], ["b", "bbb"], ["c", "cake"]])',
+      '([["a", "a"], ["b", "b"], ["c", "cake"]])',
+      '([["a", ""], ["b", "b"], ["c", "cake"]])',
+      '([["a", "a"], ["b", ""], ["c", "cake"]])',
+      '([["c", "cat"], ["d", "dog"]])',
+      '([["ccc", "ccc"]])',
+      '([["c", "a"], ["d", "b"]])',
+      '([[]])',
+      '([["a", ""], ["z", "z"]])',
+      '([["b", ""], ["z", "z"]])',
   ] },
 ];
 
@@ -34366,6 +34417,45 @@ solutions.topping3 = function (someMap) {
   }
   if (someMap.has("salad")) {
     someMap.set("spinach", someMap.get("salad"));
+  }
+  return someMap;
+}
+
+solutions.mapAB2 = function (someMap) {
+  if (someMap.has("a") && someMap.has("b")) {
+    if (someMap.get("a") === someMap.get("b")) {
+      someMap.delete("a");
+      someMap.delete("b");
+    }
+  }
+  return someMap;
+}
+
+solutions.mapAB3 = function (someMap) {
+  if (someMap.has("a") && !someMap.has("b")) {
+    someMap.set("b", someMap.get("a"));
+  }
+  else if (!someMap.has("a") && someMap.has("b")) {
+    someMap.set("a", someMap.get("b"));
+  }
+  return someMap;
+}
+
+solutions.mapAB4 = function (someMap) {
+  if (someMap.has("a") && someMap.has("b")) {
+    aLength = someMap.get("a").length;
+    bLength = someMap.get("b").length;
+
+    if (aLength > bLength) {
+      someMap.set("c", someMap.get("a"));
+    }
+    else if (bLength > aLength) {
+      someMap.set("c", someMap.get("b"));
+    }
+    else {
+      someMap.set("a", "");
+      someMap.set("b", "");
+    }
   }
   return someMap;
 }
@@ -39051,7 +39141,7 @@ function prettyPrintMap(theMap, style="no_parentheses") {
   let isEmpty = _.isEqual(theMap, emtpyMap);
   if (!isEmpty) {
     for (let item of theMap) {
-      formattedMapResult += `'${item[0]}: ${item[1]}', `;
+      formattedMapResult += `'${item[0]}': '${item[1]}', `;
     }
   
     formattedMapResult = formattedMapResult.slice(0, -2);    

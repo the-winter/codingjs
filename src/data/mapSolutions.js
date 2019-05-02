@@ -54,4 +54,43 @@ solutions.topping3 = function (someMap) {
   return someMap;
 }
 
+solutions.mapAB2 = function (someMap) {
+  if (someMap.has("a") && someMap.has("b")) {
+    if (someMap.get("a") === someMap.get("b")) {
+      someMap.delete("a");
+      someMap.delete("b");
+    }
+  }
+  return someMap;
+}
+
+solutions.mapAB3 = function (someMap) {
+  if (someMap.has("a") && !someMap.has("b")) {
+    someMap.set("b", someMap.get("a"));
+  }
+  else if (!someMap.has("a") && someMap.has("b")) {
+    someMap.set("a", someMap.get("b"));
+  }
+  return someMap;
+}
+
+solutions.mapAB4 = function (someMap) {
+  if (someMap.has("a") && someMap.has("b")) {
+    aLength = someMap.get("a").length;
+    bLength = someMap.get("b").length;
+
+    if (aLength > bLength) {
+      someMap.set("c", someMap.get("a"));
+    }
+    else if (bLength > aLength) {
+      someMap.set("c", someMap.get("b"));
+    }
+    else {
+      someMap.set("a", "");
+      someMap.set("b", "");
+    }
+  }
+  return someMap;
+}
+
  module.exports = solutions;
