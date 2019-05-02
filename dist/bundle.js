@@ -34243,14 +34243,37 @@ module.exports = [
     title: 'Map-1',
     name: 'mapBully',
     inputType: "map",
-  inputs: [
-  '([["a", "candy"], ["b", "dirt"]])',
-  '([["a", "candy"]])',
-  '([["a", "candy"], ["b", "carrot"], ["c", "meh"]])',
-  '([["b", "carrot"]])',
-  '([["c", "meh"]])',
-  '([["a", "sparkle"], ["c", "meh"]])'
-] },
+    inputs: [
+    '([["a", "candy"], ["b", "dirt"]])',
+    '([["a", "candy"]])',
+    '([["a", "candy"], ["b", "carrot"], ["c", "meh"]])',
+    '([["b", "carrot"]])',
+    '([["c", "meh"]])',
+    '([["a", "sparkle"], ["c", "meh"]])'
+  ] },
+  { question: 'Modify and return the given map as follows: if the key "a" has a value, set the key "b" to have that same value. In all cases remove the key "c", leaving the rest of the map unchanged.',
+    title: 'Map-1',
+    name: 'mapShare',
+    inputType: "map",
+    inputs: [
+    '([["a", "aaa"], ["b", "bbb"], ["c", "ccc"]])',
+    '([["b", "xyz"], ["c", "ccc"]])',
+    '([["a", "aaa"], ["c", "meh"], ["d", "hi"]])',
+    '([["a", "xyz"], ["b", "1234"], ["c", "yo"], ["z", "zzz"]])',
+    '([["a", "xyz"], ["b", "1234"], ["c", "yo"], ["d", "ddd"], ["e", "everything"]])'
+  ] },
+  { question: 'Modify and return the given map as follows: for this problem the map may or may not contain the "a" and "b" keys. If both keys are present, append their 2 string values together and store the result under the key "ab".',
+    title: 'Map-1',
+    name: 'mapAB',
+    inputType: "map",
+    inputs: [
+    '([["a", "Hi"], ["b", "There"]])',
+    '([["a", "Hi"]])',
+    '([["b", "There"]])',
+    '([["c", "meh"]])',
+    '([["a", "aaa"], ["ab", "nope"], ["b", "bbb"], ["c", "ccc"]])',
+    '([["ab", "nope"], ["b", "bbb"], ["c", "ccc"]])'
+  ] },
 ];
 
 },{}],17:[function(require,module,exports){
@@ -34262,6 +34285,22 @@ solutions.mapBully = function (someMap) {
   if (someMap.has("a")) {
     someMap.set("b", someMap.get("a"));
     someMap.set("a", "");
+  }
+  return someMap;
+}
+
+solutions.mapShare = function (someMap) {
+  if (someMap.has("a")) {
+    someMap.set("b", someMap.get("a"));
+  }
+  someMap.delete("c");
+  return someMap;
+}
+
+solutions.mapAB = function (someMap) {
+  if (someMap.has("a") && someMap.has("b")) {
+    let combinedString = someMap.get("a") + someMap.get("b");
+    someMap.set("ab", combinedString);
   }
   return someMap;
 }
@@ -38537,7 +38576,6 @@ $('#solve').on('click', () => {
       let inputCopy = inputParser(exercise, inputStr);
 
       if (exercise.inputType === "map") {
-        //TODO: refactor this to put map formatting into it's own function...
         let formattedInput = prettyPrintMap(input, "parentheses");
 
         idealResult = solutions[exerciseName](input);
@@ -38866,10 +38904,10 @@ module.exports = function(exercise, exerciseName) {
                 if (i === 0) {
                     $('.examples').append(`<p><em>Note that the Map syntax for the example runs and output has been simplified for user readability, but would not actually create a Map() properly.</em></p>`);
                 }
-
-                result = solutions[exerciseName](input);
-                let mapInput = new Map(input);
-                let formattedInput = prettyPrintMap(mapInput, "parentheses");
+                
+                let inputCopy = inputParser(exercise, exercise.inputs[i]);
+                let formattedInput = prettyPrintMap(inputCopy, "parentheses");
+                result = solutions[exerciseName](inputCopy);
                 let formattedResult = prettyPrintMap(result);
                 $('.examples').append(`<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
             }
@@ -38934,7 +38972,9 @@ function prettyPrintMap(theMap, style="no_parentheses") {
   if (style == "parentheses") {
     formattedMapResult = "(";
   }
+  // console.log(theMap);
   for (let item of theMap) {
+    // console.log(item);
     formattedMapResult = formattedMapResult + "{'" + item[0] + "': '" + item[1] + "'}";
   }
   if (style == "parentheses") {

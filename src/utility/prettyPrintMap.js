@@ -6,7 +6,9 @@ function prettyPrintMap(theMap, style="no_parentheses") {
   if (style == "parentheses") {
     formattedMapResult = "(";
   }
+  // console.log(theMap);
   for (let item of theMap) {
+    // console.log(item);
     formattedMapResult = formattedMapResult + "{'" + item[0] + "': '" + item[1] + "'}";
   }
   if (style == "parentheses") {

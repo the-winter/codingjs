@@ -82,7 +82,6 @@ $('#solve').on('click', () => {
       let inputCopy = inputParser(exercise, inputStr);
 
       if (exercise.inputType === "map") {
-        //TODO: refactor this to put map formatting into it's own function...
         let formattedInput = prettyPrintMap(input, "parentheses");
 
         idealResult = solutions[exerciseName](input);
