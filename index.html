@@ -3,52 +3,34 @@
 <head>
   <meta charset="utf-8">
   <title>CodingJS</title>
-  <link rel="stylesheet" href="style.css" media="screen" title="no title">
   <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-61719228-2', 'auto');
-  ga('send', 'pageview');
-
-  </script>
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
 </head>
 <body>
   <div class="main">
-    <p class="heading"><img src="favicon-96x96.png" width="32px" alt="favicon" />&nbsp;<b>CodingJS</b></p>
-    <p class="subheading"><a class="links"href="http://codingbat.com/" target="_blank">CodingBat</a> <i>exercises converted for Javascript</i></p>
+    <p class="heading"><img src="img/favicon-96x96.png" width="32px" />&nbsp;<b>CodingJS</b></p>
+    <p class="subheading">Solve programming problems in Javascript!<br/>
+       <em>This site will only store your progress within your current web browser.<br>
+          To keep your solutions permanently, be sure to save your solution as a file.</em>
+    </p>
 
+    <div id="topButtonContainer">
+      <button class="btn-top" id="saveAll">Save All Solutions</button>
+      <button class="btn-top" id="loadAll">Load Saved Solutions</button>
+      <input type="file" id="fileInput" style="display:none;">
+    </div>
 
-    <p>Welcome to CodingJS, where you can practice the exercises from CodingBat
-      in Javascript!
-      <i>Please note: this site won't track your progress. Please keep track
-       of which exercise you're up to and save your solutions if you wish to keep them.</i></p>
-
-    <div class="exerciseIndex">
-
+    <div id="exerciseIndex">
 
     </div>
-    <p>We are working on adding more exercises! </p>
 
-    <!-- <a href=`exercise?name=scoresIncreasing&title=AP-1`>scoresIncreasing</a>
-    <a href=`exercise?name=scores100&title=AP-1`>scores100</a>
+  </div>
 
-    <a href=`exercise?name=diff21&title=warm-up1`>diff21</a> -->
-    <footer><hr><i>Made by the-winter</i></hr></footer>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
-  <script src="data/intro.js"></script>
-  <script src="data/warmup.js"></script>
-  <script src="data/string.js"></script>
-  <script src="data/array.js"></script>
-  <script src="data/logic.js"></script>
-  <script src="data/ap.js"></script>
-  <script src="data/recursion.js"></script>
-  <script src="helpers.js"></script>
-  <script src="glossary.js"></script>
+  <footer>
+    <em>Adapted by Dan Schellenberg, based on Nick Parlante's <a class="links"href="http://codingbat.com/">CodingBat</a>.</em>
+  </footer>
+</body>
+  <script src="dist/bundle.js"></script>
 
 </html>

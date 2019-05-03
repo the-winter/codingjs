@@ -1,0 +1,198 @@
+html { 
+  /* allows whole page to load before displaying content... 
+  programatically switch this to visible via JS when page is ready */
+  visibility:hidden; 
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 2rem;
+  min-height: 100%;
+  font-size: 20px;
+  background-color: #f9f9f9;
+}
+
+.main {
+  padding-left: 20px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: 'Trirong', serif;
+  font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #6E5961;
+  text-decoration: none;
+}
+
+.subheading {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+a.heading {
+  text-decoration: none;
+}
+
+a.links{
+  text-decoration: none;
+  color: #9d858f;
+}
+
+a.links:hover  {
+  color: black;
+}
+
+div.probField {
+  width: 600px;
+}
+
+#title {
+  margin-bottom: 0px;
+  display:inline-block;
+}
+
+#name {
+  margin-bottom: 0px;
+  font-size: 20px;
+  display:inline-block
+}
+
+.congrats {
+  font-size: 30px;
+  color: #6E5961;
+  padding-left: 150px;
+}
+
+.errorMessage {
+  font-size: 30px;
+  color: #ff0000;
+  padding-left: 150px;
+}
+
+.tick {
+  color: #769c49;
+}
+
+.btn {
+  font-size: 20px;
+  width: 100px;
+  height: 50px;
+}
+
+#topButtonContainer{
+  position: absolute;
+  float: right;
+  top: 10px;
+  right: 10px;
+}
+
+.btn-top {
+  font-size: 12px;
+  width: 175px;
+  height: 30px;
+  margin-top: 0;
+  padding-top: 0;
+  padding-left: 20px;
+}
+
+#show {
+  width: auto;
+  float:right;
+}
+
+.floatBox {
+  float: left;
+}
+
+.examples {
+  list-style-type: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85em;
+  width: 650px;
+}
+
+.solveArea {
+  padding-bottom: 20px;
+}
+
+#answer {
+  width: 600px;
+	height: 300px;
+  border: 3px solid #CDC1C5;
+  font-size: 18px;
+  color: white;
+  background-color: black;
+}
+
+#mySolution {
+	height: auto;
+  font-size: 12px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+div#displayResults {
+  position: absolute;
+  top: 200px;
+  margin-left: 575px;
+  margin-right: 15px;
+  padding-bottom: 6rem;
+}
+
+.test-table {
+  padding-left: 150px;
+  /* font-family: "Courier New", Courier, monospace; */
+  /* font-size: 0.8em; */
+}
+
+.test-table td {
+  border: solid 1px black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+th {
+  border: solid 1px black;
+}
+
+.status-box {
+  width: 2em;
+}
+
+.problems {
+  column-count: 3;
+  width: 600px;
+  overflow-wrap: break-word;
+}
+
+.probTitle {
+  column-span: all;
+}
+
+.exercise-link {
+  padding: 5px;
+}
+
+footer {
+  clear: both;
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  padding-top: 2rem;
+  /* background-color: #efefef; */
+  text-align: left;
+}

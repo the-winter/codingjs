@@ -1,21 +1,30 @@
 {
-  "name": "codingbat-js",
+  "name": "codingjs",
   "version": "0.0.1",
-  "description": "CodingBatJS",
+  "description": "CodingJS",
   "main": "main.js",
   "scripts": {
-    "start": "http-server -o",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify ./src/main.js > ./dist/bundle.js",
+    "watch": "watchify ./src/main.js -o ./dist/bundle.js -v"
   },
-  "author": "theWinter",
+  "author": "Dan Schellenberg",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^6.6.0"
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "watchify": "^3.11.1",
+    "uglifyify": "^5.0.1",
+    "browserify": "^16.2.3"
   },
   "dependencies": {
+    "codemirror-minified": "^5.45.0",
+    "file-saver": "^2.0.1",
+    "jquery": "^3.4.0",
+    "lodash": "^4.17.11",
+    "magnific-popup": "^1.1.0"
   }
 }

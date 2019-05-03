@@ -3,68 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>CodingJS</title>
-    <link rel="stylesheet" href="style.css" media="screen" title="no title">
     <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-61719228-2', 'auto');
-      ga('send', 'pageview');
-   </script>
+    <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="css/magnific-popup.css">
   </head>
   <body>
     <div class="main">
-      <p class="heading"><a class="heading" href="."><img src="favicon-96x96.png" width="32px" alt="favicon" />&nbsp;<b>CodingJS</a></b></p>
-      <p class="subheading"><a class="links"href="http://codingbat.com/" target="_blank">CodingBat</a> <i>exercises converted for Javascript</i></p>
-      <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a><br>
+      <p class="heading"><a class="heading" href="."><img src="img/favicon-96x96.png" width="32px" />&nbsp;<b>CodingJS</a></b></p>
+      <p class="subheading">Solve programming problems in Javascript!</p>
+
+      <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next" href="#">next</a>&nbsp;~&nbsp;<a href="jsref.html" class="links ajax-popup-link" id="jsref-link">JS Syntax Help</a><br>
       <h3><p id="title"> </p> <b>--</b> <p id="name"> </p></h3>
       <div class="probField">
         <p id="problem"></p>
       </div>
 
-      <p>Examples</p>
+      <p id="examplesTitle">Examples</p>
       <ul class = "examples">
       </ul>
       <div class="floatBox">
         <div class = "solveArea">
-          <button class="btn" id="solve">Solve</button><br>
+          <button class="btn" id="solve">Solve</button> (ctrl-enter)<button class="btn" id="show" style="visibility: hidden;">Show Solution</button><br>
           <textarea id="answer"></textarea><br>
+          <button class="btn" id="save">Save</button><button class="btn" id="open">Open</button>
+          <input type="file" id="fileInput" style="display:none;">
         </div>
 
-        <div class = "solveArea">
+        <!-- <div class = "solveArea">
           <button class="btn" id="show">Show Solution</button><br>
           <textarea id="mySolution" readonly="readonly";></textarea>
-        </div>
+        </div> -->
       </div>
 
       <div id="displayResults">
         <p class = "congrats"></p>
+        <p class = "errorMessage"></p>
+        <p id = "mySolution"></p>
         <table id = "testArea" class="test-table">
           <tbody id="tests">
 
           </tbody>
         </table>
-        <footer>
       </div>
-      <div style="clear: both">
-          <footer><hr><i>Made by the-winter</i></hr></footer>
-      </div>
+      
   </div>
-</body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.js" charset="utf-8"></script>
 
-  <script src="data/intro.js"></script>
-  <script src="data/warmup.js"></script>
-  <script src="data/string.js"></script>
-  <script src="data/array.js"></script>
-  <script src="data/logic.js"></script>
-  <script src="data/ap.js"></script>
-  <script src="data/recursion.js"></script>
-  <script src="helpers.js"></script>
-  <script src="main.js"></script>
+  <footer>
+    <em>Adapted by Dan Schellenberg, based on Nick Parlante's <a class="links"href="http://codingbat.com/" target="_blank">CodingBat</a>.</em>
+  </footer>
+
+  <!-- Popup itself -->
+  <div id="syntax-help" class="mfp-hide">
+    Popup content
+  </div>
+
+</body>
+<script src="dist/bundle.js"></script>
 
 </html>
