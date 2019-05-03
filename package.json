@@ -8,7 +8,8 @@
     "build": "browserify ./src/main.js > ./dist/bundle.js",
     "watch": "watchify ./src/main.js -o ./dist/bundle.js -v"
   },
-  "author": "Dan Schellenberg",
+  "author": "the-winter",
+  "repository": "https://github.com/the-winter/codingjs",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^3.9.1",
