@@ -1,5 +1,6 @@
 let $ = require("jquery");
 let _ = require("lodash");
+let ts = require("typescript"); 
 let CodeMirror = require("codemirror-minified");
 
 let exercises = require("./allExercisesIncludingHidden.js");
@@ -25,7 +26,7 @@ require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 let editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
   lineNumbers: true,
   matchBrackets: true,
-  mode: "javascript",
+  mode: "text/typescript",
   extraKeys: {
     "Cmd-/": "toggleComment",
     "Ctrl-/": "toggleComment",
@@ -69,7 +70,8 @@ $('#solve').on('click', () => {
   let userCode;
   try {
     $(".errorMessage").text("");
-    eval(`userCode=${answer}`);
+    const jsAnswer = ts.transpile(answer);
+    eval(`userCode=${jsAnswer}`);
     const inputs = exercise.inputs;
 
     let results = [];
