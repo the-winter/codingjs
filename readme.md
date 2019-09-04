@@ -12,6 +12,8 @@ A static website to do CodingBat problems in JavaScript. Use it at [the-winter.g
 
 - [schellenberg](https://github.com/schellenberg) - for tons of changes includiing saving, syntax highlighting, and more solutions
 
+- [DavidGriswoldTeacher](https://github.com/DavidGriswoldTeacher) - for adding the ability to use TypeScript 
+
 ## Credits
 
 Thanks to [nodingbat](https://github.com/omariio/nodingbat) and [mirandaio/codingbat](https://github.com/mirandaio/codingbat) for providing some solutions and [codingbat](codingbat.com) for providing problems.
