@@ -16,5 +16,5 @@ A static website to do CodingBat problems in JavaScript. Use it at [the-winter.g
 
 ## Credits
 
-Thanks to [nodingbat](https://github.com/omariio/nodingbat) and [mirandaio/codingbat](https://github.com/mirandaio/codingbat) for providing some solutions and [codingbat](codingbat.com) for providing problems.
+Thnx to [nodingbat](https://github.com/omariio/nodingbat) and [mirandaio/codingbat](https://github.com/mirandaio/codingbat) for providing some solutions and [codingbat](codingbat.com) for providing problems.
 
