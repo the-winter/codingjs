@@ -89,12 +89,11 @@ solutions.withoutEnd2 = function (str) {
 };
 
 solutions.middleTwo = function (str) {
-  if (str.length % 2 == 0) {
-    temp = str.substring(str.length);
-    mid = temp.substring(0, 2);
-    return mid;
+   if (str.length % 2 == 0) {
+    return str.substring(str.length / 2 - 1, str.length / 2 + 1);
+  } else {
+    return str
   }
-  return str;
 };
 
 solutions.endsLy = function (str) {
