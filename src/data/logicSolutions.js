@@ -408,7 +408,10 @@ solutions.cigarParty = function (cigars, isWeekend) {
     const bigsUsed = Math.min(big, bigsNeeded);
      // how many leftover
     const smallsNeeded = goal - bigsUsed * 5;
-  
+    
+    if (smallsNeeded > small) {
+        return -1;
+    }
     return smallsNeeded;
   };
   
