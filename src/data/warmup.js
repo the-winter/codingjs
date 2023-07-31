@@ -606,7 +606,18 @@ module.exports = [
     title: 'Warmup-2',
     name: 'stringSplosion',
     question: 'Given a non-empty string like "Code" return a string like "CCoCodCode".',
-    inputs: [], // TODO: write inputs here
+    inputs: [
+      "('Hello')",
+      "('Hi')",
+      "('Heeololeo')",
+      "('HiHiHi')",
+      "('')",
+      "('Greetings')",
+      "('Chocolate')",
+      "('pi')",
+      "('Hello Kitten')",
+      "('hxaxpxpxy')",
+    ],
   }, {
     title: 'Warmup-2',
     name: 'last2',
