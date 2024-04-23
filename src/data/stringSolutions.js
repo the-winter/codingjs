@@ -90,9 +90,8 @@ solutions.withoutEnd2 = function (str) {
 
 solutions.middleTwo = function (str) {
   if (str.length % 2 == 0) {
-    temp = str.substring(str.length);
-    mid = temp.substring(0, 2);
-    return mid;
+     let midIndex = str.length/2
+    return str[midIndex-1]+str[midIndex]
   }
   return str;
 };
